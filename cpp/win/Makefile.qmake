@@ -30,6 +30,6 @@ clean:
 git_remote:
 	cd $(GPROJECT_PATH) && git remote add origin $(GGIT_URL)
 git_push:
-	cd $(GPROJECT_PATH) && git pull && git add --all && git commit -m "Initial Commit" && git push -u origin master
+	cd $(GPROJECT_PATH) && git pull && git add --all && git commit -m "Initial Commit" && git push
 git_clone:
 	cd $(GPROJECT_ROOT) && git clone $(GGIT_URL) $(GGIT_NAME) 
