@@ -8,4 +8,7 @@ RCC_DIR = build
 CONFIG += console release gnu++11
 QT += widgets
 
+QMAKE_CXXFLAGS +=\
+    -Wno-unused-parameter \
+    
 include(../code/ReadyCRM/src/GMain.pri)

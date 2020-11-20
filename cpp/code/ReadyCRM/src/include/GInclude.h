@@ -1,9 +1,8 @@
 //===============================================
-#include "GInclude.h"
+#ifndef _GInclude_
+#define _GInclude_
 //===============================================
-int main(int argc, char** argv) {
-    qDebug() << "ooooooooooooooooooooo";
-    return 0;
-}
+#include <QtWidgets>
 //===============================================
-
+#endif
+//===============================================
