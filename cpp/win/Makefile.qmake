@@ -12,8 +12,7 @@ compile: $(GOBJS)
 clean:
 	@if not exist $(GBIN) @mkdir $(GBIN)
 	@if not exist $(GBUILD) @mkdir $(GBUILD)
-	@mingw32-make clean
-	@del /q $(GBUILD)\* $(GBIN)\*
+	@del /q $(GBIN)\*
 run:
 	@$(GTARGET) $(argv)
 git_push:

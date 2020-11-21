@@ -1,8 +1,8 @@
 //===============================================
-#include "GInclude.h"
+#include "GProcess.h"
 //===============================================
 int main(int argc, char** argv) {
-    qDebug() << "ooooooooooooooooooooo";
+    GProcess::Instance()->run(argc, argv);
     return 0;
 }
 //===============================================
