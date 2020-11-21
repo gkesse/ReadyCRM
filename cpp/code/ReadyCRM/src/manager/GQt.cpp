@@ -1,5 +1,7 @@
 //===============================================
 #include "GQt.h"
+#include "GWidget.h"
+#include "GManager.h"
 //===============================================
 GQt* GQt::m_instance = 0;
 //===============================================
@@ -19,10 +21,10 @@ GQt* GQt::Instance() {
 }
 //===============================================
 void GQt::run(int argc, char** argv) {
-    QString lKey = "";
-    if(argc > 1) lKey = argv[1];
-    if(lKey == "test") {runTest(argc, argv); return;}
-    if(lKey == "gui") {runGui(argc, argv); return;}
-    runTest(argc, argv);
+    QApplication lApp(argc, argv);
+    GManager::Instance()->loadStyle();
+    GWidget* lWindow = GWidget::Create("window");
+    lWindow->show();
+    lApp.exec();
 }
 //===============================================

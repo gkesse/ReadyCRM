@@ -1,0 +1,11 @@
+/*===============================================*/
+/* QWidget */
+QWidget, QWidget * {
+    background-color: #201010;
+    font-family: "Allan";
+    font-size: 20px;
+    color: white;
+    border: none;
+    outline: none
+}
+/*===============================================*/

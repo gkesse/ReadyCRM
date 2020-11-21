@@ -1,5 +1,7 @@
 //===============================================
 #include "GProcess.h"
+#include "GTest.h"
+#include "GQt.h"
 //===============================================
 GProcess* GProcess::m_instance = 0;
 //===============================================
@@ -27,10 +29,10 @@ void GProcess::run(int argc, char** argv) {
 }
 //===============================================
 void GProcess::runTest(int argc, char** argv) {
-    qDebug() << "runTest ooooooooooooooooooooo";
+    GTest::Instance()->run(argc, argv);
 }
 //===============================================
 void GProcess::runGui(int argc, char** argv) {
-    qDebug() << "runGui ooooooooooooooooooooo";
+    GQt::Instance()->run(argc, argv);
 }
 //===============================================
