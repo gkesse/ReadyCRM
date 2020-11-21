@@ -1,19 +1,16 @@
 //===============================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GAddressKey_
+#define _GAddressKey_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GWindow : public GWidget {    
+class GAddressKey : public GWidget {    
     Q_OBJECT
 
 public:
-    GWindow(QWidget* parent = 0);
-    ~GWindow();
-
-public:
-    void addPage(QString key, QWidget* widget, bool isDefault);
+    GAddressKey(QWidget* parent = 0);
+    ~GAddressKey();
 };
 //===============================================
 #endif

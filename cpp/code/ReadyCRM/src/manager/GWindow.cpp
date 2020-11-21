@@ -17,8 +17,8 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     QStackedWidget* lWorkspace = new QStackedWidget;
     lApp->page_map = lWorkspace;
     
-    addContent(GWidget::Create("home"), "home", 0);
-    addContent(GWidget::Create("builder"), "home/builder", 1);
+    addPage("home", GWidget::Create("home"), 1);
+    addPage("home/builder", GWidget::Create("builder"), 0);
     
     QVBoxLayout* lMainLatout = new QVBoxLayout;
     lMainLatout->addWidget(lTitleBar, 0);
@@ -38,7 +38,7 @@ GWindow::~GWindow() {
 //===============================================
 // methods
 //===============================================
-void GWindow::addContent(QWidget* widget, QString key, bool isDefault) {
+void GWindow::addPage(QString key, QWidget* widget, bool isDefault) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     int lWidgetId = lApp->page_map->count();
     lApp->page_id[key] = lWidgetId;

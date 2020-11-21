@@ -1,19 +1,16 @@
 //===============================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GTitleBar_
+#define _GTitleBar_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GWindow : public GWidget {    
+class GTitleBar : public GWidget {    
     Q_OBJECT
 
 public:
-    GWindow(QWidget* parent = 0);
-    ~GWindow();
-
-public:
-    void addPage(QString key, QWidget* widget, bool isDefault);
+    GTitleBar(QWidget* parent = 0);
+    ~GTitleBar();
 };
 //===============================================
 #endif

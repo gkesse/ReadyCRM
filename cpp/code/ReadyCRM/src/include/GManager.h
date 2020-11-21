@@ -45,6 +45,8 @@ struct _sGApp {
     // page
     QStackedWidget* page_map;
     QMap<QString, int> page_id;
+    // widget
+    QString widget_id;
 };
 //===============================================
 #endif

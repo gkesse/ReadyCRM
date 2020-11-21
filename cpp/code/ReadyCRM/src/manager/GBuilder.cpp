@@ -1,18 +1,15 @@
 //===============================================
-#include "GHome.h"
+#include "GBuilder.h"
 #include "GWidget.h"
 #include "GManager.h"
 //===============================================
 // constructor
 //===============================================
-GHome::GHome(QWidget* parent) : GWidget(parent) {
-    setObjectName("GHome");
+GBuilder::GBuilder(QWidget* parent) : GWidget(parent) {
+    setObjectName("GBuilder");
         
     GWidget* lListBox = GWidget::Create("listbox");
-    
-    lListBox->addItem("home", "Accueil");
-    lListBox->addItem("home/builder", "Builder");
-    
+        
     QVBoxLayout* lMainLatout = new QVBoxLayout;
     lMainLatout->addWidget(lListBox);
     lMainLatout->setAlignment(Qt::AlignTop);
@@ -22,7 +19,7 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     setLayout(lMainLatout);
 }
 //===============================================
-GHome::~GHome() {
+GBuilder::~GBuilder() {
     
 }
 //===============================================
