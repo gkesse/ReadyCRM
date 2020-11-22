@@ -20,7 +20,6 @@ public:
     
 public slots:
     virtual void slotItemClick();
-    virtual void slotItemUpdate();
     
 signals:
     void emitItemClick();
