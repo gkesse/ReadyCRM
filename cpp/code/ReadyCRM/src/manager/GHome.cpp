@@ -13,13 +13,13 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     lListBox->addItem("home", "Accueil");
     lListBox->addItem("home/builder", "Builder");
     
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lListBox);
-    lMainLatout->setAlignment(Qt::AlignTop);
-    lMainLatout->setMargin(0);
-    lMainLatout->setSpacing(0);
+    QVBoxLayout* lMainLayout = new QVBoxLayout;
+    lMainLayout->addWidget(lListBox);
+    lMainLayout->setAlignment(Qt::AlignTop);
+    lMainLayout->setMargin(0);
+    lMainLayout->setSpacing(0);
     
-    setLayout(lMainLatout);
+    setLayout(lMainLayout);
 }
 //===============================================
 GHome::~GHome() {

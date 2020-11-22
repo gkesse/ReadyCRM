@@ -16,7 +16,9 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     m_widgetId[lTitleBar] = "titlebar";
     
     GWidget* lAddressBar = GWidget::Create("addressbar");
+    
     GWidget* lAddressKey = GWidget::Create("addresskey");
+    lApp->address_key = lAddressKey;
     
     QStackedWidget* lWorkspace = new QStackedWidget;
     lApp->page_map = lWorkspace;
@@ -24,13 +26,15 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     addPage("home", GWidget::Create("home"), 1);
     addPage("home/builder", GWidget::Create("builder"), 0);
     
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lTitleBar);
-    lMainLatout->addWidget(lAddressBar);
-    lMainLatout->addWidget(lAddressKey);
-    lMainLatout->addWidget(lWorkspace, 1);
+    QVBoxLayout* lMainLayout = new QVBoxLayout;
+    lMainLayout->addWidget(lTitleBar);
+    lMainLayout->addWidget(lAddressBar);
+    lMainLayout->addWidget(lAddressKey);
+    lMainLayout->addWidget(lWorkspace, 1);
+    lMainLayout->setMargin(10);
+    lMainLayout->setSpacing(10);
     
-    setLayout(lMainLatout);
+    setLayout(lMainLayout);
     
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     setWindowTitle(lApp->app_name);
@@ -50,7 +54,7 @@ void GWindow::addPage(QString key, QWidget* widget, bool isDefault) {
     lApp->page_id[key] = lWidgetId;
     lApp->page_map->addWidget(widget);
     if(isDefault == 1) {
-        lApp->page_map->setCurrentIndex(lWidgetId);
+        GManager::Instance()->setPage(key);
     }
 }
 //===============================================

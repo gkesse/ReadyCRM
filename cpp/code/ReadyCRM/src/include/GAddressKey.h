@@ -11,6 +11,16 @@ class GAddressKey : public GWidget {
 public:
     GAddressKey(QWidget* parent = 0);
     ~GAddressKey();
+    
+public:
+    void setContent(QString text);
+
+public slots:
+    void slotItemClick();
+    
+private:
+    QHBoxLayout* m_mainLayout;
+    QMap<QWidget*, QString> m_widgetId;
 };
 //===============================================
 #endif

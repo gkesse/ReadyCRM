@@ -11,6 +11,12 @@ class GAddressBar : public GWidget {
 public:
     GAddressBar(QWidget* parent = 0);
     ~GAddressBar();
+    
+public slots:
+    void slotItemClick();
+    
+private:
+    QMap<QWidget*, QString> m_widgetId;
 };
 //===============================================
 #endif

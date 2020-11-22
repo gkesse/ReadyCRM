@@ -17,6 +17,7 @@ GManager::GManager() {
     mgr->app->font_path = "data/font";
     mgr->app->img_path = "data/img";
     mgr->app->picto_color = "white";
+    mgr->app->address_url = "";    
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }
@@ -74,6 +75,33 @@ void GManager::loadImg()  {
         QString lFile = lDirIterator.next();
         QString lKey = QFileInfo(lFile).baseName();
         mgr->app->img_map[lKey] = lFile;
+    }
+}
+//===============================================
+// page
+//===============================================
+void GManager::setPage(QString address)  {
+    int lPageId = mgr->app->page_id.value(address, -1);
+    if(lPageId == -1) {
+        mgr->app->address->setText(mgr->app->address_url);
+        return;
+    }
+    mgr->app->page_map->setCurrentIndex(lPageId);
+    mgr->app->address->setText(address);
+    mgr->app->address_url = address;
+    mgr->app->address_key->setContent(address);
+}
+//===============================================
+// layout
+//===============================================
+void GManager::clearLayout(QLayout *layout) {
+    if(layout) {
+        while(layout->count() > 0) {
+            QLayoutItem* lItem = layout->takeAt(0);
+            QWidget* lWidget = lItem->widget();
+            if(lWidget) delete lWidget;
+            delete lItem;
+        }
     }
 }
 //===============================================

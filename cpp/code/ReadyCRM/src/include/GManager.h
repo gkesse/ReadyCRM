@@ -29,6 +29,10 @@ public:
     void loadFont();
     // img
     void loadImg();
+    // page
+    void setPage(QString address);
+    // layout
+    void clearLayout(QLayout *layout);
 
 private:
     static GManager* m_instance;
@@ -63,6 +67,10 @@ struct _sGApp {
     QMap<QString, QString> img_map;
     // picto
     QColor picto_color;
+    // address
+    QLineEdit* address;
+    QString address_url;
+    GWidget* address_key;
 };
 //===============================================
 #endif

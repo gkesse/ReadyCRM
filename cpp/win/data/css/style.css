@@ -13,6 +13,16 @@ QWidget, QWidget * {
 /*===============================================*/
 /* custom */
 /*===============================================*/
+/* GAddressBar */
+GAddressBar * {
+    background-color: transparent;
+}
+GAddressBar QLineEdit#address {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+/*===============================================*/
 /* GListBox */
 GListBox * {
     background-color: transparent;

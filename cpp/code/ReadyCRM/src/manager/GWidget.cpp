@@ -41,6 +41,7 @@ void GWidget::addPage(QString key, QWidget* widget, bool isDefault) {}
 void GWidget::addItem(QString key, QString text) {}
 void GWidget::addItem(QString key, QString text, QIcon icon) {}
 void GWidget::addItem(QString key, QString text, QIcon icon, int width, int height) {}
+void GWidget::setContent(QString text) {}
 //===============================================
 // slot
 //===============================================
