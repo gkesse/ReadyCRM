@@ -20,12 +20,19 @@ public:
     static GManager* Instance();
     // data
     sGManager* getData();
-    // qt_style
+    // style
     void loadStyle();
+    // picto
+    QIcon loadPicto(int picto, QColor color);
+    // font
+    void loadFont();
+    // img
+    void loadImg();
 
 private:
     static GManager* m_instance;
     sGManager* mgr;
+    QtAwesome* m_QtAwesome;
 };
 //===============================================
 // struct
@@ -47,6 +54,14 @@ struct _sGApp {
     QMap<QString, int> page_id;
     // widget
     QString widget_id;
+    int win_state;
+    // font
+    QString font_path;
+    // img
+    QString img_path;
+    QMap<QString, QString> img_map;
+    // picto
+    QColor picto_color;
 };
 //===============================================
 #endif

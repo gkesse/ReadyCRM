@@ -1,3 +1,5 @@
+build/QtAwesome.o
+build/QtAwesomeAnim.o
 build/main.o
 build/GProcess.o
 build/GTest.o
@@ -11,6 +13,9 @@ build/GTitleBar.o
 build/GWindow.o
 build/GHome.o
 build/GBuilder.o
+build/qrc_QtAwesome.o
+build/moc_QtAwesome.o
+build/moc_QtAwesomeAnim.o
 build/moc_GWidget.o
 build/moc_GListBox.o
 build/moc_GTitleBar.o

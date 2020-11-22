@@ -10,5 +10,6 @@ QT += widgets
 
 QMAKE_CXXFLAGS +=\
     -Wno-unused-parameter \
+    -Wno-deprecated-declarations \
     
 include(../code/ReadyCRM/src/GMain.pri)

@@ -22,6 +22,8 @@ GQt* GQt::Instance() {
 //===============================================
 void GQt::run(int argc, char** argv) {
     QApplication lApp(argc, argv);
+    GManager::Instance()->loadFont();
+    GManager::Instance()->loadImg();
     GManager::Instance()->loadStyle();
     GWidget* lWindow = GWidget::Create("window");
     lWindow->show();

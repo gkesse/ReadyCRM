@@ -11,6 +11,15 @@ class GTitleBar : public GWidget {
 public:
     GTitleBar(QWidget* parent = 0);
     ~GTitleBar();
+    
+public slots:
+    void slotItemClick();
+    void slotItemUpdate();
+    
+private:
+    QMap<QWidget*, QString> m_widgetId;
+    QPushButton* m_maximize;
+    QPushButton* m_fullscreen;
 };
 //===============================================
 #endif

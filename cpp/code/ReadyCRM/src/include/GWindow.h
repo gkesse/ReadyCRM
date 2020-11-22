@@ -14,6 +14,12 @@ public:
 
 public:
     void addPage(QString key, QWidget* widget, bool isDefault);
+    
+public slots:
+    void slotItemClick();
+    
+private:
+    QMap<QWidget*, QString> m_widgetId;
 };
 //===============================================
 #endif

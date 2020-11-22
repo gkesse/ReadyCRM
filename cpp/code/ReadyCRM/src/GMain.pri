@@ -1,7 +1,9 @@
-INCLUDEPATH =\
+include(C:\Users\Admin\Downloads\Programs\ReadyLib\dev\qtawesome\4.7.0\mingw\QtAwesome.pri)
+
+INCLUDEPATH +=\
     $$PWD/include
     
-HEADERS =\
+HEADERS +=\
     $$PWD/include/GWidget.h \
     $$PWD/include/GListBox.h \
     $$PWD/include/GTitleBar.h \
@@ -11,7 +13,7 @@ HEADERS =\
     $$PWD/include/GHome.h \
     $$PWD/include/GBuilder.h \
     
-SOURCES =\
+SOURCES +=\
     $$PWD/main.cpp \
     $$PWD/manager/GProcess.cpp \
     $$PWD/manager/GTest.cpp \

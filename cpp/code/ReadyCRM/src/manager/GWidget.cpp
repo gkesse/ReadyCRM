@@ -45,4 +45,5 @@ void GWidget::addItem(QString key, QString text, QIcon icon, int width, int heig
 // slot
 //===============================================
 void GWidget::slotItemClick() {}
+void GWidget::slotItemUpdate() {}
 //===============================================
