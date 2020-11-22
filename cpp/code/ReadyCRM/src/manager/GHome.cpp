@@ -20,9 +20,18 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     lMainLayout->setSpacing(0);
     
     setLayout(lMainLayout);
+    
+    connect(lListBox, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
 }
 //===============================================
 GHome::~GHome() {
     
+}
+//===============================================
+// slot
+//===============================================
+void GHome::slotItemClick() {
+    sGApp* lApp = GManager::Instance()->dataGet()->app;
+    GManager::Instance()->setPage(lApp->widget_id);
 }
 //===============================================

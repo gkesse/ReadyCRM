@@ -11,6 +11,9 @@ class GHome : public GWidget {
 public:
     GHome(QWidget* parent = 0);
     ~GHome();
+    
+public slots:
+    void slotItemClick();
 };
 //===============================================
 #endif
