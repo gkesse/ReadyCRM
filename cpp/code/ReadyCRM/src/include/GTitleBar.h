@@ -14,12 +14,18 @@ public:
     
 public slots:
     void slotItemClick();
-    void slotItemUpdate();
-    
+
+protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+
 private:
     QMap<QWidget*, QString> m_widgetId;
     QPushButton* m_maximize;
     QPushButton* m_fullscreen;
+    QPoint m_pressPos;
+    bool m_pressFlag;
 };
 //===============================================
 #endif

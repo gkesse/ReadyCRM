@@ -10,6 +10,8 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     
     sGApp* lApp = GManager::Instance()->getData()->app;
     
+    lApp->win = this;
+
     GWidget* lTitleBar = GWidget::Create("titlebar");
     m_widgetId[lTitleBar] = "titlebar";
     
@@ -34,9 +36,6 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     setWindowTitle(lApp->app_name);
     setWindowIcon(QIcon(lApp->img_map["logo"]));
     resize(lApp->win_width, lApp->win_height);
-    
-    connect(lTitleBar, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
-    connect(this, SIGNAL(emitItemClick()), lTitleBar, SLOT(slotItemUpdate()));
 }
 //===============================================
 GWindow::~GWindow() {
@@ -53,39 +52,5 @@ void GWindow::addPage(QString key, QWidget* widget, bool isDefault) {
     if(isDefault == 1) {
         lApp->page_map->setCurrentIndex(lWidgetId);
     }
-}
-//===============================================
-// slot
-//===============================================
-void GWindow::slotItemClick() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    QWidget* lWidget = qobject_cast<QWidget*>(sender());
-    QString lWidgetId = m_widgetId[lWidget];
-    if(lWidgetId == "titlebar") {
-        if(lApp->widget_id == "fullscreen") {
-            if(windowState() != Qt::WindowFullScreen) {
-                showFullScreen();
-            }
-            else {
-                showNormal();
-            }
-        }
-        else if(lApp->widget_id == "minimize") {
-            showMinimized();
-        }
-        else if(lApp->widget_id == "maximize") {
-            if(windowState() != Qt::WindowMaximized) {
-                showMaximized();
-            }
-            else {
-                showNormal();
-            }
-        }
-        else if(lApp->widget_id == "close") {
-            close();
-        }
-    }
-    lApp->win_state = windowState();
-    emit emitItemClick();
 }
 //===============================================

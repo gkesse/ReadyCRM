@@ -77,27 +77,62 @@ GTitleBar::~GTitleBar() {
 void GTitleBar::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
-    lApp->widget_id = m_widgetId[lWidget];
-    emit emitItemClick();
-}
-//===============================================
-void GTitleBar::slotItemUpdate() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->widget_id == "maximize") {
-        if(lApp->win_state != Qt::WindowMaximized) {
-            m_maximize->setIcon(GManager::Instance()->loadPicto(fa::windowmaximize, lApp->picto_color));
-        }
-        else {
-            m_maximize->setIcon(GManager::Instance()->loadPicto(fa::windowrestore, lApp->picto_color));
-        }
-    }
-    else if(lApp->widget_id == "fullscreen") {
-        if(lApp->win_state != Qt::WindowFullScreen) {
-            m_fullscreen->setIcon(QIcon(lApp->img_map["fullscreen"]));
-        }
-        else {
+    QString lWidgetId = m_widgetId[lWidget];
+    if(lWidgetId == "fullscreen") {
+        if(lApp->win->windowState() != Qt::WindowFullScreen) {
+            if(lApp->win->windowState() == Qt::WindowMaximized) {
+                m_maximize->setIcon(GManager::Instance()->loadPicto(fa::windowmaximize, lApp->picto_color));
+            }
+            lApp->win->showFullScreen();
             m_fullscreen->setIcon(QIcon(lApp->img_map["fullscreen_exit"]));
         }
+        else {
+            lApp->win->showNormal();
+            m_fullscreen->setIcon(QIcon(lApp->img_map["fullscreen"]));
+            m_maximize->setIcon(GManager::Instance()->loadPicto(fa::windowmaximize, lApp->picto_color));
+        }
     }
+    else if(lWidgetId == "minimize") {
+        lApp->win->showMinimized();
+    }
+    else if(lWidgetId == "maximize") {
+        if(lApp->win->windowState() != Qt::WindowMaximized) {
+            if(lApp->win->windowState() == Qt::WindowFullScreen) {
+                m_fullscreen->setIcon(QIcon(lApp->img_map["fullscreen"]));
+            }
+            lApp->win->showMaximized();
+            m_maximize->setIcon(GManager::Instance()->loadPicto(fa::windowrestore, lApp->picto_color));
+        }
+        else {
+            lApp->win->showNormal();
+            m_maximize->setIcon(GManager::Instance()->loadPicto(fa::windowmaximize, lApp->picto_color));
+            m_fullscreen->setIcon(QIcon(lApp->img_map["fullscreen"]));
+        }
+    }
+    else if(lWidgetId == "close") {
+        lApp->win->close();
+    }
+}
+//===============================================
+void GTitleBar::mousePressEvent(QMouseEvent *event) {
+    if(event->button() == Qt::LeftButton) {
+        setCursor(QCursor(Qt::SizeAllCursor));
+        m_pressPos = event->pos();
+        m_pressFlag = true;
+    }
+}
+//===============================================
+void GTitleBar::mouseReleaseEvent(QMouseEvent *event) {
+    setCursor(QCursor(Qt::ArrowCursor));
+    m_pressFlag = false;
+}
+//===============================================
+void GTitleBar::mouseMoveEvent(QMouseEvent *event) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(m_pressFlag == true) {
+        QPoint lGlobalPos = event->globalPos();
+        QPoint lDiffPos = lGlobalPos - m_pressPos;
+        lApp->win->move(lDiffPos);
+    }    
 }
 //===============================================

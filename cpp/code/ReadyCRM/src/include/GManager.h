@@ -3,6 +3,7 @@
 #define _GManager_
 //===============================================
 #include "GInclude.h"
+#include "GWidget.h"
 //===============================================
 // struct
 //===============================================
@@ -47,6 +48,7 @@ struct _sGApp {
     // style
     QString style_path;
     // win
+    GWidget* win;
     int win_width;
     int win_height;
     // page
@@ -54,7 +56,6 @@ struct _sGApp {
     QMap<QString, int> page_id;
     // widget
     QString widget_id;
-    int win_state;
     // font
     QString font_path;
     // img
