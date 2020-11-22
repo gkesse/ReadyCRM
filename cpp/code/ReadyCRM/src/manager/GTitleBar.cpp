@@ -18,6 +18,7 @@ GTitleBar::GTitleBar(QWidget* parent) : GWidget(parent) {
     lAppName->setText(lApp->app_name);
     
     QLabel* lTitle = new QLabel;
+    lApp->title = lTitle;
     lTitle->setObjectName("title");
     lTitle->setText("Acceuil");
     lTitle->setAlignment(Qt::AlignCenter);

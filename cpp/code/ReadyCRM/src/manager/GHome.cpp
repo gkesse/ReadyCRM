@@ -31,7 +31,7 @@ GHome::~GHome() {
 // slot
 //===============================================
 void GHome::slotItemClick() {
-    sGApp* lApp = GManager::Instance()->dataGet()->app;
+    sGApp* lApp = GManager::Instance()->getData()->app;
     GManager::Instance()->setPage(lApp->widget_id);
 }
 //===============================================

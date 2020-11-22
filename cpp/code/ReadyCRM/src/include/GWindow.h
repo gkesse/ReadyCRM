@@ -13,7 +13,7 @@ public:
     ~GWindow();
 
 public:
-    void addPage(QString key, QWidget* widget, bool isDefault);
+    void addPage(QString key, QString title, QWidget* widget, bool isDefault);
         
 private:
     QMap<QWidget*, QString> m_widgetId;

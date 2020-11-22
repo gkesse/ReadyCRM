@@ -37,7 +37,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
 //===============================================
 // method
 //===============================================
-void GWidget::addPage(QString key, QWidget* widget, bool isDefault) {}
+void GWidget::addPage(QString key, QString title, QWidget* widget, bool isDefault) {}
 void GWidget::addItem(QString key, QString text) {}
 void GWidget::addItem(QString key, QString text, QIcon icon) {}
 void GWidget::addItem(QString key, QString text, QIcon icon, int width, int height) {}

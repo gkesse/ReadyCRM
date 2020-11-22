@@ -71,6 +71,9 @@ struct _sGApp {
     QLineEdit* address;
     QString address_url;
     GWidget* address_key;
+    // title
+    QLabel* title;
+    QMap<QString, QString> title_map;
 };
 //===============================================
 #endif

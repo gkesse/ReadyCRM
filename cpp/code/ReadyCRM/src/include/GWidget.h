@@ -13,7 +13,7 @@ public:
     static GWidget* Create(QString key, QWidget* parent = 0);
 
 public:
-    virtual void addPage(QString key, QWidget* widget, bool isDefault);
+    virtual void addPage(QString key, QString title, QWidget* widget, bool isDefault);
     virtual void addItem(QString key, QString text);
     virtual void addItem(QString key, QString text, QIcon icon);
     virtual void addItem(QString key, QString text, QIcon icon, int width, int height);

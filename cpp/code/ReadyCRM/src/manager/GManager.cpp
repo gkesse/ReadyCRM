@@ -90,6 +90,7 @@ void GManager::setPage(QString address)  {
     mgr->app->address->setText(address);
     mgr->app->address_url = address;
     mgr->app->address_key->setContent(address);
+    mgr->app->title->setText(mgr->app->title_map[address]);
 }
 //===============================================
 // layout
