@@ -1,26 +1,22 @@
 //===============================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GLogin_
+#define _GLogin_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GWindow : public GWidget {    
+class GLogin : public GWidget {    
     Q_OBJECT
 
 public:
-    GWindow(QWidget* parent = 0);
-    ~GWindow();
-
-public:
-    void addPage(QString key, QString title, QWidget* widget, bool isDefault);
-
-protected:
-    void resizeEvent(QResizeEvent *event);
+    GLogin(QWidget* parent = 0);
+    ~GLogin();
     
+public slots:
+    void slotItemClick();
+
 private:
     QMap<QWidget*, QString> m_widgetId;
-    QSizeGrip m_sizeGrip;
 };
 //===============================================
 #endif

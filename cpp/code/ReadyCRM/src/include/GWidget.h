@@ -18,6 +18,7 @@ public:
     virtual void addItem(QString key, QString text, QIcon icon);
     virtual void addItem(QString key, QString text, QIcon icon, int width, int height);
     virtual void setContent(QString text);
+    virtual void setContent(int icon1, int icon2);
     
 public slots:
     virtual void slotItemClick();

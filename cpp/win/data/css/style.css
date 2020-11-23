@@ -17,7 +17,17 @@ QWidget, QWidget * {
 GAddressBar * {
     background-color: transparent;
 }
-GAddressBar QLineEdit#address {
+GAddressBar {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+/*===============================================*/
+/* GLineEdit */
+GLineEdit * {
+    background-color: transparent;
+}
+GLineEdit QLineEdit#edit {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 5px;
@@ -39,5 +49,35 @@ GListBox QPushButton#item:hover {
 }
 GListBox QPushButton#item:pressed {
     background-color: transparent;
+}
+/*===============================================*/
+/* GLogin */
+GLogin * {
+    background-color: transparent;
+}
+GLogin QFrame#content {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    max-width: 500px;
+    padding: 10px;
+}
+GLogin QPushButton#profil {
+    background-color: #503030;
+    border-radius: 100px;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 20px 0px;
+}
+GLogin QFrame#username,
+GLogin QFrame#password {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+GLogin QPushButton#cancel,
+GLogin QPushButton#login {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
 }
 /*===============================================*/

@@ -10,7 +10,7 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
         
     GWidget* lListBox = GWidget::Create("listbox");
     
-    lListBox->addItem("home", "Accueil");
+    lListBox->addItem("home/login", "Connexion");
     lListBox->addItem("home/builder", "Builder");
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;

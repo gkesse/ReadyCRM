@@ -74,6 +74,8 @@ struct _sGApp {
     // title
     QLabel* title;
     QMap<QString, QString> title_map;
+    // profil
+    int profil_size;
 };
 //===============================================
 #endif

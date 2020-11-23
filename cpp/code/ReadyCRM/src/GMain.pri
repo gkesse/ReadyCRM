@@ -6,9 +6,11 @@ INCLUDEPATH +=\
 HEADERS +=\
     $$PWD/include/GWidget.h \
     $$PWD/include/GListBox.h \
-    $$PWD/include/GTitleBar.h \
     $$PWD/include/GAddressBar.h \
     $$PWD/include/GAddressKey.h \
+    $$PWD/include/GTitleBar.h \
+    $$PWD/include/GLogin.h \
+    $$PWD/include/GLineEdit.h \
     $$PWD/include/GWindow.h \
     $$PWD/include/GHome.h \
     $$PWD/include/GBuilder.h \
@@ -24,6 +26,8 @@ SOURCES +=\
     $$PWD/manager/GAddressBar.cpp \
     $$PWD/manager/GAddressKey.cpp \
     $$PWD/manager/GTitleBar.cpp \
+    $$PWD/manager/GLogin.cpp \
+    $$PWD/manager/GLineEdit.cpp \
     $$PWD/manager/GWindow.cpp \
     $$PWD/manager/GHome.cpp \
     $$PWD/manager/GBuilder.cpp \

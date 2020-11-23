@@ -24,6 +24,7 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     lApp->page_map = lWorkspace;
     
     addPage("home", "Accueil", GWidget::Create("home"), 1);
+    addPage("home/login", "Connexion", GWidget::Create("login"), 1);
     addPage("home/builder", "Builder", GWidget::Create("builder"), 0);
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
@@ -57,5 +58,12 @@ void GWindow::addPage(QString key, QString title, QWidget* widget, bool isDefaul
     if(isDefault == 1) {
         GManager::Instance()->setPage(key);
     }
+}
+//===============================================
+// callback
+//===============================================
+void GWindow::resizeEvent(QResizeEvent *event) {
+    m_sizeGrip.move(width() - 32, height() - 49);
+    m_sizeGrip.resize(32, 32);
 }
 //===============================================

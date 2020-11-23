@@ -17,7 +17,8 @@ GManager::GManager() {
     mgr->app->font_path = "data/font";
     mgr->app->img_path = "data/img";
     mgr->app->picto_color = "white";
-    mgr->app->address_url = "";    
+    mgr->app->address_url = "";   
+    mgr->app->profil_size = 150;
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }

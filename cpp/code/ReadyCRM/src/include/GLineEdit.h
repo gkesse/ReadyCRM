@@ -1,26 +1,27 @@
 //===============================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GLineEdit_
+#define _GLineEdit_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GWindow : public GWidget {    
+class GLineEdit : public GWidget {    
     Q_OBJECT
 
 public:
-    GWindow(QWidget* parent = 0);
-    ~GWindow();
+    GLineEdit(QWidget* parent = 0);
+    ~GLineEdit();
 
 public:
-    void addPage(QString key, QString title, QWidget* widget, bool isDefault);
-
-protected:
-    void resizeEvent(QResizeEvent *event);
+    void setContent(int icon1, int icon2);
     
+public slots:
+    void slotItemClick();
+
 private:
     QMap<QWidget*, QString> m_widgetId;
-    QSizeGrip m_sizeGrip;
+    QPushButton* m_icon;
+    QPushButton* m_goto;
 };
 //===============================================
 #endif
