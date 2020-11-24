@@ -15,6 +15,10 @@ public:
     void createTables();
     void queryShow(QString sqlQuery);
     void queryWrite(QString sqlQuery);
+    QString queryValue(QString sqlQuery);
+    QVector<QString> queryCol(QString sqlQuery);
+    QVector<QString> queryRow(QString sqlQuery);
+    QVector<QVector<QString>> queryMap(QString sqlQuery);
 
 private:
     static GSQLite* m_instance;

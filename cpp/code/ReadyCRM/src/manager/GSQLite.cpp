@@ -8,6 +8,10 @@ GSQLite::GSQLite() {
     open();
     createTables();
     queryShow("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
+    qDebug() << queryValue("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
+    qDebug() << queryCol("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
+    qDebug() << queryRow("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
+    qDebug() << queryMap("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
 }
 //===============================================
 GSQLite::~GSQLite() {
@@ -124,5 +128,74 @@ void GSQLite::queryWrite(QString sqlQuery) {
         qDebug() << "[error] GSQLite::queryWrite()";
         qDebug() << "[error] " << lSqlQuery.lastError();
     }
+}
+//===============================================
+QString GSQLite::queryValue(QString sqlQuery) {
+    QSqlQuery lSqlQuery;
+    bool lOk = lSqlQuery.exec(sqlQuery);
+    if(lOk == false) {
+        qDebug() << "[error] GSQLite::queryValue()";
+        qDebug() << "[error] " << lSqlQuery.lastError();
+    }
+    QString lValue = "";
+    while(lSqlQuery.next()) {
+        lValue = lSqlQuery.value(0).toString();
+        break;
+    }
+    return lValue;
+}
+//===============================================
+QVector<QString> GSQLite::queryCol(QString sqlQuery) {
+    QSqlQuery lSqlQuery;
+    bool lOk = lSqlQuery.exec(sqlQuery);
+    if(lOk == false) {
+        qDebug() << "[error] GSQLite::queryValue()";
+        qDebug() << "[error] " << lSqlQuery.lastError();
+    }
+    QVector<QString> lDataMap;
+    while(lSqlQuery.next()) {
+        QString lValue = lSqlQuery.value(0).toString();
+        lDataMap.push_back(lValue);
+    }
+    return lDataMap;
+}
+//===============================================
+QVector<QString> GSQLite::queryRow(QString sqlQuery) {
+    QSqlQuery lSqlQuery;
+    bool lOk = lSqlQuery.exec(sqlQuery);
+    if(lOk == false) {
+        qDebug() << "[error] GSQLite::queryValue()";
+        qDebug() << "[error] " << lSqlQuery.lastError();
+    }
+    int lCount = lSqlQuery.record().count();
+    QVector<QString> lDataMap;
+    while(lSqlQuery.next()) {
+        for(int i = 0; i < lCount; i++) {
+            QString lValue = lSqlQuery.value(i).toString();
+            lDataMap.push_back(lValue);
+        }
+        break;
+    }
+    return lDataMap;
+}
+//===============================================
+QVector<QVector<QString>> GSQLite::queryMap(QString sqlQuery) {
+    QSqlQuery lSqlQuery;
+    bool lOk = lSqlQuery.exec(sqlQuery);
+    if(lOk == false) {
+        qDebug() << "[error] GSQLite::queryValue()";
+        qDebug() << "[error] " << lSqlQuery.lastError();
+    }
+    int lCount = lSqlQuery.record().count();
+    QVector<QVector<QString>> lDataMap;
+    while(lSqlQuery.next()) {
+        QVector<QString> lData;
+        for(int i = 0; i < lCount; i++) {
+            QString lValue = lSqlQuery.value(i).toString();
+            lData.push_back(lValue);
+        }
+        lDataMap.push_back(lData);
+    }
+    return lDataMap;
 }
 //===============================================
