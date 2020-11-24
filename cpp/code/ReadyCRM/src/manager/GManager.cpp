@@ -10,7 +10,7 @@ GManager::GManager() {
     mgr = new sGManager;
     // app
     mgr->app = new sGApp;
-    mgr->app->app_name = "ReadyCRM";
+    mgr->app->app_name = "ReadyApp";
     mgr->app->style_path = "data/css/style.css";
     mgr->app->win_width = 640;
     mgr->app->win_height = 480;
