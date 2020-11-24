@@ -12,6 +12,9 @@ public:
     ~GSQLite();
     static GSQLite* Instance();
     void open();
+    void createTables();
+    void queryShow(QString sqlQuery);
+    void queryWrite(QString sqlQuery);
 
 private:
     static GSQLite* m_instance;
