@@ -76,6 +76,15 @@ struct _sGApp {
     QMap<QString, QString> title_map;
     // profil
     int profil_size;
+    // grip
+    int grip_size;
+    // check
+    int check_ok;
+    int check_nok;
+    // ok
+    QColor ok_color;
+    // nok
+    QColor nok_color;
 };
 //===============================================
 #endif

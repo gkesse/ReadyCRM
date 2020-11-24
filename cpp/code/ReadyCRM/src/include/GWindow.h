@@ -20,7 +20,7 @@ protected:
     
 private:
     QMap<QWidget*, QString> m_widgetId;
-    QSizeGrip m_sizeGrip;
+    QSizeGrip* m_sizeGrip;
 };
 //===============================================
 #endif

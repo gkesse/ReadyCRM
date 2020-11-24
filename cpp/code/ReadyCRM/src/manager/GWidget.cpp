@@ -48,7 +48,9 @@ void GWidget::addItem(QString key, QString text, QIcon icon) {}
 void GWidget::addItem(QString key, QString text, QIcon icon, int width, int height) {}
 //
 void GWidget::setContent(QString text) {}
-void GWidget::setContent(int icon1, int icon2) {}
+void GWidget::setContent(QString key, int icon, QColor color) {}
+//
+void GWidget::setOption(int mode) {}
 //===============================================
 // slot
 //===============================================

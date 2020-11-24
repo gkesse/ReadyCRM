@@ -13,7 +13,8 @@ public:
     ~GLineEdit();
 
 public:
-    void setContent(int icon1, int icon2);
+    void setContent(QString key, int icon, QColor color);
+    void setOption(int mode);
     
 public slots:
     void slotItemClick();
@@ -22,6 +23,7 @@ private:
     QMap<QWidget*, QString> m_widgetId;
     QPushButton* m_icon;
     QPushButton* m_goto;
+    QLineEdit* m_edit;
 };
 //===============================================
 #endif

@@ -12,6 +12,7 @@ GLineEdit::GLineEdit(QWidget* parent) : GWidget(parent) {
     m_widgetId[lIcon] = "icon";
     
     QLineEdit* lEdit = new QLineEdit;
+    m_edit = lEdit;
     lEdit->setObjectName("edit");
     m_widgetId[lEdit] = "edit";
     
@@ -41,10 +42,16 @@ GLineEdit::~GLineEdit() {
 //===============================================
 // method
 //===============================================
-void GLineEdit::setContent(int icon1, int icon2) {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    m_icon->setIcon(GManager::Instance()->loadPicto(icon1, lApp->picto_color));
-    m_goto->setIcon(GManager::Instance()->loadPicto(icon2, lApp->picto_color));
+void GLineEdit::setContent(QString key, int icon, QColor color) {
+    QPushButton* lButton = 0;
+    if(key == "icon") lButton = m_icon;
+    else if(key == "goto") lButton = m_goto;
+    if(lButton == 0) return;
+    lButton->setIcon(GManager::Instance()->loadPicto(icon, color));
+}
+//===============================================
+void GLineEdit::setOption(int mode) {
+    m_edit->setEchoMode((QLineEdit::EchoMode)mode);
 }
 //===============================================
 // slot

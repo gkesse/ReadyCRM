@@ -15,13 +15,14 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     
     GWidget* lUsername = GWidget::Create("lineedit");
     lUsername->setObjectName("username");
-    lUsername->setContent(fa::user, fa::check);
+    lUsername->setContent("icon", fa::user, lApp->picto_color);
     m_widgetId[lUsername] = "username";
     
-    GWidget* lPassowrd = GWidget::Create("lineedit");
-    lPassowrd->setObjectName("password");
-    lPassowrd->setContent(fa::key, fa::check);
-    m_widgetId[lPassowrd] = "password";
+    GWidget* lPassword = GWidget::Create("lineedit");
+    lPassword->setObjectName("password");
+    lPassword->setContent("icon", fa::key, lApp->picto_color);
+    lPassword->setOption(QLineEdit::Password);
+    m_widgetId[lPassword] = "password";
         
     QPushButton* lCancel = new QPushButton;
     lCancel->setObjectName("cancel");
@@ -51,7 +52,7 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     QVBoxLayout* lContentLayout = new QVBoxLayout;
     lContentLayout->addLayout(lProfilLayout);
     lContentLayout->addWidget(lUsername);
-    lContentLayout->addWidget(lPassowrd);
+    lContentLayout->addWidget(lPassword);
     lContentLayout->addLayout(lButtonLayout);
     lContentLayout->setAlignment(Qt::AlignCenter);
     lContentLayout->setMargin(0);
@@ -71,7 +72,7 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     
     connect(lProfil, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lUsername, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
-    connect(lPassowrd, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
+    connect(lPassword, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lLogin, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lCancel, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }

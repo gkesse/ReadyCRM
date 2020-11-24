@@ -19,6 +19,11 @@ GManager::GManager() {
     mgr->app->picto_color = "white";
     mgr->app->address_url = "";   
     mgr->app->profil_size = 150;
+    mgr->app->grip_size = 16;
+    mgr->app->check_ok = fa::check;
+    mgr->app->check_nok = fa::times;
+    mgr->app->ok_color = "lime";
+    mgr->app->nok_color = "red";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }

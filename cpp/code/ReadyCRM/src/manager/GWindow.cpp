@@ -26,7 +26,7 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     addPage("home", "Accueil", GWidget::Create("home"), 1);
     addPage("home/login", "Connexion", GWidget::Create("login"), 1);
     addPage("home/builder", "Builder", GWidget::Create("builder"), 0);
-    
+        
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lTitleBar);
     lMainLayout->addWidget(lAddressBar);
@@ -41,6 +41,8 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     setWindowTitle(lApp->app_name);
     setWindowIcon(QIcon(lApp->img_map["logo"]));
     resize(lApp->win_width, lApp->win_height);
+
+    m_sizeGrip = new QSizeGrip(this);
 }
 //===============================================
 GWindow::~GWindow() {
@@ -63,7 +65,8 @@ void GWindow::addPage(QString key, QString title, QWidget* widget, bool isDefaul
 // callback
 //===============================================
 void GWindow::resizeEvent(QResizeEvent *event) {
-    m_sizeGrip.move(width() - 32, height() - 49);
-    m_sizeGrip.resize(32, 32);
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    m_sizeGrip->move(width() - lApp->grip_size, height() - lApp->grip_size);
+    m_sizeGrip->resize(lApp->grip_size, lApp->grip_size);
 }
 //===============================================
