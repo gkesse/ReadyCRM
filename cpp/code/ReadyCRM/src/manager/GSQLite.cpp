@@ -7,7 +7,7 @@ GSQLite* GSQLite::m_instance = 0;
 GSQLite::GSQLite() {
     open();
     createTables();
-    queryShow("SELECT name FROM sqlite_master WHERE type='table'");
+    queryShow("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
 }
 //===============================================
 GSQLite::~GSQLite() {
@@ -65,14 +65,56 @@ void GSQLite::queryShow(QString sqlQuery) {
     }
     int lCount = lSqlQuery.record().count();
     int lWidth = 20;
+    //
+    printf("+-");
+    for(int i = 0; i < lCount; i++) {
+        if(i != 0) printf("-+-");
+        for(int j = 0; j < lWidth; j++) {
+            printf("-");
+        }
+    }
+    printf("-+");
+    printf("\n");
+    //
+    printf("| ");
+    for(int i = 0; i < lCount; i++) {
+        if(i != 0) printf(" | ");
+        const char* lField = lSqlQuery.record().field(i).name().toStdString().c_str();
+        printf("%*s", -lWidth, lField);
+    }
+    printf(" |");
+    printf("\n");
+    //
+    printf("+-");
+    for(int i = 0; i < lCount; i++) {
+        if(i != 0) printf("-+-");
+        for(int j = 0; j < lWidth; j++) {
+            printf("-");
+        }
+    }
+    printf("-+");
+    printf("\n");
+    //
     while(lSqlQuery.next()) {
+        printf("| ");
         for(int i = 0; i < lCount; i++) {
             if(i != 0) printf(" | ");
             const char* lValue = lSqlQuery.value(i).toString().toStdString().c_str();
             printf("%*s", -lWidth, lValue);
         }
+        printf(" |");
         printf("\n");
     }
+    //
+    printf("+-");
+    for(int i = 0; i < lCount; i++) {
+        if(i != 0) printf("-+-");
+        for(int j = 0; j < lWidth; j++) {
+            printf("-");
+        }
+    }
+    printf("-+");
+    printf("\n");
 }
 //===============================================
 void GSQLite::queryWrite(QString sqlQuery) {
