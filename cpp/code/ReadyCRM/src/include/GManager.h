@@ -84,6 +84,8 @@ struct _sGApp {
     QString login_on;
     // nok
     QColor nok_color;
+    // sqlite
+    QString sqlite_db_path;
 };
 //===============================================
 #endif

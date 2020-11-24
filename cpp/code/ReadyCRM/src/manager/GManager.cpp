@@ -22,6 +22,7 @@ GManager::GManager() {
     mgr->app->grip_size = 16;
     mgr->app->login_on = "off";
     mgr->app->nok_color = "red";
+    mgr->app->sqlite_db_path = "data/sqlite/config_o.dat";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }

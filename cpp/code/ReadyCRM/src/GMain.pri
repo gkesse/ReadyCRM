@@ -21,6 +21,7 @@ SOURCES +=\
     $$PWD/manager/GProcess.cpp \
     $$PWD/manager/GTest.cpp \
     $$PWD/manager/GManager.cpp \
+    $$PWD/manager/GSQLite.cpp \
     $$PWD/manager/GQt.cpp \
     $$PWD/manager/GWidget.cpp \
     $$PWD/manager/GLineEdit.cpp \
