@@ -8,10 +8,10 @@
 GBuilder::GBuilder(QWidget* parent) : GWidget(parent) {
     setObjectName("GBuilder");
         
-    GWidget* lListBox = GWidget::Create("listbox");
+    GWidget* lWidget = GWidget::Create("widget");
         
     QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lListBox);
+    lMainLatout->addWidget(lWidget);
     lMainLatout->setAlignment(Qt::AlignTop);
     lMainLatout->setMargin(0);
     lMainLatout->setSpacing(0);

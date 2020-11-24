@@ -1,11 +1,11 @@
 //===============================================
-#include "GLogin.h"
+#include "GUserAdd.h"
 #include "GManager.h"
 //===============================================
 // constructor
 //===============================================
-GLogin::GLogin(QWidget* parent) : GWidget(parent) {
-    setObjectName("GLogin");
+GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
+    setObjectName("GUserAdd");
     
     sGApp* lApp = GManager::Instance()->getData()->app;
     
@@ -13,6 +13,7 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     lProfil->setObjectName("profil");
     lProfil->setIcon(GManager::Instance()->loadPicto(fa::user, lApp->picto_color));
     lProfil->setIconSize(QSize(lApp->profil_size, lApp->profil_size));
+    lProfil->setToolTip("Profil");
     m_widgetId[lProfil] = "profil";
     
     QLabel* lMessage = new QLabel;
@@ -25,6 +26,7 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     m_username = lUsername;
     lUsername->setObjectName("username");
     lUsername->setContent("icon", fa::user, lApp->picto_color);
+    lUsername->setToolTip("Nom d'utilisateur");
     m_widgetId[lUsername] = "username";
     
     GWidget* lPassword = GWidget::Create("lineedit");
@@ -32,7 +34,16 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     lPassword->setObjectName("password");
     lPassword->setContent("icon", fa::key, lApp->picto_color);
     lPassword->setOption(QLineEdit::Password);
+    lPassword->setToolTip("Mot de passe");
     m_widgetId[lPassword] = "password";
+        
+    GWidget* lConfirm = GWidget::Create("lineedit");
+    m_password = lConfirm;
+    lConfirm->setObjectName("confirm");
+    lConfirm->setContent("icon", fa::key, lApp->picto_color);
+    lConfirm->setOption(QLineEdit::Password);
+    lConfirm->setToolTip("Confirmation de mot de passe");
+    m_widgetId[lConfirm] = "confirm";
         
     QPushButton* lCancel = new QPushButton;
     lCancel->setObjectName("cancel");
@@ -64,6 +75,7 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     lContentLayout->addWidget(lMessage);
     lContentLayout->addWidget(lUsername);
     lContentLayout->addWidget(lPassword);
+    lContentLayout->addWidget(lConfirm);
     lContentLayout->addLayout(lButtonLayout);
     lContentLayout->setAlignment(Qt::AlignCenter);
     lContentLayout->setMargin(0);
@@ -88,13 +100,13 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     connect(lCancel, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
-GLogin::~GLogin() {
+GUserAdd::~GUserAdd() {
 
 }
 //===============================================
 // method
 //===============================================
-void GLogin::reset() {
+void GUserAdd::reset() {
     m_message->setText("");
     m_username->setContent("goto", QIcon());
     m_password->setContent("goto", QIcon());
@@ -102,7 +114,7 @@ void GLogin::reset() {
 //===============================================
 // slot
 //===============================================
-void GLogin::slotItemClick() {
+void GUserAdd::slotItemClick() {
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
     if(lWidgetId == "cancel") {

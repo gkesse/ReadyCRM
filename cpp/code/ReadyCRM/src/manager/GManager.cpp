@@ -20,10 +20,6 @@ GManager::GManager() {
     mgr->app->address_url = "";   
     mgr->app->profil_size = 150;
     mgr->app->grip_size = 16;
-    mgr->app->check_ok = fa::check;
-    mgr->app->check_nok = fa::times;
-    mgr->app->ok_color = "lime";
-    mgr->app->nok_color = "red";
     mgr->app->login_on = "off";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
@@ -111,5 +107,12 @@ void GManager::clearLayout(QLayout *layout) {
             delete lItem;
         }
     }
+}
+//===============================================
+// crypto
+//===============================================
+QString GManager::getCrypto(QString text) {
+    QString lCrypto = QString(QCryptographicHash::hash(text.toUtf8(), QCryptographicHash::Md5).toHex());
+    return lCrypto;
 }
 //===============================================

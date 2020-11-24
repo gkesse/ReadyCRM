@@ -42,9 +42,6 @@ GLineEdit QLineEdit#edit {
 GListBox * {
     background-color: transparent;
 }
-GListBox {
-    border: 1px solid #ffffff;
-}
 GListBox QPushButton#item {
     padding: 5px 10px;
     text-align: left;
@@ -95,5 +92,54 @@ GLogin QPushButton#login:hover {
 GLogin QPushButton#cancel:pressed,
 GLogin QPushButton#login:pressed {
     background-color: transparent;
+}
+/*===============================================*/
+/* GUserAdd */
+GUserAdd * {
+    background-color: transparent;
+}
+GUserAdd QFrame#content {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    max-width: 500px;
+    padding: 10px;
+}
+GUserAdd QPushButton#profil {
+    background-color: #503030;
+    border-radius: 100px;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 20px 0px 0px 0px;
+}
+GUserAdd QLabel#message {
+    color: #ff0000;
+}
+GUserAdd QFrame#username,
+GUserAdd QFrame#password,
+GUserAdd QFrame#confirm {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+GUserAdd QPushButton#cancel,
+GUserAdd QPushButton#login {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+GUserAdd QPushButton#cancel:hover,
+GUserAdd QPushButton#login:hover {
+    background-color: #303050;
+}
+GUserAdd QPushButton#cancel:pressed,
+GUserAdd QPushButton#login:pressed {
+    background-color: transparent;
+}
+/*===============================================*/
+/* property */
+/*===============================================*/
+/* border */
+GHome, GBuilder {
+    border: 1px solid #ffffff;
 }
 /*===============================================*/

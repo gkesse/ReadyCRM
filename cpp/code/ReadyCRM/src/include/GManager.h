@@ -33,6 +33,8 @@ public:
     void setPage(QString address);
     // layout
     void clearLayout(QLayout *layout);
+    // crypto
+    QString getCrypto(QString text);
 
 private:
     static GManager* m_instance;
@@ -78,13 +80,6 @@ struct _sGApp {
     int profil_size;
     // grip
     int grip_size;
-    // check
-    int check_ok;
-    int check_nok;
-    // ok
-    QColor ok_color;
-    // nok
-    QColor nok_color;
     // login
     QString login_on;
 };
