@@ -50,8 +50,20 @@ void GLineEdit::setContent(QString key, int icon, QColor color) {
     lButton->setIcon(GManager::Instance()->loadPicto(icon, color));
 }
 //===============================================
+void GLineEdit::setContent(QString key, QIcon icon) {
+    QPushButton* lButton = 0;
+    if(key == "icon") lButton = m_icon;
+    else if(key == "goto") lButton = m_goto;
+    if(lButton == 0) return;
+    lButton->setIcon(icon);
+}
+//===============================================
 void GLineEdit::setOption(int mode) {
     m_edit->setEchoMode((QLineEdit::EchoMode)mode);
+}
+//===============================================
+void GLineEdit::getData(QString& data) {
+    data = m_edit->text();
 }
 //===============================================
 // slot

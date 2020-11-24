@@ -24,6 +24,7 @@ GManager::GManager() {
     mgr->app->check_nok = fa::times;
     mgr->app->ok_color = "lime";
     mgr->app->nok_color = "red";
+    mgr->app->login_on = "off";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }

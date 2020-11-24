@@ -71,7 +71,10 @@ GLogin QPushButton#profil {
     border-radius: 100px;
     min-width: 200px;
     min-height: 200px;
-    margin: 20px 0px;
+    margin: 20px 0px 0px 0px;
+}
+GLogin QLabel#message {
+    color: #ff0000;
 }
 GLogin QFrame#username,
 GLogin QFrame#password {

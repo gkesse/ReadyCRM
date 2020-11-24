@@ -85,6 +85,8 @@ struct _sGApp {
     QColor ok_color;
     // nok
     QColor nok_color;
+    // login
+    QString login_on;
 };
 //===============================================
 #endif

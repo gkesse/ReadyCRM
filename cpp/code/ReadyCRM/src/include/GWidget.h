@@ -21,8 +21,13 @@ public:
     //
     virtual void setContent(QString text);
     virtual void setContent(QString key, int icon, QColor color);
+    virtual void setContent(QString key, QIcon icon);
     //
     virtual void setOption(int mode);
+    //
+    virtual void getData(QString& data);
+    //
+    virtual void reset();
 
     
 public slots:
