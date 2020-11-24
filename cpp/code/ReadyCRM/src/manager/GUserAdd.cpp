@@ -14,6 +14,7 @@ GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
     lProfil->setIcon(GManager::Instance()->loadPicto(fa::user, lApp->picto_color));
     lProfil->setIconSize(QSize(lApp->profil_size, lApp->profil_size));
     lProfil->setToolTip("Profil");
+    lProfil->setCursor(Qt::PointingHandCursor);
     m_widgetId[lProfil] = "profil";
     
     QLabel* lMessage = new QLabel;
@@ -38,11 +39,11 @@ GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
     m_widgetId[lPassword] = "password";
         
     GWidget* lConfirm = GWidget::Create("lineedit");
-    m_password = lConfirm;
+    m_confirm = lConfirm;
     lConfirm->setObjectName("confirm");
     lConfirm->setContent("icon", fa::key, lApp->picto_color);
     lConfirm->setOption(QLineEdit::Password);
-    lConfirm->setToolTip("Confirmation de mot de passe");
+    lConfirm->setToolTip("Confirmer le mot de passe");
     m_widgetId[lConfirm] = "confirm";
         
     QPushButton* lCancel = new QPushButton;
@@ -110,28 +111,45 @@ void GUserAdd::reset() {
     m_message->setText("");
     m_username->setContent("goto", QIcon());
     m_password->setContent("goto", QIcon());
+    m_confirm->setContent("goto", QIcon());
 }
 //===============================================
 // slot
 //===============================================
 void GUserAdd::slotItemClick() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
     if(lWidgetId == "cancel") {
         GManager::Instance()->setPage("home");
         return;
     }
+    if(lWidgetId == "profil") {
+        return;
+    }
     reset();
     QString lUsername; m_username->getData(lUsername);
     QString lPassword; m_password->getData(lPassword);
+    QString lConfirm; m_confirm->getData(lConfirm);
     if(lUsername == "") {
         m_message->setText("Le nom d'utilisateur est obligatoire");
-        m_username->setContent("goto", fa::times, "red");
+        m_username->setContent("goto", fa::times, lApp->nok_color);
         return;
     }
     if(lPassword == "") {
         m_message->setText("Le mot de passe est obligatoire");
-        m_password->setContent("goto", fa::times, "red");
+        m_password->setContent("goto", fa::times, lApp->nok_color);
+        return;
+    }
+    if(lConfirm == "") {
+        m_message->setText("La confirmation du mot de passe est obligatoire");
+        m_confirm->setContent("goto", fa::times, lApp->nok_color);
+        return;
+    }
+    if(lPassword != lConfirm) {
+        m_message->setText("Les mots de passe sont incorrects");
+        m_password->setContent("goto", fa::times, lApp->nok_color);
+        m_confirm->setContent("goto", fa::times, lApp->nok_color);
         return;
     }
     QString lLogin = lUsername + "|" + lPassword;

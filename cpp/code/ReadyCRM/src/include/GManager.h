@@ -82,6 +82,8 @@ struct _sGApp {
     int grip_size;
     // login
     QString login_on;
+    // nok
+    QColor nok_color;
 };
 //===============================================
 #endif

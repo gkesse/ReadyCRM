@@ -135,6 +135,10 @@ GUserAdd QPushButton#cancel:pressed,
 GUserAdd QPushButton#login:pressed {
     background-color: transparent;
 }
+GUserAdd QToolTip {
+    background-color: #305030;
+    border-radius: 5px;
+}
 /*===============================================*/
 /* property */
 /*===============================================*/

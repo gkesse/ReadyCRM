@@ -21,6 +21,7 @@ GManager::GManager() {
     mgr->app->profil_size = 150;
     mgr->app->grip_size = 16;
     mgr->app->login_on = "off";
+    mgr->app->nok_color = "red";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }
