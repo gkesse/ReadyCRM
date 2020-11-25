@@ -4,6 +4,7 @@ INCLUDEPATH +=\
     $$PWD/include
     
 HEADERS +=\
+    $$PWD/include/GMessageBox.h \
     $$PWD/include/GWidget.h \
     $$PWD/include/GLineEdit.h \
     $$PWD/include/GListBox.h \
@@ -24,6 +25,7 @@ SOURCES +=\
     $$PWD/manager/GManager.cpp \
     $$PWD/manager/GSQLite.cpp \
     $$PWD/manager/GQt.cpp \
+    $$PWD/manager/GMessageBox.cpp \
     $$PWD/manager/GWidget.cpp \
     $$PWD/manager/GLineEdit.cpp \
     $$PWD/manager/GListBox.cpp \

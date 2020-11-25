@@ -1,5 +1,6 @@
 //===============================================
 #include "GManager.h"
+#include "GMessageBox.h"
 //===============================================
 GManager* GManager::m_instance = 0;
 //===============================================
@@ -116,5 +117,19 @@ void GManager::clearLayout(QLayout *layout) {
 QString GManager::getCrypto(QString text) {
     QString lCrypto = QString(QCryptographicHash::hash(text.toUtf8(), QCryptographicHash::Md5).toHex());
     return lCrypto;
+}
+//===============================================
+// message
+//===============================================
+int GManager::showQuestion(QWidget* parent, QString title, QString text) {
+    GMessageBox lMsgBox(QMessageBox::Question, title, text,
+    QMessageBox::Yes | QMessageBox::No, 
+    parent, Qt::Dialog | Qt::FramelessWindowHint);
+
+    lMsgBox.setIconPixmap(QPixmap(mgr->app->img_map["logo"]));
+    
+    int lAnswer = lMsgBox.exec();
+    
+    return lAnswer;
 }
 //===============================================

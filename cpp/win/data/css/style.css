@@ -21,7 +21,22 @@ QWidget QToolTip {
     background-color: #305030;
     border-radius: 5px;
 }
-
+/*===============================================*/
+/* QMessageBox */
+QMessageBox {
+    border: 1px solid #ffffff;
+}
+QMessageBox QPushButton {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+QMessageBox QPushButton:hover {
+    background-color: #303050;
+}
+QMessageBox QPushButton:pressed {
+    background-color: transparent;
+}
 /*===============================================*/
 /* custom */
 /*===============================================*/

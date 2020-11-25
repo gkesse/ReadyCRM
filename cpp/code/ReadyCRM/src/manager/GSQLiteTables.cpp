@@ -60,11 +60,20 @@ GSQLiteTables::~GSQLiteTables() {
 void GSQLiteTables::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
-    QString lWidgetId = m_widgetId[lWidget];
+    QString lKey = m_widgetId[lWidget];
+    
+    QString lIndex = lKey.split("/").first();
+    QString lWidgetId = lKey.split("/").last();
+    
     if(lWidgetId == "listbox") {
         qDebug() << lApp->widget_id;
     }
     else {
+        if(lWidgetId == "delete") {
+            int lOk = GManager::Instance()->showQuestion(this, 
+            "Suppression d'une table",
+            "Voulez-vous supprimer la table ?");
+        }
         qDebug() << lWidgetId;
     }
 }

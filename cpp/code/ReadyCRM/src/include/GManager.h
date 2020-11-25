@@ -35,6 +35,8 @@ public:
     void clearLayout(QLayout *layout);
     // crypto
     QString getCrypto(QString text);
+    // message
+    int showQuestion(QWidget* parent, QString title, QString text);
 
 private:
     static GManager* m_instance;
