@@ -36,7 +36,7 @@ public:
     // crypto
     QString getCrypto(QString text);
     // message
-    int showQuestion(QWidget* parent, QString title, QString text);
+    int showQuestion(QWidget* parent, QString text);
 
 private:
     static GManager* m_instance;

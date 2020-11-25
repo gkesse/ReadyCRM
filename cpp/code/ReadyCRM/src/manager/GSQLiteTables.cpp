@@ -71,10 +71,9 @@ void GSQLiteTables::slotItemClick() {
     else {
         if(lWidgetId == "delete") {
             int lOk = GManager::Instance()->showQuestion(this, 
-            "Suppression d'une table",
             "Voulez-vous supprimer la table ?");
+            qDebug() << lWidgetId << lOk;
         }
-        qDebug() << lWidgetId;
     }
 }
 //===============================================

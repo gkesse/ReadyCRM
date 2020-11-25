@@ -121,15 +121,19 @@ QString GManager::getCrypto(QString text) {
 //===============================================
 // message
 //===============================================
-int GManager::showQuestion(QWidget* parent, QString title, QString text) {
-    GMessageBox lMsgBox(QMessageBox::Question, title, text,
-    QMessageBox::Yes | QMessageBox::No, 
-    parent, Qt::Dialog | Qt::FramelessWindowHint);
-
+int GManager::showQuestion(QWidget* parent, QString text) {
+    GMessageBox lMsgBox(parent);
+    lMsgBox.setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+    lMsgBox.setText(text);
     lMsgBox.setIconPixmap(QPixmap(mgr->app->img_map["logo"]));
-    
-    int lAnswer = lMsgBox.exec();
-    
+    QPushButton* lOk = lMsgBox.addButton("Ok", QMessageBox::YesRole);
+    QPushButton* lCancel = lMsgBox.addButton("Annuler", QMessageBox::NoRole);
+    lMsgBox.setDefaultButton(lCancel);
+    lMsgBox.setEscapeButton(lCancel);
+    lMsgBox.exec();
+    QAbstractButton* lButton = lMsgBox.clickedButton();
+    int lAnswer = QMessageBox::Cancel;
+    if(lButton == lOk) lAnswer = QMessageBox::Ok;
     return lAnswer;
 }
 //===============================================

@@ -36,8 +36,9 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
         
     QPushButton* lCancel = new QPushButton;
     lCancel->setObjectName("cancel");
-    lCancel->setText("Annuler");
+    lCancel->setText("AnnulerOk");
     lCancel->setCursor(Qt::PointingHandCursor);
+    lCancel->setShortcut(QKeySequence(Qt::Key_Return));
     m_widgetId[lCancel] = "cancel";
         
     QPushButton* lLogin = new QPushButton;
@@ -47,8 +48,8 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     m_widgetId[lLogin] = "login";
         
     QHBoxLayout* lButtonLayout = new QHBoxLayout;
-    lButtonLayout->addWidget(lCancel);
     lButtonLayout->addWidget(lLogin);
+    lButtonLayout->addWidget(lCancel);
     lButtonLayout->setAlignment(Qt::AlignRight);
     lButtonLayout->setMargin(0);
     lButtonLayout->setSpacing(10);

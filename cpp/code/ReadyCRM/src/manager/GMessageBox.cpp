@@ -17,3 +17,26 @@ GMessageBox::~GMessageBox() {
     
 }
 //===============================================
+// callback
+//===============================================
+void GMessageBox::mousePressEvent(QMouseEvent *event) {
+    if(event->button() == Qt::LeftButton) {
+        setCursor(QCursor(Qt::SizeAllCursor));
+        m_pressPos = event->pos();
+        m_pressFlag = true;
+    }
+}
+//===============================================
+void GMessageBox::mouseReleaseEvent(QMouseEvent *event) {
+    setCursor(QCursor(Qt::ArrowCursor));
+    m_pressFlag = false;
+}
+//===============================================
+void GMessageBox::mouseMoveEvent(QMouseEvent *event) {
+    if(m_pressFlag == true) {
+        QPoint lGlobalPos = event->globalPos();
+        QPoint lDiffPos = lGlobalPos - m_pressPos;
+        move(lDiffPos);
+    }    
+}
+//===============================================

@@ -13,6 +13,13 @@ public:
     ~GMessageBox();
 
 protected:
+    void mousePressEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+
+private:
+    QPoint m_pressPos;
+    bool m_pressFlag;
 };
 //===============================================
 #endif
