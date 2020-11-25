@@ -26,6 +26,7 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     addPage("home", "Accueil", GWidget::Create("home"), 1);
     addPage("home/login", "Connexion", GWidget::Create("login"), 1);
     addPage("home/user/add", "Ajout d'un utilisateur", GWidget::Create("useradd"), 1);
+    addPage("home/sqlite/tables", "Liste des tables", GWidget::Create("sqlitetables"), 1);
     addPage("home/builder", "Builder", GWidget::Create("builder"), 0);
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;

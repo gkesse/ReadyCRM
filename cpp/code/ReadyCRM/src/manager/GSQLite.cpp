@@ -7,11 +7,6 @@ GSQLite* GSQLite::m_instance = 0;
 GSQLite::GSQLite() {
     open();
     createTables();
-    queryShow("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
-    qDebug() << queryValue("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
-    qDebug() << queryCol("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
-    qDebug() << queryRow("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
-    qDebug() << queryMap("SELECT name, 1000 FROM sqlite_master WHERE type='table'");
 }
 //===============================================
 GSQLite::~GSQLite() {

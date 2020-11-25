@@ -12,9 +12,16 @@ QWidget, QWidget * {
 }
 /*===============================================*/
 /* QSizeGrip */
-QSizeGrip {
+QWidget QSizeGrip {
     background-color: #503030;
 }
+/*===============================================*/
+/* QToolTip */
+QWidget QToolTip {
+    background-color: #305030;
+    border-radius: 5px;
+}
+
 /*===============================================*/
 /* custom */
 /*===============================================*/
@@ -42,15 +49,21 @@ GLineEdit QLineEdit#edit {
 GListBox * {
     background-color: transparent;
 }
-GListBox QPushButton#item {
+GListBox QPushButton#item,
+GListBox QFrame#item {
     padding: 5px 10px;
     text-align: left;
 }
-GListBox QPushButton#item:hover {
+GListBox QPushButton#item:hover,
+GListBox QFrame#item:hover {
     background-color: #503030;
 }
-GListBox QPushButton#item:pressed {
+GListBox QPushButton#item:pressed,
+GListBox QFrame#item:pressed {
     background-color: transparent;
+}
+GListBox QPushButton#key {
+    text-align: left;
 }
 /*===============================================*/
 /* GLogin */
@@ -135,15 +148,11 @@ GUserAdd QPushButton#cancel:pressed,
 GUserAdd QPushButton#login:pressed {
     background-color: transparent;
 }
-GUserAdd QToolTip {
-    background-color: #305030;
-    border-radius: 5px;
-}
 /*===============================================*/
 /* property */
 /*===============================================*/
 /* border */
-GHome, GBuilder {
+GHome, GSQLiteTables, GBuilder {
     border: 1px solid #ffffff;
 }
 /*===============================================*/

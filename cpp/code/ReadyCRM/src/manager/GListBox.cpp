@@ -31,6 +31,8 @@ GListBox::~GListBox() {
     
 }
 //===============================================
+// method
+//===============================================
 void GListBox::addItem(QString key, QString text) {
     QPushButton* lButton = new QPushButton;
     lButton->setObjectName("item");
@@ -41,28 +43,42 @@ void GListBox::addItem(QString key, QString text) {
     connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
-void GListBox::addItem(QString key, QString text, QIcon icon) {
+void GListBox::addItem(QString key, QString text, int icon) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     QPushButton* lButton = new QPushButton;
     lButton->setObjectName("item");
     lButton->setText(text);
-    lButton->setIcon(icon);
+    lButton->setIcon(GManager::Instance()->loadPicto(icon, lApp->picto_color));
     lButton->setCursor(Qt::PointingHandCursor);
     m_scrollLayout->addWidget(lButton);
     m_widgetId[lButton] = key;
     connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
-void GListBox::addItem(QString key, QString text, QIcon icon, int width, int height) {
+void GListBox::addItem(QString key, QString text, int icon, QLayout* layout) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     QPushButton* lButton = new QPushButton;
-    lButton->setObjectName("item");
+    lButton->setObjectName("key");
     lButton->setText(text);
-    lButton->setIcon(icon);
-    lButton->setIconSize(QSize(width, height));
+    lButton->setIcon(GManager::Instance()->loadPicto(icon, lApp->picto_color));
     lButton->setCursor(Qt::PointingHandCursor);
-    m_scrollLayout->addWidget(lButton);
+    
+    QHBoxLayout* lRowLayout = new QHBoxLayout;
+    lRowLayout->addWidget(lButton, 1);
+    lRowLayout->addLayout(layout);
+    lRowLayout->setMargin(0);
+    lRowLayout->setSpacing(0);
+
+    QFrame* lRow = new QFrame;
+    lRow->setObjectName("item");
+    lRow->setLayout(lRowLayout);
+
+    m_scrollLayout->addWidget(lRow);
     m_widgetId[lButton] = key;
     connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
+//===============================================
+// slot
 //===============================================
 void GListBox::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;

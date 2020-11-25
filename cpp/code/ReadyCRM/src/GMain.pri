@@ -14,6 +14,7 @@ HEADERS +=\
     $$PWD/include/GUserAdd.h \
     $$PWD/include/GWindow.h \
     $$PWD/include/GHome.h \
+    $$PWD/include/GSQLiteTables.h \
     $$PWD/include/GBuilder.h \
     
 SOURCES +=\
@@ -33,5 +34,6 @@ SOURCES +=\
     $$PWD/manager/GUserAdd.cpp \
     $$PWD/manager/GWindow.cpp \
     $$PWD/manager/GHome.cpp \
+    $$PWD/manager/GSQLiteTables.cpp \
     $$PWD/manager/GBuilder.cpp \
     

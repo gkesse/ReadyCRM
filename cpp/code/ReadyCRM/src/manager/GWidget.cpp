@@ -11,6 +11,7 @@
 // page
 #include "GWindow.h"
 #include "GHome.h"
+#include "GSQLiteTables.h"
 #include "GBuilder.h"
 //===============================================
 // constructor
@@ -36,6 +37,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
+    if(key == "sqlitetables") return new GSQLiteTables(parent);
     if(key == "builder") return new GBuilder(parent);
     // default
     return new GWidget(parent);
@@ -46,8 +48,8 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
 void GWidget::addPage(QString key, QString title, QWidget* widget, bool isDefault) {}
 //
 void GWidget::addItem(QString key, QString text) {}
-void GWidget::addItem(QString key, QString text, QIcon icon) {}
-void GWidget::addItem(QString key, QString text, QIcon icon, int width, int height) {}
+void GWidget::addItem(QString key, QString text, int icon) {}
+void GWidget::addItem(QString key, QString text, int icon, QLayout* layout) {}
 //
 void GWidget::setContent(QString text) {}
 void GWidget::setContent(QString key, int icon, QColor color) {}

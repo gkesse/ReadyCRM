@@ -16,8 +16,8 @@ public:
     virtual void addPage(QString key, QString title, QWidget* widget, bool isDefault);
     //
     virtual void addItem(QString key, QString text);
-    virtual void addItem(QString key, QString text, QIcon icon);
-    virtual void addItem(QString key, QString text, QIcon icon, int width, int height);
+    virtual void addItem(QString key, QString text, int icon);
+    virtual void addItem(QString key, QString text, int icon, QLayout* layout);
     //
     virtual void setContent(QString text);
     virtual void setContent(QString key, int icon, QColor color);
