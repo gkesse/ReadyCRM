@@ -46,9 +46,9 @@ void GSQLite::createTables() {
     lQuery = "\
     create table if not exists users (\n\
         username text unique not null,\n\
-        userpass text,\n\
-        name text,\n\
+        password text,\n\
         active text default 'on',\n\
+        groups text default 'user',\n\
         date_create datetime default current_timestamp,\n\
         date_update datetime default current_timestamp\n\
     )\n\

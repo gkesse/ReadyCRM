@@ -15,14 +15,20 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
     m_listBox = lListBox;
     m_widgetId[lListBox] = "listbox";
     
-    QVector<QString> lTables = GSQLite::Instance()->queryCol("\
-    select name from sqlite_master \
-    where type='table' \
-    order by name \
-    ");
+    QVector<QString> lTables = GManager::Instance()->getTables();
     
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
+
+        int lCount = GManager::Instance()->countData(lTable);
+        
+        QPushButton* lShow = new QPushButton;
+        m_showId[i] = lShow;
+        lShow->setObjectName("show");
+        lShow->setText(QString("%1").arg(lCount));
+        lShow->setCursor(Qt::PointingHandCursor);
+        lShow->setToolTip("Afficher");
+        m_widgetId[lShow] = QString("show/%1/%2").arg(lTable).arg(i);
 
         QPushButton* lSchema = new QPushButton;
         lSchema->setObjectName("schema");
@@ -30,14 +36,7 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
         lSchema->setCursor(Qt::PointingHandCursor);
         lSchema->setToolTip("Schéma");
         m_widgetId[lSchema] = QString("schema/%1/%2").arg(lTable).arg(i);
-        
-        QPushButton* lShow = new QPushButton;
-        lShow->setObjectName("show");
-        lShow->setIcon(GManager::Instance()->loadPicto(fa::eye, lApp->picto_color));
-        lShow->setCursor(Qt::PointingHandCursor);
-        lShow->setToolTip("Afficher");
-        m_widgetId[lShow] = QString("show/%1/%2").arg(lTable).arg(i);
-        
+                
         QPushButton* lAdd = new QPushButton;
         lAdd->setObjectName("add");
         lAdd->setIcon(GManager::Instance()->loadPicto(fa::plus, lApp->picto_color));
@@ -53,8 +52,8 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
         m_widgetId[lDelete] = QString("delete/%1/%2").arg(lTable).arg(i);
         
         QHBoxLayout* lActionLayout = new QHBoxLayout;
-        lActionLayout->addWidget(lSchema);
         lActionLayout->addWidget(lShow);
+        lActionLayout->addWidget(lSchema);
         lActionLayout->addWidget(lAdd);
         lActionLayout->addWidget(lDelete);
         lActionLayout->setMargin(0);
@@ -64,8 +63,8 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
         
         lListBox->addItem(lKey.toLower(), lTable.toUpper(), fa::database, lActionLayout);
         
-        connect(lSchema, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lShow, SIGNAL(clicked()), this, SLOT(slotItemClick()));
+        connect(lSchema, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lAdd, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lDelete, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     }
@@ -87,6 +86,16 @@ GSQLiteTables::~GSQLiteTables() {
 //===============================================
 // method
 //===============================================
+void GSQLiteTables::loadPage() {
+    QVector<QString> lTables = GManager::Instance()->getTables();
+    
+    for(int i = 0; i < lTables.size(); i++) {
+        QString lTable = lTables[i];
+        int lCount = GManager::Instance()->countData(lTable);
+        m_showId[i]->setText(QString("%1").arg(lCount));
+    }
+}
+//===============================================
 void GSQLiteTables::deleteTable(QString table, int index) {
     m_listBox->removeItem(index);
     QString lQuery = QString("\
@@ -98,7 +107,6 @@ void GSQLiteTables::deleteTable(QString table, int index) {
 // slot
 //===============================================
 void GSQLiteTables::slotItemClick() {
-    //sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
              
@@ -111,7 +119,7 @@ void GSQLiteTables::slotItemClick() {
         QString lTable = lMap[1];
         int lIndex = lMap[2].toInt();
 
-        if(lKey == "add") {
+        if(lKey == "schema") {
             QString lAddress = QString("home/sqlite/%1/schema")
             .arg(lTable.toLower());
             GManager::Instance()->setPage(lAddress);

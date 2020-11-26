@@ -154,10 +154,11 @@ void GUserAdd::slotItemClick() {
         return;
     }
     int lCount = GManager::Instance()->countUser(lUsername);
-    qDebug() << lCount;    
-    QString lLogin = lUsername + "|" + lPassword;
-    qDebug() << lLogin;
-    lLogin = GManager::Instance()->getCrypto(lLogin);
-    qDebug() << lLogin;
+    if(lCount > 0) {
+        m_message->setText("Cet utilisateur existe déjà");
+        return;
+    }
+    GManager::Instance()->addUser(lUsername, lPassword);
+    m_message->setText("L'utilisateur a été ajouté avec succès");
 }
 //===============================================

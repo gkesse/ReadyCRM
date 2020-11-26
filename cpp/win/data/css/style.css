@@ -172,6 +172,15 @@ GSchema QTextEdit#text {
     padding: 10px;
 }
 /*===============================================*/
+/* GSQLiteTables */
+GSQLiteTables QPushButton#show {
+    background-color: #303050;
+    border-radius: 5px;
+    font-size: 12px;
+    text-align: center;
+    padding: 2px 10px;
+}
+/*===============================================*/
 /* property */
 /*===============================================*/
 /* border */

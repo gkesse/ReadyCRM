@@ -13,6 +13,7 @@ public:
     ~GSQLiteTables();
 
 public:
+    void loadPage();
     void deleteTable(QString table, int index);
     
 public slots:
@@ -20,7 +21,7 @@ public slots:
     
 private:
     QMap<QWidget*, QString> m_widgetId;
-    QMap<int, QWidget*> m_rowId;
+    QMap<int, QPushButton*> m_showId;
     GWidget* m_listBox;
 };
 //===============================================

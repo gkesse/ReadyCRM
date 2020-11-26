@@ -24,7 +24,7 @@ GManager::GManager(QObject* parent) {
     mgr->app->grip_size = 16;
     mgr->app->login_on = "off";
     mgr->app->nok_color = "red";
-    mgr->app->sqlite_db_path = "data/sqlite/config_o.dat";
+    mgr->app->sqlite_db_path = "data/sqlite/config.dat";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }
@@ -149,5 +149,34 @@ int GManager::countUser(QString username) {
     ").arg(username);
     int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
     return lCount;
+}
+//===============================================
+// table
+//===============================================
+QVector<QString> GManager::getTables() {
+    QVector<QString> lTables = GSQLite::Instance()->queryCol("\
+    select name from sqlite_master \
+    where type='table' \
+    order by name \
+    ");
+    return lTables;
+}
+//===============================================
+int GManager::countData(QString table) {
+    QString lQuery = QString("\
+    select count(*) from %1 \
+    ").arg(table);
+    int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
+    return lCount;
+}
+//===============================================
+void GManager::addUser(QString username, QString password) {
+    QString lPassword = username + "|" + password;
+    lPassword = getCrypto(lPassword);
+    QString lQuery = QString("\
+    insert into users (username, password) \
+    values ('%1', '%2') \
+    ").arg(username).arg(lPassword);
+    GSQLite::Instance()->queryWrite(lQuery);
 }
 //===============================================
