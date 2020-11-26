@@ -24,6 +24,13 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
 
+        QPushButton* lSchema = new QPushButton;
+        lSchema->setObjectName("schema");
+        lSchema->setIcon(GManager::Instance()->loadPicto(fa::cog, lApp->picto_color));
+        lSchema->setCursor(Qt::PointingHandCursor);
+        lSchema->setToolTip("Schéma");
+        m_widgetId[lSchema] = QString("schema/%1/%2").arg(lTable).arg(i);
+        
         QPushButton* lShow = new QPushButton;
         lShow->setObjectName("show");
         lShow->setIcon(GManager::Instance()->loadPicto(fa::eye, lApp->picto_color));
@@ -32,7 +39,7 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
         m_widgetId[lShow] = QString("show/%1/%2").arg(lTable).arg(i);
         
         QPushButton* lAdd = new QPushButton;
-        lAdd->setObjectName("delete");
+        lAdd->setObjectName("add");
         lAdd->setIcon(GManager::Instance()->loadPicto(fa::plus, lApp->picto_color));
         lAdd->setCursor(Qt::PointingHandCursor);
         lAdd->setToolTip("Ajouter");
@@ -46,6 +53,7 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
         m_widgetId[lDelete] = QString("delete/%1/%2").arg(lTable).arg(i);
         
         QHBoxLayout* lActionLayout = new QHBoxLayout;
+        lActionLayout->addWidget(lSchema);
         lActionLayout->addWidget(lShow);
         lActionLayout->addWidget(lAdd);
         lActionLayout->addWidget(lDelete);
@@ -56,6 +64,7 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
         
         lListBox->addItem(lKey.toLower(), lTable.toUpper(), fa::database, lActionLayout);
         
+        connect(lSchema, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lShow, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lAdd, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lDelete, SIGNAL(clicked()), this, SLOT(slotItemClick()));
@@ -103,6 +112,11 @@ void GSQLiteTables::slotItemClick() {
         int lIndex = lMap[2].toInt();
 
         if(lKey == "add") {
+            QString lAddress = QString("home/sqlite/%1/schema")
+            .arg(lTable.toLower());
+            GManager::Instance()->setPage(lAddress);
+        }
+        else if(lKey == "add") {
             QString lAddress = QString("home/sqlite/%1/add")
             .arg(lTable.toLower());
             GManager::Instance()->setPage(lAddress);
