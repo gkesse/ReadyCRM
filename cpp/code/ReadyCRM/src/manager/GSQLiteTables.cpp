@@ -119,7 +119,12 @@ void GSQLiteTables::slotItemClick() {
         QString lTable = lMap[1];
         int lIndex = lMap[2].toInt();
 
-        if(lKey == "schema") {
+        if(lKey == "show") {
+            QString lAddress = QString("home/sqlite/%1")
+            .arg(lTable.toLower());
+            GManager::Instance()->setPage(lAddress);
+        }
+        else if(lKey == "schema") {
             QString lAddress = QString("home/sqlite/%1/schema")
             .arg(lTable.toLower());
             GManager::Instance()->setPage(lAddress);

@@ -8,6 +8,7 @@
 #include "GAddressKey.h"
 #include "GLogin.h"
 #include "GUserAdd.h"
+#include "GUserShow.h"
 #include "GSchema.h"
 // page
 #include "GWindow.h"
@@ -33,13 +34,14 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "titlebar") return new GTitleBar(parent);
     if(key == "addressbar") return new GAddressBar(parent);
     if(key == "addresskey") return new GAddressKey(parent);
-    if(key == "login") return new GLogin(parent);
-    if(key == "useradd") return new GUserAdd(parent);
-    if(key == "schema") return new GSchema(parent);
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
+    if(key == "login") return new GLogin(parent);
     if(key == "sqlitetables") return new GSQLiteTables(parent);
+    if(key == "useradd") return new GUserAdd(parent);
+    if(key == "usershow") return new GUserShow(parent);
+    if(key == "schema") return new GSchema(parent);
     if(key == "builder") return new GBuilder(parent);
     // default
     return new GWidget(parent);
