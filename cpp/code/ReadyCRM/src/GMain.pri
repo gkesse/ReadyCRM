@@ -4,6 +4,7 @@ INCLUDEPATH +=\
     $$PWD/include
     
 HEADERS +=\
+    $$PWD/include/GManager.h \
     $$PWD/include/GMessageBox.h \
     $$PWD/include/GWidget.h \
     $$PWD/include/GLineEdit.h \
@@ -13,6 +14,7 @@ HEADERS +=\
     $$PWD/include/GTitleBar.h \
     $$PWD/include/GLogin.h \
     $$PWD/include/GUserAdd.h \
+    $$PWD/include/GSchema.h \
     $$PWD/include/GWindow.h \
     $$PWD/include/GHome.h \
     $$PWD/include/GSQLiteTables.h \
@@ -34,6 +36,7 @@ SOURCES +=\
     $$PWD/manager/GTitleBar.cpp \
     $$PWD/manager/GLogin.cpp \
     $$PWD/manager/GUserAdd.cpp \
+    $$PWD/manager/GSchema.cpp \
     $$PWD/manager/GWindow.cpp \
     $$PWD/manager/GHome.cpp \
     $$PWD/manager/GSQLiteTables.cpp \

@@ -12,13 +12,15 @@ typedef struct _sGApp sGApp;
 //===============================================
 // manager
 //===============================================
-class GManager {
+class GManager : public QObject {
+    Q_OBJECT
+    
 private:
-    GManager();
+    GManager(QObject* parent = 0);
     
 public:
     ~GManager();
-    static GManager* Instance();
+    static GManager* Instance(QObject* parent = 0);
     // data
     sGManager* getData();
     // style
@@ -37,7 +39,9 @@ public:
     QString getCrypto(QString text);
     // message
     int showQuestion(QWidget* parent, QString text);
-
+    // users
+    int countUser(QString username);
+    
 private:
     static GManager* m_instance;
     sGManager* mgr;

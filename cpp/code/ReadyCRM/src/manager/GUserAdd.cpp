@@ -1,5 +1,6 @@
 //===============================================
 #include "GUserAdd.h"
+#include "GSQLite.h"
 #include "GManager.h"
 //===============================================
 // constructor
@@ -59,8 +60,8 @@ GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
     m_widgetId[lLogin] = "login";
         
     QHBoxLayout* lButtonLayout = new QHBoxLayout;
-    lButtonLayout->addWidget(lCancel);
     lButtonLayout->addWidget(lLogin);
+    lButtonLayout->addWidget(lCancel);
     lButtonLayout->setAlignment(Qt::AlignRight);
     lButtonLayout->setMargin(0);
     lButtonLayout->setSpacing(10);
@@ -121,7 +122,7 @@ void GUserAdd::slotItemClick() {
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
     if(lWidgetId == "cancel") {
-        GManager::Instance()->setPage("home");
+        GManager::Instance()->setPage("home/sqlite");
         return;
     }
     if(lWidgetId == "profil") {
@@ -152,7 +153,11 @@ void GUserAdd::slotItemClick() {
         m_confirm->setContent("goto", fa::times, lApp->nok_color);
         return;
     }
+    int lCount = GManager::Instance()->countUser(lUsername);
+    qDebug() << lCount;    
     QString lLogin = lUsername + "|" + lPassword;
-    qDebug() << GManager::Instance()->getCrypto(lLogin);
+    qDebug() << lLogin;
+    lLogin = GManager::Instance()->getCrypto(lLogin);
+    qDebug() << lLogin;
 }
 //===============================================

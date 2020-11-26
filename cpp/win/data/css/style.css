@@ -164,10 +164,18 @@ GUserAdd QPushButton#login:pressed {
     background-color: transparent;
 }
 /*===============================================*/
+/* GSchema */
+GSchema * {
+    background-color: transparent;
+}
+GSchema QTextEdit#text {
+    padding: 10px;
+}
+/*===============================================*/
 /* property */
 /*===============================================*/
 /* border */
-GHome, GSQLiteTables, GBuilder {
+GHome, GSQLiteTables, GSchema {
     border: 1px solid #ffffff;
 }
 /*===============================================*/

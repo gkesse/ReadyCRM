@@ -11,7 +11,7 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     GWidget* lListBox = GWidget::Create("listbox");
     
     lListBox->addItem("home/login", "Connexion");
-    lListBox->addItem("home/builder", "Builder");
+    lListBox->addItem("home/sqlite", "SQLite");
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);

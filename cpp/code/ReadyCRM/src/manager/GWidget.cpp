@@ -8,6 +8,7 @@
 #include "GAddressKey.h"
 #include "GLogin.h"
 #include "GUserAdd.h"
+#include "GSchema.h"
 // page
 #include "GWindow.h"
 #include "GHome.h"
@@ -34,6 +35,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "addresskey") return new GAddressKey(parent);
     if(key == "login") return new GLogin(parent);
     if(key == "useradd") return new GUserAdd(parent);
+    if(key == "schema") return new GSchema(parent);
     // page
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
@@ -46,10 +48,13 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
 // method
 //===============================================
 void GWidget::addPage(QString key, QString title, QWidget* widget, bool isDefault) {}
+void GWidget::loadPage() {}
 //
 void GWidget::addItem(QString key, QString text) {}
 void GWidget::addItem(QString key, QString text, int icon) {}
 void GWidget::addItem(QString key, QString text, int icon, QLayout* layout) {}
+//
+void GWidget::removeItem(int index) {}
 //
 void GWidget::setContent(QString text) {}
 void GWidget::setContent(QString key, int icon, QColor color) {}
@@ -64,4 +69,5 @@ void GWidget::reset() {}
 // slot
 //===============================================
 void GWidget::slotItemClick() {}
+void GWidget::slotPageOpen() {}
 //===============================================

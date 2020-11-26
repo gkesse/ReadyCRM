@@ -24,10 +24,10 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     lApp->page_map = lWorkspace;
     
     addPage("home", "Accueil", GWidget::Create("home"), 1);
-    addPage("home/login", "Connexion", GWidget::Create("login"), 1);
-    addPage("home/user/add", "Ajout d'un utilisateur", GWidget::Create("useradd"), 1);
-    addPage("home/sqlite/tables", "Liste des tables", GWidget::Create("sqlitetables"), 1);
-    addPage("home/builder", "Builder", GWidget::Create("builder"), 0);
+    addPage("home/login", "Connexion", GWidget::Create("login"));
+    addPage("home/sqlite", "Afficher les tables", GWidget::Create("sqlitetables"));
+    addPage("home/sqlite/users/schema", "Afficher le schéma", GWidget::Create("schema"), 1);
+    addPage("home/sqlite/users/add", "Ajouter un utilisateur", GWidget::Create("useradd"));
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lTitleBar);

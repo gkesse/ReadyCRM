@@ -16,6 +16,7 @@ public:
     void addItem(QString key, QString text);
     void addItem(QString key, QString text, int icon);
     void addItem(QString key, QString text, int icon, QLayout* layout);
+    void removeItem(int index);
     
 public slots:
     void slotItemClick();
@@ -23,6 +24,8 @@ public slots:
 private:
     QVBoxLayout* m_scrollLayout;
     QMap<QWidget*, QString> m_widgetId;
+    QMap<int, QWidget*> m_rowId;
+    int m_index;
 };
 //===============================================
 #endif

@@ -14,10 +14,13 @@ public:
 
 public:
     virtual void addPage(QString key, QString title, QWidget* widget, bool isDefault);
+    virtual void loadPage();
     //
     virtual void addItem(QString key, QString text);
     virtual void addItem(QString key, QString text, int icon);
     virtual void addItem(QString key, QString text, int icon, QLayout* layout);
+    //
+    virtual void removeItem(int index);
     //
     virtual void setContent(QString text);
     virtual void setContent(QString key, int icon, QColor color);
@@ -28,10 +31,10 @@ public:
     virtual void getData(QString& data);
     //
     virtual void reset();
-
     
 public slots:
     virtual void slotItemClick();
+    virtual void slotPageOpen();
     
 signals:
     void emitItemClick();

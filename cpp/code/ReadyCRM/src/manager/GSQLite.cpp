@@ -36,21 +36,22 @@ void GSQLite::createTables() {
     QString lQuery;
     // config_data
     lQuery = "\
-    create table if not exists config_data (\
-        config_key text unique not null,\
-        config_value text\
-    )\
+    create table if not exists config_data (\n\
+        config_key text unique not null,\n\
+        config_value text\n\
+    )\n\
     ";
     queryWrite(lQuery);
     // users
     lQuery = "\
-    create table if not exists users (\
-        user_name text unique not null,\
-        user_pass text,\
-        active text default 'on',\
-        date_create datetime default current_timestamp,\
-        date_update datetime default current_timestamp\
-    )\
+    create table if not exists users (\n\
+        username text unique not null,\n\
+        userpass text,\n\
+        name text,\n\
+        active text default 'on',\n\
+        date_create datetime default current_timestamp,\n\
+        date_update datetime default current_timestamp\n\
+    )\n\
     ";
     queryWrite(lQuery);
 }

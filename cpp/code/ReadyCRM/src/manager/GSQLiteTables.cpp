@@ -12,6 +12,7 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
     sGApp* lApp = GManager::Instance()->getData()->app;
 
     GWidget* lListBox = GWidget::Create("listbox");
+    m_listBox = lListBox;
     m_widgetId[lListBox] = "listbox";
     
     QVector<QString> lTables = GSQLite::Instance()->queryCol("\
@@ -21,22 +22,42 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
     ");
     
     for(int i = 0; i < lTables.size(); i++) {
+        QString lTable = lTables[i];
+
+        QPushButton* lShow = new QPushButton;
+        lShow->setObjectName("show");
+        lShow->setIcon(GManager::Instance()->loadPicto(fa::eye, lApp->picto_color));
+        lShow->setCursor(Qt::PointingHandCursor);
+        lShow->setToolTip("Afficher");
+        m_widgetId[lShow] = QString("show/%1/%2").arg(lTable).arg(i);
+        
+        QPushButton* lAdd = new QPushButton;
+        lAdd->setObjectName("delete");
+        lAdd->setIcon(GManager::Instance()->loadPicto(fa::plus, lApp->picto_color));
+        lAdd->setCursor(Qt::PointingHandCursor);
+        lAdd->setToolTip("Ajouter");
+        m_widgetId[lAdd] = QString("add/%1/%2").arg(lTable).arg(i);
+        
         QPushButton* lDelete = new QPushButton;
         lDelete->setObjectName("delete");
         lDelete->setIcon(GManager::Instance()->loadPicto(fa::trash, lApp->picto_color));
         lDelete->setCursor(Qt::PointingHandCursor);
         lDelete->setToolTip("Supprimer");
-        m_widgetId[lDelete] = QString("%1/delete").arg(i);
+        m_widgetId[lDelete] = QString("delete/%1/%2").arg(lTable).arg(i);
         
         QHBoxLayout* lActionLayout = new QHBoxLayout;
+        lActionLayout->addWidget(lShow);
+        lActionLayout->addWidget(lAdd);
         lActionLayout->addWidget(lDelete);
         lActionLayout->setMargin(0);
-        lActionLayout->setSpacing(0);
+        lActionLayout->setSpacing(10);
         
-        QString lTable = lTables[i];
-        QString lKey = QString("%1/%2").arg(i).arg(lTable);
+        QString lKey = QString("show/%1/%2").arg(lTable).arg(i);
+        
         lListBox->addItem(lKey.toLower(), lTable.toUpper(), fa::database, lActionLayout);
         
+        connect(lShow, SIGNAL(clicked()), this, SLOT(slotItemClick()));
+        connect(lAdd, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lDelete, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     }
 
@@ -55,24 +76,44 @@ GSQLiteTables::~GSQLiteTables() {
     
 }
 //===============================================
+// method
+//===============================================
+void GSQLiteTables::deleteTable(QString table, int index) {
+    m_listBox->removeItem(index);
+    QString lQuery = QString("\
+    drop table %1 \
+    ").arg(table);
+    GSQLite::Instance()->queryWrite(lQuery);
+}
+//===============================================
 // slot
 //===============================================
 void GSQLiteTables::slotItemClick() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
+    //sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
-    QString lKey = m_widgetId[lWidget];
-    
-    QString lIndex = lKey.split("/").first();
-    QString lWidgetId = lKey.split("/").last();
-    
+    QString lWidgetId = m_widgetId[lWidget];
+             
     if(lWidgetId == "listbox") {
-        qDebug() << lApp->widget_id;
+
     }
     else {
-        if(lWidgetId == "delete") {
-            int lOk = GManager::Instance()->showQuestion(this, 
-            "Voulez-vous supprimer la table ?");
-            qDebug() << lWidgetId << lOk;
+        QStringList lMap = lWidgetId.split("/");
+        QString lKey = lMap[0];
+        QString lTable = lMap[1];
+        int lIndex = lMap[2].toInt();
+
+        if(lKey == "add") {
+            QString lAddress = QString("home/sqlite/%1/add")
+            .arg(lTable.toLower());
+            GManager::Instance()->setPage(lAddress);
+        }
+        else if(lKey == "delete") {
+            QString lMessage = QString("Voulez-vous supprimer la table\n%1 ?").
+            arg(lTable.toUpper());
+            int lOk = GManager::Instance()->showQuestion(this, lMessage);
+            if(lOk == QMessageBox::Ok) {
+                deleteTable(lTable, lIndex);
+            }
         }
     }
 }

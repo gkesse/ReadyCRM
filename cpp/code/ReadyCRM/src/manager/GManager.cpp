@@ -1,12 +1,13 @@
 //===============================================
 #include "GManager.h"
 #include "GMessageBox.h"
+#include "GSQLite.h"
 //===============================================
 GManager* GManager::m_instance = 0;
 //===============================================
 // constructor
 //===============================================
-GManager::GManager() {
+GManager::GManager(QObject* parent) {
     // manager
     mgr = new sGManager;
     // app
@@ -32,9 +33,9 @@ GManager::~GManager() {
     
 }
 //===============================================
-GManager* GManager::Instance() {
+GManager* GManager::Instance(QObject* parent) {
     if(m_instance == 0) {
-        m_instance = new GManager;
+        m_instance = new GManager(parent);
     }
     return m_instance;
 }
@@ -97,6 +98,8 @@ void GManager::setPage(QString address)  {
     mgr->app->address_url = address;
     mgr->app->address_key->setContent(address);
     mgr->app->title->setText(mgr->app->title_map[address]);
+    GWidget* lPage = qobject_cast<GWidget*>(mgr->app->page_map->currentWidget());
+    lPage->loadPage();
 }
 //===============================================
 // layout
@@ -135,5 +138,16 @@ int GManager::showQuestion(QWidget* parent, QString text) {
     int lAnswer = QMessageBox::Cancel;
     if(lButton == lOk) lAnswer = QMessageBox::Ok;
     return lAnswer;
+}
+//===============================================
+// users
+//===============================================
+int GManager::countUser(QString username) {
+    QString lQuery = QString("\
+    select count(*) from users \
+    where username = '%1' \
+    ").arg(username);
+    int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
+    return lCount;
 }
 //===============================================

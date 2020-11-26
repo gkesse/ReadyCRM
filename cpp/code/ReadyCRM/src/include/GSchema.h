@@ -1,26 +1,22 @@
 //===============================================
-#ifndef _GWindow_
-#define _GWindow_
+#ifndef _GSchema_
+#define _GSchema_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GWindow : public GWidget {    
+class GSchema : public GWidget {    
     Q_OBJECT
 
 public:
-    GWindow(QWidget* parent = 0);
-    ~GWindow();
+    GSchema(QWidget* parent = 0);
+    ~GSchema();
 
 public:
-    void addPage(QString key, QString title, QWidget* widget, bool isDefault = 0);
-
-protected:
-    void resizeEvent(QResizeEvent *event);
+    void loadPage();
     
 private:
-    QMap<QWidget*, QString> m_widgetId;
-    QSizeGrip* m_sizeGrip;
+    QTextEdit* m_textEdit;
 };
 //===============================================
 #endif

@@ -18,6 +18,8 @@ GListBox::GListBox(QWidget* parent) : GWidget(parent) {
     lScrollArea->setWidget(lScrollWidget);
     lScrollArea->setWidgetResizable(true);
 
+    m_index = 0;
+
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lScrollArea);
     lMainLayout->setAlignment(Qt::AlignTop);
@@ -40,6 +42,7 @@ void GListBox::addItem(QString key, QString text) {
     lButton->setCursor(Qt::PointingHandCursor);
     m_scrollLayout->addWidget(lButton);
     m_widgetId[lButton] = key;
+    m_rowId[m_index++] = lButton;
     connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
@@ -52,16 +55,19 @@ void GListBox::addItem(QString key, QString text, int icon) {
     lButton->setCursor(Qt::PointingHandCursor);
     m_scrollLayout->addWidget(lButton);
     m_widgetId[lButton] = key;
+    m_rowId[m_index++] = lButton;
     connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
 void GListBox::addItem(QString key, QString text, int icon, QLayout* layout) {
     sGApp* lApp = GManager::Instance()->getData()->app;
+
     QPushButton* lButton = new QPushButton;
     lButton->setObjectName("key");
     lButton->setText(text);
     lButton->setIcon(GManager::Instance()->loadPicto(icon, lApp->picto_color));
     lButton->setCursor(Qt::PointingHandCursor);
+    m_widgetId[lButton] = key;
     
     QHBoxLayout* lRowLayout = new QHBoxLayout;
     lRowLayout->addWidget(lButton, 1);
@@ -72,10 +78,17 @@ void GListBox::addItem(QString key, QString text, int icon, QLayout* layout) {
     QFrame* lRow = new QFrame;
     lRow->setObjectName("item");
     lRow->setLayout(lRowLayout);
+    m_rowId[m_index++] = lRow;
 
     m_scrollLayout->addWidget(lRow);
-    m_widgetId[lButton] = key;
+    
     connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
+}
+//===============================================
+void GListBox::removeItem(int index) {
+    QWidget* lWidget = m_rowId[index];
+    m_scrollLayout->removeWidget(lWidget);
+    delete lWidget;
 }
 //===============================================
 // slot
