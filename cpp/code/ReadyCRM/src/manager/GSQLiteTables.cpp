@@ -20,7 +20,7 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
 
-        int lCount = GManager::Instance()->countData(lTable);
+        int lCount = GManager::Instance()->countTableData(lTable);
         
         QPushButton* lShow = new QPushButton;
         m_showId[i] = lShow;
@@ -91,7 +91,7 @@ void GSQLiteTables::loadPage() {
     
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
-        int lCount = GManager::Instance()->countData(lTable);
+        int lCount = GManager::Instance()->countTableData(lTable);
         m_showId[i]->setText(QString("%1").arg(lCount));
     }
 }
@@ -107,40 +107,40 @@ void GSQLiteTables::deleteTable(QString table, int index) {
 // slot
 //===============================================
 void GSQLiteTables::slotItemClick() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
              
     if(lWidgetId == "listbox") {
-
+        lWidgetId = lApp->widget_id;
     }
-    else {
-        QStringList lMap = lWidgetId.split("/");
-        QString lKey = lMap[0];
-        QString lTable = lMap[1];
-        int lIndex = lMap[2].toInt();
 
-        if(lKey == "show") {
-            QString lAddress = QString("home/sqlite/%1")
-            .arg(lTable.toLower());
-            GManager::Instance()->setPage(lAddress);
-        }
-        else if(lKey == "schema") {
-            QString lAddress = QString("home/sqlite/%1/schema")
-            .arg(lTable.toLower());
-            GManager::Instance()->setPage(lAddress);
-        }
-        else if(lKey == "add") {
-            QString lAddress = QString("home/sqlite/%1/add")
-            .arg(lTable.toLower());
-            GManager::Instance()->setPage(lAddress);
-        }
-        else if(lKey == "delete") {
-            QString lMessage = QString("Voulez-vous supprimer la table\n%1 ?").
-            arg(lTable.toUpper());
-            int lOk = GManager::Instance()->showQuestion(this, lMessage);
-            if(lOk == QMessageBox::Ok) {
-                deleteTable(lTable, lIndex);
-            }
+    QStringList lMap = lWidgetId.split("/");
+    QString lKey = lMap[0];
+    QString lTable = lMap[1];
+    int lIndex = lMap[2].toInt();
+
+    if(lKey == "show") {
+        QString lAddress = QString("home/sqlite/%1")
+        .arg(lTable.toLower());
+        GManager::Instance()->setPage(lAddress);
+    }
+    else if(lKey == "schema") {
+        QString lAddress = QString("home/sqlite/%1/schema")
+        .arg(lTable.toLower());
+        GManager::Instance()->setPage(lAddress);
+    }
+    else if(lKey == "add") {
+        QString lAddress = QString("home/sqlite/%1/add")
+        .arg(lTable.toLower());
+        GManager::Instance()->setPage(lAddress);
+    }
+    else if(lKey == "delete") {
+        QString lMessage = QString("Voulez-vous supprimer la table\n%1 ?").
+        arg(lTable.toUpper());
+        int lOk = GManager::Instance()->showQuestion(this, lMessage);
+        if(lOk == QMessageBox::Ok) {
+            deleteTable(lTable, lIndex);
         }
     }
 }

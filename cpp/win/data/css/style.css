@@ -181,10 +181,30 @@ GSQLiteTables QPushButton#show {
     padding: 2px 10px;
 }
 /*===============================================*/
+/* GBuilder */
+QFrame#GListWidget * {
+    background-color: transparent;
+}
+QFrame#GListWidget {
+    border: 1px solid #ffffff;
+}
+QFrame#GListWidget QPushButton#irow {
+    text-align: left;
+}
+QFrame#GListWidget QListView::item {
+    padding: 5px 10px;
+}
+QFrame#GListWidget QListView::item:selected:!active {
+    background: #303050;
+}
+QFrame#GListWidget QListView::item:hover {
+    background: #503030;
+}
+/*===============================================*/
 /* property */
 /*===============================================*/
 /* border */
-GHome, GSQLiteTables, GSchema {
+GHome, GSQLiteTables, GSchema, GUserShow, GBuilder {
     border: 1px solid #ffffff;
 }
 /*===============================================*/

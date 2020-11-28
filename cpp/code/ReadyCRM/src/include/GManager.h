@@ -41,7 +41,8 @@ public:
     int showQuestion(QWidget* parent, QString text);
     // table
     QVector<QString> getTables();
-    int countData(QString table);
+    int countTableData(QString table);
+    QVector<QVector<QString>> getTableData(QString table);
     // users
     int countUser(QString username);
     void addUser(QString username, QString password);

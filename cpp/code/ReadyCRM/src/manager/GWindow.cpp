@@ -30,6 +30,7 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     addPage("home/sqlite/users/schema", "Afficher le schéma", GWidget::Create("schema"));
     addPage("home/sqlite/users/add", "Ajouter un utilisateur", GWidget::Create("useradd"));
     addPage("home/sqlite/config_data/schema", "Afficher le schéma", GWidget::Create("schema"));
+    addPage("home/builder", "Builder", GWidget::Create("builder"), 1);
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lTitleBar);

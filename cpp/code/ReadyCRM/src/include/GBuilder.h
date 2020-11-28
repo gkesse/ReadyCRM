@@ -11,6 +11,12 @@ class GBuilder : public GWidget {
 public:
     GBuilder(QWidget* parent = 0);
     ~GBuilder();
+    
+public slots:
+    void slotItemClick();
+    
+private:
+    QListWidget* m_listWidget;
 };
 //===============================================
 #endif

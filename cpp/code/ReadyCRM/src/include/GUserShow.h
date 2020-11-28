@@ -11,6 +11,18 @@ class GUserShow : public GWidget {
 public:
     GUserShow(QWidget* parent = 0);
     ~GUserShow();
+
+public:
+    void loadPage();
+    void deleteTable(QString table, int index);
+    
+public slots:
+    void slotItemClick();
+    
+private:
+    QMap<QWidget*, QString> m_widgetId;
+    QMap<int, QPushButton*> m_showId;
+    GWidget* m_listBox;
 };
 //===============================================
 #endif

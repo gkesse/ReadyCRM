@@ -140,17 +140,6 @@ int GManager::showQuestion(QWidget* parent, QString text) {
     return lAnswer;
 }
 //===============================================
-// users
-//===============================================
-int GManager::countUser(QString username) {
-    QString lQuery = QString("\
-    select count(*) from users \
-    where username = '%1' \
-    ").arg(username);
-    int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
-    return lCount;
-}
-//===============================================
 // table
 //===============================================
 QVector<QString> GManager::getTables() {
@@ -162,10 +151,29 @@ QVector<QString> GManager::getTables() {
     return lTables;
 }
 //===============================================
-int GManager::countData(QString table) {
+int GManager::countTableData(QString table) {
     QString lQuery = QString("\
     select count(*) from %1 \
     ").arg(table);
+    int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
+    return lCount;
+}
+//===============================================
+QVector<QVector<QString>> GManager::getTableData(QString table) {
+    QString lQuery = QString("\
+    select * from %1 \
+    ").arg(table);
+    QVector<QVector<QString>> lData = GSQLite::Instance()->queryMap(lQuery);
+    return lData;
+}
+//===============================================
+// users
+//===============================================
+int GManager::countUser(QString username) {
+    QString lQuery = QString("\
+    select count(*) from users \
+    where username = '%1' \
+    ").arg(username);
     int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
     return lCount;
 }
