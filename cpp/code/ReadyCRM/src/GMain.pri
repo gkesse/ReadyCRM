@@ -10,6 +10,7 @@ HEADERS +=\
     $$PWD/include/GLineEdit.h \
     $$PWD/include/GListBox.h \
     $$PWD/include/GListWidget.h \
+    $$PWD/include/GTableWidget.h \
     $$PWD/include/GAddressBar.h \
     $$PWD/include/GAddressKey.h \
     $$PWD/include/GTitleBar.h \
@@ -34,6 +35,7 @@ SOURCES +=\
     $$PWD/manager/GLineEdit.cpp \
     $$PWD/manager/GListBox.cpp \
     $$PWD/manager/GListWidget.cpp \
+    $$PWD/manager/GTableWidget.cpp \
     $$PWD/manager/GAddressBar.cpp \
     $$PWD/manager/GAddressKey.cpp \
     $$PWD/manager/GTitleBar.cpp \

@@ -1,19 +1,21 @@
 //===============================================
-#ifndef _GListBox_
-#define _GListBox_
+#ifndef _GTableWidget_
+#define _GTableWidget_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GListBox : public GWidget {    
+class GTableWidget : public GWidget {    
     Q_OBJECT
 
 public:
-    GListBox(QWidget* parent = 0);
-    ~GListBox();
+    GTableWidget(QWidget* parent = 0);
+    ~GTableWidget();
 
 public:
-    void addItem(QString key, QString text);
+    void setOption(QString key, int data);
+    void setOption(QString key);
+    void addItem(int row, int col, QString text);
     void addItem(QString key, QString text, int icon);
     void addItem(QLayout* layout);
     void removeItem(int index);
@@ -22,9 +24,9 @@ public slots:
     void slotItemClick();
     
 private:
-    QVBoxLayout* m_scrollLayout;
+    QTableWidget* m_tableWidget;
     QMap<QWidget*, QString> m_widgetId;
-    QMap<int, QWidget*> m_rowId;
+    QMap<int, QListWidgetItem*> m_rowId;
     int m_index;
 };
 //===============================================

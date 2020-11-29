@@ -59,18 +59,10 @@ void GListBox::addItem(QString key, QString text, int icon) {
     connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
-void GListBox::addItem(QString key, QString text, int icon, QLayout* layout) {
+void GListBox::addItem(QLayout* layout) {
     sGApp* lApp = GManager::Instance()->getData()->app;
 
-    QPushButton* lButton = new QPushButton;
-    lButton->setObjectName("key");
-    lButton->setText(text);
-    lButton->setIcon(GManager::Instance()->loadPicto(icon, lApp->picto_color));
-    lButton->setCursor(Qt::PointingHandCursor);
-    m_widgetId[lButton] = key;
-    
     QHBoxLayout* lRowLayout = new QHBoxLayout;
-    lRowLayout->addWidget(lButton, 1);
     lRowLayout->addLayout(layout);
     lRowLayout->setMargin(0);
     lRowLayout->setSpacing(0);
@@ -81,8 +73,6 @@ void GListBox::addItem(QString key, QString text, int icon, QLayout* layout) {
     m_rowId[m_index++] = lRow;
 
     m_scrollLayout->addWidget(lRow);
-    
-    connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
 void GListBox::removeItem(int index) {

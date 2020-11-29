@@ -6,24 +6,24 @@
 // constructor
 //===============================================
 GBuilder::GBuilder(QWidget* parent) : GWidget(parent) {
-    setObjectName("GListWidget");
+    //setObjectName("GListWidget");
         
-    QListWidget* lWidget = new QListWidget;
+    QTableWidget* lWidget = new QTableWidget(5, 5);
     m_listWidget = lWidget;
-    lWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+    lWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     lWidget->setCursor(Qt::PointingHandCursor);
+    lWidget->horizontalHeader()->setStretchLastSection(true);
     
-    for(int i = 0; i < 50; i++) {
-        QString lText = QString("Item %1").arg(i);
+    for(int i = 0; i < 5; i++) {
+        for(int j = 0; j < 5; j++) {
+            QString lText = QString("Item %1 - %2").arg(i).arg(j);
 
-        QPushButton* lButton = new QPushButton(lWidget);
-        lButton->setObjectName("irow");
-        lButton->setText(lText);
-        
-        QListWidgetItem* lItem = new QListWidgetItem(lWidget);
-        
-        lWidget->addItem(lItem);
-        lWidget->setItemWidget(lItem, lButton);
+            QPushButton* lButton = new QPushButton(lWidget);
+            lButton->setObjectName("row");
+            lButton->setText(lText);
+                        
+            lWidget->setCellWidget(i, j, lButton);
+        }
     }
     
     QVBoxLayout* lMainLatout = new QVBoxLayout;

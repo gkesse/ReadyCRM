@@ -15,7 +15,7 @@ public:
 public:
     void addItem(QString key, QString text);
     void addItem(QString key, QString text, int icon);
-    void addItem(QString key, QLayout* layout);
+    void addItem(QLayout* layout);
     void removeItem(int index);
     
 public slots:

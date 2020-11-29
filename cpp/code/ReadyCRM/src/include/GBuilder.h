@@ -16,7 +16,7 @@ public slots:
     void slotItemClick();
     
 private:
-    QListWidget* m_listWidget;
+    QTableWidget* m_listWidget;
 };
 //===============================================
 #endif

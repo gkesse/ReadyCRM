@@ -22,47 +22,54 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
 
         int lCount = GManager::Instance()->countTableData(lTable);
         
+        QPushButton* lTitle = new QPushButton;
+        lTitle->setObjectName("title");
+        lTitle->setText(lTable.toUpper());
+        lTitle->setIcon(GManager::Instance()->loadPicto(fa::database, lApp->picto_color));
+        lTitle->setCursor(Qt::PointingHandCursor);
+        m_widgetId[lTitle] = QString("show/%1/%2").arg(lTable).arg(i);
+
         QPushButton* lShow = new QPushButton;
         m_showId[i] = lShow;
         lShow->setObjectName("show");
         lShow->setText(QString("%1").arg(lCount));
-        lShow->setCursor(Qt::PointingHandCursor);
         lShow->setToolTip("Afficher");
+        lShow->setCursor(Qt::PointingHandCursor);
         m_widgetId[lShow] = QString("show/%1/%2").arg(lTable).arg(i);
 
         QPushButton* lSchema = new QPushButton;
         lSchema->setObjectName("schema");
         lSchema->setIcon(GManager::Instance()->loadPicto(fa::cog, lApp->picto_color));
-        lSchema->setCursor(Qt::PointingHandCursor);
         lSchema->setToolTip("Schéma");
+        lSchema->setCursor(Qt::PointingHandCursor);
         m_widgetId[lSchema] = QString("schema/%1/%2").arg(lTable).arg(i);
                 
         QPushButton* lAdd = new QPushButton;
         lAdd->setObjectName("add");
         lAdd->setIcon(GManager::Instance()->loadPicto(fa::plus, lApp->picto_color));
-        lAdd->setCursor(Qt::PointingHandCursor);
         lAdd->setToolTip("Ajouter");
+        lAdd->setCursor(Qt::PointingHandCursor);
         m_widgetId[lAdd] = QString("add/%1/%2").arg(lTable).arg(i);
         
         QPushButton* lDelete = new QPushButton;
         lDelete->setObjectName("delete");
         lDelete->setIcon(GManager::Instance()->loadPicto(fa::trash, lApp->picto_color));
-        lDelete->setCursor(Qt::PointingHandCursor);
         lDelete->setToolTip("Supprimer");
+        lDelete->setCursor(Qt::PointingHandCursor);
         m_widgetId[lDelete] = QString("delete/%1/%2").arg(lTable).arg(i);
         
-        QHBoxLayout* lActionLayout = new QHBoxLayout;
-        lActionLayout->addWidget(lShow);
-        lActionLayout->addWidget(lSchema);
-        lActionLayout->addWidget(lAdd);
-        lActionLayout->addWidget(lDelete);
-        lActionLayout->setMargin(0);
-        lActionLayout->setSpacing(10);
+        QHBoxLayout* lRowLayout = new QHBoxLayout;
+        lRowLayout->addWidget(lTitle, 1);
+        lRowLayout->addWidget(lShow);
+        lRowLayout->addWidget(lSchema);
+        lRowLayout->addWidget(lAdd);
+        lRowLayout->addWidget(lDelete);
+        lRowLayout->setMargin(0);
+        lRowLayout->setSpacing(10);
+                
+        lListBox->addItem(lRowLayout);
         
-        QString lKey = QString("show/%1/%2").arg(lTable).arg(i);
-        
-        lListBox->addItem(lKey.toLower(), lTable.toUpper(), fa::database, lActionLayout);
-        
+        connect(lTitle, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lShow, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lSchema, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lAdd, SIGNAL(clicked()), this, SLOT(slotItemClick()));
@@ -88,7 +95,7 @@ GSQLiteTables::~GSQLiteTables() {
 //===============================================
 void GSQLiteTables::loadPage() {
     QVector<QString> lTables = GManager::Instance()->getTables();
-    
+    return;
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
         int lCount = GManager::Instance()->countTableData(lTable);
@@ -107,13 +114,8 @@ void GSQLiteTables::deleteTable(QString table, int index) {
 // slot
 //===============================================
 void GSQLiteTables::slotItemClick() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
-             
-    if(lWidgetId == "listbox") {
-        lWidgetId = lApp->widget_id;
-    }
 
     QStringList lMap = lWidgetId.split("/");
     QString lKey = lMap[0];

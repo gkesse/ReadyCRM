@@ -18,8 +18,8 @@ public:
     //
     virtual void addItem(QString key, QString text);
     virtual void addItem(QString key, QString text, int icon);
-    virtual void addItem(QString key, QString text, int icon, QLayout* layout);
-    virtual void addItem(QString key, QLayout* layout);
+    virtual void addItem(int row, int col, QString text);
+    virtual void addItem(QLayout* layout);
     //
     virtual void removeItem(int index);
     //
@@ -27,7 +27,9 @@ public:
     virtual void setContent(QString key, int icon, QColor color);
     virtual void setContent(QString key, QIcon icon);
     //
+    virtual void setOption(QString key, int data);
     virtual void setOption(int mode);
+    virtual void setOption(QString key);
     //
     virtual void getData(QString& data);
     //

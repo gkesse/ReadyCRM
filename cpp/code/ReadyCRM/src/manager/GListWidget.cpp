@@ -61,11 +61,10 @@ void GListWidget::addItem(QString key, QString text, int icon) {
     connect(lButton, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
-void GListWidget::addItem(QString key, QLayout* layout) {
+void GListWidget::addItem(QLayout* layout) {
     QFrame* lRow = new QFrame(m_listWidget);
     lRow->setObjectName("row");
     lRow->setLayout(layout);
-    m_widgetId[lRow] = key;
 
     QListWidgetItem* lItem = new QListWidgetItem(m_listWidget);
     m_rowId[m_index++] = lItem;
