@@ -142,6 +142,9 @@ GUserAdd QPushButton#profil {
 GUserAdd QLabel#message {
     color: #ff0000;
 }
+GUserAdd QLabel#message[check="ok"] {
+    color: lime;
+}
 GUserAdd QFrame#username,
 GUserAdd QFrame#password,
 GUserAdd QFrame#confirm {

@@ -113,6 +113,10 @@ void GUserAdd::reset() {
     m_username->setContent("goto", QIcon());
     m_password->setContent("goto", QIcon());
     m_confirm->setContent("goto", QIcon());
+    
+    m_message->setProperty("check", "nok");
+    m_message->style()->unpolish(m_message);
+    m_message->style()->polish(m_message);
 }
 //===============================================
 // slot
@@ -128,10 +132,13 @@ void GUserAdd::slotItemClick() {
     if(lWidgetId == "profil") {
         return;
     }
+    
     reset();
+    
     QString lUsername; m_username->getData(lUsername);
     QString lPassword; m_password->getData(lPassword);
     QString lConfirm; m_confirm->getData(lConfirm);
+    
     if(lUsername == "") {
         m_message->setText("Le nom d'utilisateur est obligatoire");
         m_username->setContent("goto", fa::times, lApp->nok_color);
@@ -158,7 +165,12 @@ void GUserAdd::slotItemClick() {
         m_message->setText("Cet utilisateur existe déjà");
         return;
     }
+    
     GManager::Instance()->addUser(lUsername, lPassword);
     m_message->setText("L'utilisateur a été ajouté avec succès");
+    
+    m_message->setProperty("check", "ok");
+    m_message->style()->unpolish(m_message);
+    m_message->style()->polish(m_message);
 }
 //===============================================
