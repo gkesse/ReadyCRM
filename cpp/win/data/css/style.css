@@ -181,24 +181,21 @@ GSQLiteTables QPushButton#show {
     padding: 2px 10px;
 }
 /*===============================================*/
-/* GBuilder */
-QFrame#GListWidget * {
+/* GListWidget */
+GListWidget * {
     background-color: transparent;
 }
-QFrame#GListWidget {
+GListWidget {
     border: 1px solid #ffffff;
 }
-QFrame#GListWidget QPushButton#irow {
+GListWidget QPushButton#row {
     text-align: left;
 }
-QFrame#GListWidget QListView::item {
+GListWidget QListView::item {
     padding: 5px 10px;
 }
-QFrame#GListWidget QListView::item:selected:!active {
-    background: #303050;
-}
-QFrame#GListWidget QListView::item:hover {
-    background: #503030;
+GListWidget QListView::item:hover {
+    background-color: #503030;
 }
 /*===============================================*/
 /* property */

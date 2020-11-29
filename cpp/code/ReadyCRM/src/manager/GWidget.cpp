@@ -3,6 +3,7 @@
 #include "GWidget.h"
 #include "GLineEdit.h"
 #include "GListBox.h"
+#include "GListWidget.h"
 #include "GTitleBar.h"
 #include "GAddressBar.h"
 #include "GAddressKey.h"
@@ -31,6 +32,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "widget") return new GWidget(parent);
     if(key == "lineedit") return new GLineEdit(parent);
     if(key == "listbox") return new GListBox(parent);
+    if(key == "listwidget") return new GListWidget(parent);
     if(key == "titlebar") return new GTitleBar(parent);
     if(key == "addressbar") return new GAddressBar(parent);
     if(key == "addresskey") return new GAddressKey(parent);
@@ -55,6 +57,7 @@ void GWidget::loadPage() {}
 void GWidget::addItem(QString key, QString text) {}
 void GWidget::addItem(QString key, QString text, int icon) {}
 void GWidget::addItem(QString key, QString text, int icon, QLayout* layout) {}
+void GWidget::addItem(QString key, QLayout* layout) {}
 //
 void GWidget::removeItem(int index) {}
 //

@@ -8,10 +8,11 @@
 GHome::GHome(QWidget* parent) : GWidget(parent) {
     setObjectName("GHome");
         
-    GWidget* lListBox = GWidget::Create("listbox");
+    GWidget* lListBox = GWidget::Create("listwidget");
     
     lListBox->addItem("home/login", "Connexion");
     lListBox->addItem("home/sqlite", "SQLite");
+    lListBox->addItem("home/builder", "Builder");
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lListBox);

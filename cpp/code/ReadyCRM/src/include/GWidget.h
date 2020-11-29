@@ -19,6 +19,7 @@ public:
     virtual void addItem(QString key, QString text);
     virtual void addItem(QString key, QString text, int icon);
     virtual void addItem(QString key, QString text, int icon, QLayout* layout);
+    virtual void addItem(QString key, QLayout* layout);
     //
     virtual void removeItem(int index);
     //
