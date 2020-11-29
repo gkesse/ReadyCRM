@@ -95,7 +95,6 @@ GSQLiteTables::~GSQLiteTables() {
 //===============================================
 void GSQLiteTables::loadPage() {
     QVector<QString> lTables = GManager::Instance()->getTables();
-    return;
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
         int lCount = GManager::Instance()->countTableData(lTable);

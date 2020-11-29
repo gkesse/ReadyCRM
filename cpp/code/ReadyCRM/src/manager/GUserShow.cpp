@@ -22,13 +22,13 @@ GUserShow::GUserShow(QWidget* parent) : GWidget(parent) {
         
         QString lData = QString("%1 - %2 - %3").arg(lDataRow[0])
         .arg(lDataRow[2]).arg(lDataRow[3]);
-
+        
         QPushButton* lTitle = new QPushButton;
         lTitle->setObjectName("title");
         lTitle->setText(lData);
         lTitle->setIcon(GManager::Instance()->loadPicto(fa::user, lApp->picto_color));
         lTitle->setCursor(Qt::PointingHandCursor);
-        m_widgetId[lTitle] = QString("show/%1/%2").arg(lData).arg(i);
+        m_widgetId[lTitle] = QString("show/%1/%2").arg(lDataRow[0]).arg(i);
 
         QHBoxLayout* lRowLayout = new QHBoxLayout;
         lRowLayout->addWidget(lTitle);

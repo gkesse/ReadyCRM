@@ -165,9 +165,6 @@ GUserAdd QPushButton#login:pressed {
 }
 /*===============================================*/
 /* GSchema */
-GSchema * {
-    background-color: transparent;
-}
 GSchema {
     border: 1px solid #ffffff;
 }
@@ -191,9 +188,6 @@ GSQLiteTables QPushButton#show {
 }
 /*===============================================*/
 /* GUserShow */
-GUserShow * {
-    background-color: transparent;
-}
 GUserShow {
     border: 1px solid #ffffff;
 }
