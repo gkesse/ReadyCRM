@@ -60,8 +60,6 @@ void GListBox::addItem(QString key, QString text, int icon) {
 }
 //===============================================
 void GListBox::addItem(QLayout* layout) {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-
     QHBoxLayout* lRowLayout = new QHBoxLayout;
     lRowLayout->addLayout(layout);
     lRowLayout->setMargin(0);

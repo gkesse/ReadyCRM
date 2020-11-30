@@ -13,7 +13,7 @@ public:
     ~GSchema();
 
 public:
-    void loadPage();
+    int loadPage();
     
 private:
     QTextEdit* m_textEdit;

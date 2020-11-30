@@ -13,7 +13,7 @@ public:
     ~GSQLiteTables();
 
 public:
-    void loadPage();
+    int loadPage();
     void deleteTable(QString table, int index);
     
 public slots:

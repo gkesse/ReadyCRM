@@ -28,7 +28,7 @@ GSchema::~GSchema() {
 //===============================================
 // method
 //===============================================
-void GSchema::loadPage() {
+int GSchema::loadPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QStringList lMap = lApp->address_url.split("/");
     QString lTable = lMap[2];
@@ -41,5 +41,6 @@ void GSchema::loadPage() {
     QString lSchema = GSQLite::Instance()->queryValue(lQuery);
     
     m_textEdit->setText(lSchema);
+    return 1;
 }
 //===============================================

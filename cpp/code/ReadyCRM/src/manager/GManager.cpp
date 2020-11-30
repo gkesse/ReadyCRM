@@ -93,13 +93,13 @@ void GManager::setPage(QString address)  {
         mgr->app->address->setText(mgr->app->address_url);
         return;
     }
+    GWidget* lPage = qobject_cast<GWidget*>(mgr->app->page_map->widget(lPageId));
+    if(lPage->loadPage() == 0) return;
     mgr->app->page_map->setCurrentIndex(lPageId);
     mgr->app->address->setText(address);
     mgr->app->address_url = address;
     mgr->app->address_key->setContent(address);
     mgr->app->title->setText(mgr->app->title_map[address]);
-    GWidget* lPage = qobject_cast<GWidget*>(mgr->app->page_map->currentWidget());
-    lPage->loadPage();
 }
 //===============================================
 // layout
@@ -140,6 +140,19 @@ int GManager::showQuestion(QWidget* parent, QString text) {
     return lAnswer;
 }
 //===============================================
+int GManager::showInfo(QWidget* parent, QString text) {
+    GMessageBox lMsgBox(parent);
+    lMsgBox.setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
+    lMsgBox.setText(text);
+    lMsgBox.setIconPixmap(QPixmap(mgr->app->img_map["logo"]));
+    QPushButton* lOk = lMsgBox.addButton("Ok", QMessageBox::YesRole);
+    lMsgBox.setDefaultButton(lOk);
+    lMsgBox.setEscapeButton(lOk);
+    lMsgBox.exec();
+    int lAnswer = QMessageBox::Ok;
+    return lAnswer;
+}
+//===============================================
 // table
 //===============================================
 QVector<QString> GManager::getTables() {
@@ -157,14 +170,6 @@ int GManager::countTableData(QString table) {
     ").arg(table);
     int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
     return lCount;
-}
-//===============================================
-QVector<QVector<QString>> GManager::getTableData(QString table) {
-    QString lQuery = QString("\
-    select * from %1 \
-    ").arg(table);
-    QVector<QVector<QString>> lData = GSQLite::Instance()->queryMap(lQuery);
-    return lData;
 }
 //===============================================
 // users
@@ -185,6 +190,23 @@ void GManager::addUser(QString username, QString password) {
     insert into users (username, password) \
     values ('%1', '%2') \
     ").arg(username).arg(lPassword);
+    GSQLite::Instance()->queryWrite(lQuery);
+}
+//===============================================
+QVector<QVector<QString>> GManager::getUser() {
+    QString lQuery = QString("\
+    select * from users \
+    order by username \
+    ");
+    QVector<QVector<QString>> lData = GSQLite::Instance()->queryMap(lQuery);
+    return lData;
+}
+//===============================================
+void GManager::deleteUser(QString username) {
+    QString lQuery = QString("\
+    delete from users \
+    where username = '%1' \
+    ").arg(username);
     GSQLite::Instance()->queryWrite(lQuery);
 }
 //===============================================

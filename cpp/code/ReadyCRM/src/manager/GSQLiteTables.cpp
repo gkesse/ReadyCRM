@@ -83,8 +83,6 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
     lMainLatout->setSpacing(0);
     
     setLayout(lMainLatout);
-    
-    connect(lListBox, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
 }
 //===============================================
 GSQLiteTables::~GSQLiteTables() {
@@ -93,13 +91,14 @@ GSQLiteTables::~GSQLiteTables() {
 //===============================================
 // method
 //===============================================
-void GSQLiteTables::loadPage() {
+int GSQLiteTables::loadPage() {
     QVector<QString> lTables = GManager::Instance()->getTables();
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
         int lCount = GManager::Instance()->countTableData(lTable);
         m_showId[i]->setText(QString("%1").arg(lCount));
     }
+    return 1;
 }
 //===============================================
 void GSQLiteTables::deleteTable(QString table, int index) {

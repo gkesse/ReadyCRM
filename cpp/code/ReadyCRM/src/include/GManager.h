@@ -42,11 +42,13 @@ public:
     // table
     QVector<QString> getTables();
     int countTableData(QString table);
-    QVector<QVector<QString>> getTableData(QString table);
     // users
     int countUser(QString username);
     void addUser(QString username, QString password);
-    
+    QVector<QVector<QString>> getUser();
+    void deleteUser(QString username);
+    int showInfo(QWidget* parent, QString text);
+
 private:
     static GManager* m_instance;
     sGManager* mgr;

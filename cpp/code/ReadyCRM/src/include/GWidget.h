@@ -14,7 +14,7 @@ public:
 
 public:
     virtual void addPage(QString key, QString title, QWidget* widget, bool isDefault);
-    virtual void loadPage();
+    virtual int loadPage();
     //
     virtual void addItem(QString key, QString text);
     virtual void addItem(QString key, QString text, int icon);
