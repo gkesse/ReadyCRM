@@ -96,15 +96,15 @@ GLogin::~GLogin() {
 //===============================================
 int GLogin::loadPage() {
     reset();
+    m_username->setContent("");
+    m_password->setContent("");
     return 1;
 }
 //===============================================
 void GLogin::reset() {
     m_message->setText("");
     m_username->setContent("goto", QIcon());
-    m_username->setContent("");
     m_password->setContent("goto", QIcon());
-    m_password->setContent("");
 }
 //===============================================
 // slot
