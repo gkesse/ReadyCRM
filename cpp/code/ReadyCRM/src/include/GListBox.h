@@ -18,7 +18,6 @@ public:
     void addItem(QLayout* layout);
     void removeItem(int index);
     void clearContent();
-    void fillContent();
     
 public slots:
     void slotItemClick();
