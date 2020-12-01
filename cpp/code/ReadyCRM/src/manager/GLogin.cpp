@@ -102,7 +102,9 @@ int GLogin::loadPage() {
 void GLogin::reset() {
     m_message->setText("");
     m_username->setContent("goto", QIcon());
+    m_username->setContent("");
     m_password->setContent("goto", QIcon());
+    m_password->setContent("");
 }
 //===============================================
 // slot

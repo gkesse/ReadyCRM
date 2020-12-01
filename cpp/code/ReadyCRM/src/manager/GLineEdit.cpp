@@ -42,6 +42,10 @@ GLineEdit::~GLineEdit() {
 //===============================================
 // method
 //===============================================
+void GLineEdit::setContent(QString text) {
+    m_edit->setText(text);
+}
+//===============================================
 void GLineEdit::setContent(QString key, int icon, QColor color) {
     QPushButton* lButton = 0;
     if(key == "icon") lButton = m_icon;
