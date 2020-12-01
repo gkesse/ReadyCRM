@@ -92,6 +92,7 @@ GSQLiteTables::~GSQLiteTables() {
 // method
 //===============================================
 int GSQLiteTables::loadPage() {
+    if(!GManager::Instance()->isLogin()) return 0;
     QVector<QString> lTables = GManager::Instance()->getTables();
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
@@ -138,7 +139,7 @@ void GSQLiteTables::slotItemClick() {
     else if(lKey == "delete") {
         QString lMessage = QString("Voulez-vous supprimer la table\n%1 ?").
         arg(lTable.toUpper());
-        int lOk = GManager::Instance()->showQuestion(this, lMessage);
+        int lOk = GManager::Instance()->showQuestion(lMessage);
         if(lOk == QMessageBox::Ok) {
             deleteTable(lTable, lIndex);
         }

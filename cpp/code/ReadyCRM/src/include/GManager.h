@@ -38,7 +38,10 @@ public:
     // crypto
     QString getCrypto(QString text);
     // message
-    int showQuestion(QWidget* parent, QString text);
+    int showQuestion(QString text);
+    int showInfo(QString text);
+    // login
+    int isLogin();
     // table
     QVector<QString> getTables();
     int countTableData(QString table);
@@ -47,7 +50,6 @@ public:
     void addUser(QString username, QString password);
     QVector<QVector<QString>> getUser();
     void deleteUser(QString username);
-    int showInfo(QWidget* parent, QString text);
 
 private:
     static GManager* m_instance;

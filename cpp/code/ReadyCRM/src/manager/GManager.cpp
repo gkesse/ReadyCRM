@@ -93,8 +93,12 @@ void GManager::setPage(QString address)  {
         mgr->app->address->setText(mgr->app->address_url);
         return;
     }
+        qDebug() << mgr->app->address_url;
     GWidget* lPage = qobject_cast<GWidget*>(mgr->app->page_map->widget(lPageId));
-    if(lPage->loadPage() == 0) return;
+    if(lPage->loadPage() == 0) {
+        mgr->app->address->setText(mgr->app->address_url);
+        return;
+    }
     mgr->app->page_map->setCurrentIndex(lPageId);
     mgr->app->address->setText(address);
     mgr->app->address_url = address;
@@ -124,8 +128,8 @@ QString GManager::getCrypto(QString text) {
 //===============================================
 // message
 //===============================================
-int GManager::showQuestion(QWidget* parent, QString text) {
-    GMessageBox lMsgBox(parent);
+int GManager::showQuestion(QString text) {
+    GMessageBox lMsgBox(mgr->app->win);
     lMsgBox.setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
     lMsgBox.setText(text);
     lMsgBox.setIconPixmap(QPixmap(mgr->app->img_map["logo"]));
@@ -140,8 +144,8 @@ int GManager::showQuestion(QWidget* parent, QString text) {
     return lAnswer;
 }
 //===============================================
-int GManager::showInfo(QWidget* parent, QString text) {
-    GMessageBox lMsgBox(parent);
+int GManager::showInfo(QString text) {
+    GMessageBox lMsgBox(mgr->app->win);
     lMsgBox.setWindowFlags(Qt::Dialog | Qt::FramelessWindowHint);
     lMsgBox.setText(text);
     lMsgBox.setIconPixmap(QPixmap(mgr->app->img_map["logo"]));
@@ -151,6 +155,15 @@ int GManager::showInfo(QWidget* parent, QString text) {
     lMsgBox.exec();
     int lAnswer = QMessageBox::Ok;
     return lAnswer;
+}
+//===============================================
+// login
+//===============================================
+int GManager::isLogin() {
+    if(mgr->app->login_on == "on") return 1;
+    QString lMessage = QString("Vous n'êtes pas connectés !");
+    showInfo(lMessage);
+    return 0;
 }
 //===============================================
 // table

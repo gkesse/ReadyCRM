@@ -82,12 +82,12 @@ void GUserShow::slotItemClick() {
         QString lMessage;
         if(lUsername == "root") {
             lMessage = QString("L'utilisateur root ne peut pas être supprimé !");
-            GManager::Instance()->showInfo(this, lMessage);
+            GManager::Instance()->showInfo(lMessage);
             return;
         }
         lMessage = QString("Voulez-vous supprimer l'utilisateur\n%1 ?").
         arg(lUsername);
-        int lOk = GManager::Instance()->showQuestion(this, lMessage);
+        int lOk = GManager::Instance()->showQuestion(lMessage);
         if(lOk == QMessageBox::Ok) {
             GManager::Instance()->deleteUser(lUsername);
             m_listBox->removeItem(lIndex);
