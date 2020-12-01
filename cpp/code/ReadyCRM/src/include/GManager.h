@@ -41,7 +41,7 @@ public:
     int showQuestion(QString text);
     int showInfo(QString text);
     // login
-    int isLogin();
+    int isLogin(int isInfo = 1);
     // table
     QVector<QString> getTables();
     int countTableData(QString table);

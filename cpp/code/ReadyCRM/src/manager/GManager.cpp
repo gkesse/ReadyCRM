@@ -158,10 +158,10 @@ int GManager::showInfo(QString text) {
 //===============================================
 // login
 //===============================================
-int GManager::isLogin() {
+int GManager::isLogin(int isInfo) {
     if(mgr->app->login_on == "on") return 1;
     QString lMessage = QString("Vous n'êtes pas connectés !");
-    showInfo(lMessage);
+    if(isInfo == 1) showInfo(lMessage);
     return 0;
 }
 //===============================================
