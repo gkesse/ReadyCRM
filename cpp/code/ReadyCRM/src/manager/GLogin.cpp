@@ -95,6 +95,8 @@ GLogin::~GLogin() {
 // method
 //===============================================
 int GLogin::loadPage() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->login_on == "on") return 0;
     reset();
     m_username->setContent("");
     m_password->setContent("");
@@ -110,6 +112,7 @@ void GLogin::reset() {
 // slot
 //===============================================
 void GLogin::slotItemClick() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
     if(lWidgetId == "cancel") {
@@ -140,5 +143,6 @@ void GLogin::slotItemClick() {
         return;
     }
     m_message->setText("Votre connexion a réussi");
+    lApp->login_on = "off";
 }
 //===============================================

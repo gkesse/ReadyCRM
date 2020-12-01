@@ -124,7 +124,6 @@ void GTitleBar::slotItemClick() {
         lApp->win->close();
     }
     else if(lWidgetId == "login") {
-        if(GManager::Instance()->isLogin(0)) return;
         GManager::Instance()->setPage("home/login");
     }
 }
