@@ -1,6 +1,7 @@
 //===============================================
 #include "GQt.h"
 #include "GWidget.h"
+#include "GSQLite.h"
 #include "GManager.h"
 //===============================================
 GQt* GQt::m_instance = 0;
@@ -22,6 +23,7 @@ GQt* GQt::Instance() {
 //===============================================
 void GQt::run(int argc, char** argv) {
     QApplication lApp(argc, argv);
+    GSQLite::Instance()->createTables();
     GManager::Instance()->loadFont();
     GManager::Instance()->loadImg();
     GManager::Instance()->loadStyle();

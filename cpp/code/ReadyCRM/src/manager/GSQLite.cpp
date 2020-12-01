@@ -6,7 +6,6 @@ GSQLite* GSQLite::m_instance = 0;
 //===============================================
 GSQLite::GSQLite() {
     open();
-    createTables();
 }
 //===============================================
 GSQLite::~GSQLite() {
