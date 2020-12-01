@@ -15,6 +15,7 @@ HEADERS +=\
     $$PWD/include/GAddressKey.h \
     $$PWD/include/GTitleBar.h \
     $$PWD/include/GLogin.h \
+    $$PWD/include/GProfil.h \
     $$PWD/include/GUserAdd.h \
     $$PWD/include/GUserShow.h \
     $$PWD/include/GUserMap.h \
@@ -41,6 +42,7 @@ SOURCES +=\
     $$PWD/manager/GAddressKey.cpp \
     $$PWD/manager/GTitleBar.cpp \
     $$PWD/manager/GLogin.cpp \
+    $$PWD/manager/GProfil.cpp \
     $$PWD/manager/GUserAdd.cpp \
     $$PWD/manager/GUserShow.cpp \
     $$PWD/manager/GUserMap.cpp \

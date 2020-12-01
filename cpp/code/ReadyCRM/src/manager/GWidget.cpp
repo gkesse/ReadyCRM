@@ -9,6 +9,7 @@
 #include "GAddressBar.h"
 #include "GAddressKey.h"
 #include "GLogin.h"
+#include "GProfil.h"
 #include "GUserAdd.h"
 #include "GUserShow.h"
 #include "GUserMap.h"
@@ -43,6 +44,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
     if(key == "login") return new GLogin(parent);
+    if(key == "profil") return new GProfil(parent);
     if(key == "sqlitetables") return new GSQLiteTables(parent);
     if(key == "useradd") return new GUserAdd(parent);
     if(key == "usershow") return new GUserShow(parent);
