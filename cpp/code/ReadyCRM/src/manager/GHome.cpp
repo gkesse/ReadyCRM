@@ -42,6 +42,17 @@ int GHome::loadPage() {
 //===============================================
 void GHome::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->widget_id == "home/login") {
+        if(lApp->login_on == "on") {
+            QString lMessage = QString("Voulez-vous vous déconnecter ?");
+            int lOk = GManager::Instance()->showQuestion(lMessage);
+            if(lOk == QMessageBox::Ok) {
+                lApp->login_on = "off";
+                lApp->login_titlebar->setText("Se Connecter");
+                lApp->login_home->setText("Connexion");
+            }
+        }
+    }
     GManager::Instance()->setPage(lApp->widget_id);
 }
 //===============================================

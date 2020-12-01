@@ -147,5 +147,7 @@ void GLogin::slotItemClick() {
     GManager::Instance()->setPage("home");
     lApp->login_titlebar->setText(lUsername);
     lApp->login_home->setText("Déconnexion");
+    GManager::Instance()->saveData("username", lUsername);
+    GManager::Instance()->saveData("password", lPassword);
 }
 //===============================================
