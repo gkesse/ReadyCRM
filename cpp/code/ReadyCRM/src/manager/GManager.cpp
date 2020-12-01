@@ -23,7 +23,6 @@ GManager::GManager(QObject* parent) {
     mgr->app->profil_size = 150;
     mgr->app->grip_size = 16;
     mgr->app->login_on = "off";
-    mgr->app->nok_color = "red";
     mgr->app->sqlite_db_path = "data/sqlite/config.dat";
     // picto
     m_QtAwesome = new QtAwesome(qApp);

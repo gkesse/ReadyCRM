@@ -98,6 +98,7 @@ GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
     connect(lProfil, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lUsername, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lPassword, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
+    connect(lConfirm, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lLogin, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lCancel, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
@@ -113,10 +114,6 @@ void GUserAdd::reset() {
     m_username->setContent("goto", false);
     m_password->setContent("goto", false);
     m_confirm->setContent("goto", false);
-    
-    m_message->setProperty("check", "nok");
-    m_message->style()->unpolish(m_message);
-    m_message->style()->polish(m_message);
 }
 //===============================================
 // slot
@@ -125,14 +122,23 @@ void GUserAdd::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
+    
     if(lWidgetId == "cancel") {
         GManager::Instance()->setPage("home/sqlite");
         return;
     }
+    
     if(lWidgetId == "profil") {
         return;
     }
     
+    if(lWidgetId == "username") {if(lApp->widget_id == "icon") {return;}}
+    if(lWidgetId == "password") {if(lApp->widget_id == "icon") {return;}}
+    if(lWidgetId == "confirm") {if(lApp->widget_id == "icon") {return;}}
+    if(lWidgetId == "username") {if(lApp->widget_id == "goto") {m_username->setContent("");}}
+    if(lWidgetId == "password") {if(lApp->widget_id == "goto") {return;}}
+    if(lWidgetId == "confirm") {if(lApp->widget_id == "goto") {m_confirm->setContent("");}}
+
     reset();
     
     QString lUsername; m_username->getData(lUsername);
@@ -141,36 +147,36 @@ void GUserAdd::slotItemClick() {
     
     if(lUsername == "") {
         m_message->setText("Le nom d'utilisateur est obligatoire");
-        m_username->setContent("goto", fa::times, lApp->nok_color);
+        m_username->setContent("goto", fa::times, "red");
         return;
     }
     if(lPassword == "") {
         m_message->setText("Le mot de passe est obligatoire");
-        m_password->setContent("goto", fa::times, lApp->nok_color);
+        m_password->setContent("goto", fa::times, "red");
         return;
     }
     if(lConfirm == "") {
         m_message->setText("La confirmation du mot de passe est obligatoire");
-        m_confirm->setContent("goto", fa::times, lApp->nok_color);
+        m_confirm->setContent("goto", fa::times, "red");
         return;
     }
-    if(lPassword != lConfirm) {
-        m_message->setText("Les mots de passe sont incorrects");
-        m_password->setContent("goto", fa::times, lApp->nok_color);
-        m_confirm->setContent("goto", fa::times, lApp->nok_color);
-        return;
-    }
+
     int lCount = GManager::Instance()->countUser(lUsername);
     if(lCount > 0) {
         m_message->setText("Cet utilisateur existe déjà");
+        m_username->setContent("goto", fa::times, "red");
         return;
     }
-    
+
+    if(lPassword != lConfirm) {
+        m_message->setText("Les mots de passe sont incorrects");
+        m_confirm->setContent("goto", fa::times, "red");
+        return;
+    }
+        
     GManager::Instance()->addUser(lUsername, lPassword);
-    
     m_message->setText("L'utilisateur a été ajouté avec succès");
-    m_message->setProperty("check", "ok");
-    m_message->style()->unpolish(m_message);
-    m_message->style()->polish(m_message);
+    
+    GManager::Instance()->setPage("home/sqlite");
 }
 //===============================================

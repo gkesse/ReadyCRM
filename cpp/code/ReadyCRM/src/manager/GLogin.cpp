@@ -158,9 +158,12 @@ void GLogin::slotItemClick() {
     
     m_message->setText("Votre connexion a réussi");
     lApp->login_on = "on";
+    
     GManager::Instance()->setPage("home");
+    
     lApp->login_titlebar->setText(lUsername);
     lApp->login_home->setText("Déconnexion");
+    
     GManager::Instance()->saveData("username", lUsername);
     GManager::Instance()->saveData("password", lPassword);
 }

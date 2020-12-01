@@ -106,8 +106,6 @@ struct _sGApp {
     QString login_on;
     QPushButton* login_titlebar;
     QPushButton* login_home;
-    // nok
-    QColor nok_color;
     // sqlite
     QString sqlite_db_path;
 };
