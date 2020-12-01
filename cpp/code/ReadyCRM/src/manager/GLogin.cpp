@@ -144,5 +144,6 @@ void GLogin::slotItemClick() {
     m_message->setText("Votre connexion a réussi");
     lApp->login_on = "on";
     GManager::Instance()->setPage("home");
+    lApp->login_icon->setText(lUsername);
 }
 //===============================================

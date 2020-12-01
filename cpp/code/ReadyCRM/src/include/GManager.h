@@ -98,6 +98,7 @@ struct _sGApp {
     int grip_size;
     // login
     QString login_on;
+    QPushButton* login_icon;
     // nok
     QColor nok_color;
     // sqlite

@@ -25,6 +25,7 @@ GTitleBar::GTitleBar(QWidget* parent) : GWidget(parent) {
     
     QPushButton* lLogin = new QPushButton;
     m_login = lLogin;
+    lApp->login_icon = lLogin;
     lLogin->setObjectName("login");
     lLogin->setText("Se Connecter");
     lLogin->setIcon(GManager::Instance()->loadPicto(fa::user, lApp->picto_color));
