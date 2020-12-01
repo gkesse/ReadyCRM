@@ -29,8 +29,11 @@ GSchema::~GSchema() {
 // method
 //===============================================
 int GSchema::loadPage() {
+    if(!GManager::Instance()->isLogin()) return 0;
+
     sGApp* lApp = GManager::Instance()->getData()->app;
-    QStringList lMap = lApp->address_url.split("/");
+
+    QStringList lMap = lApp->address_new.split("/");
     QString lTable = lMap[2];
     
     QString lQuery = QString("\

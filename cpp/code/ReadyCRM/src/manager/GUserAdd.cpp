@@ -53,14 +53,14 @@ GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
     lCancel->setCursor(Qt::PointingHandCursor);
     m_widgetId[lCancel] = "cancel";
         
-    QPushButton* lLogin = new QPushButton;
-    lLogin->setObjectName("login");
-    lLogin->setText("Se Connecter");
-    lLogin->setCursor(Qt::PointingHandCursor);
-    m_widgetId[lLogin] = "login";
+    QPushButton* lAdd = new QPushButton;
+    lAdd->setObjectName("add");
+    lAdd->setText("Ajouter");
+    lAdd->setCursor(Qt::PointingHandCursor);
+    m_widgetId[lAdd] = "add";
         
     QHBoxLayout* lButtonLayout = new QHBoxLayout;
-    lButtonLayout->addWidget(lLogin);
+    lButtonLayout->addWidget(lAdd);
     lButtonLayout->addWidget(lCancel);
     lButtonLayout->setAlignment(Qt::AlignRight);
     lButtonLayout->setMargin(0);
@@ -99,7 +99,7 @@ GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
     connect(lUsername, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lPassword, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
     connect(lConfirm, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
-    connect(lLogin, SIGNAL(clicked()), this, SLOT(slotItemClick()));
+    connect(lAdd, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lCancel, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================

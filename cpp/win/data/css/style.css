@@ -165,17 +165,17 @@ GUserAdd QFrame#confirm {
     padding: 2px 5px;
 }
 GUserAdd QPushButton#cancel,
-GUserAdd QPushButton#login {
+GUserAdd QPushButton#add {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 10px;
 }
 GUserAdd QPushButton#cancel:hover,
-GUserAdd QPushButton#login:hover {
+GUserAdd QPushButton#add:hover {
     background-color: #303050;
 }
 GUserAdd QPushButton#cancel:pressed,
-GUserAdd QPushButton#login:pressed {
+GUserAdd QPushButton#add:pressed {
     background-color: transparent;
 }
 /*===============================================*/

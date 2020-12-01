@@ -94,6 +94,7 @@ struct _sGApp {
     // address
     QLineEdit* address;
     QString address_url;
+    QString address_new;
     GWidget* address_key;
     // title
     QLabel* title;
