@@ -109,6 +109,9 @@ struct _sGApp {
     QPushButton* login_home;
     // sqlite
     QString sqlite_db_path;
+    // root
+    QString root_user;
+    QString root_pass;
 };
 //===============================================
 #endif

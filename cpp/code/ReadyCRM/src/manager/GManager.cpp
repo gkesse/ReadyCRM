@@ -24,6 +24,8 @@ GManager::GManager(QObject* parent) {
     mgr->app->grip_size = 16;
     mgr->app->login_on = "off";
     mgr->app->sqlite_db_path = "data/sqlite/config.dat";
+    mgr->app->root_user = "root";
+    mgr->app->root_pass = "super";
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }

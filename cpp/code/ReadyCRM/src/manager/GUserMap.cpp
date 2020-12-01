@@ -58,6 +58,7 @@ void GUserMap::fillContent() {
         QPushButton* lDelete = new QPushButton;
         lDelete->setObjectName("delete");
         lDelete->setIcon(GManager::Instance()->loadPicto(fa::trash, lApp->picto_color));
+        lDelete->setToolTip("Supprimer");
         lDelete->setCursor(Qt::PointingHandCursor);
         m_widgetId[lDelete] = QString("delete/%1/%2").arg(lDataRow[0]).arg(i);
 
@@ -77,17 +78,17 @@ void GUserMap::fillContent() {
 // slot
 //===============================================
 void GUserMap::slotItemClick() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
 
     QStringList lMap = lWidgetId.split("/");
     QString lKey = lMap[0];
     QString lUsername = lMap[1];
-    int lIndex = lMap[2].toInt();
 
     if(lKey == "delete") {
         QString lMessage;
-        if(lUsername == "root") {
+        if(lUsername == lApp->root_user) {
             lMessage = QString("L'utilisateur root ne peut pas être supprimé !");
             GManager::Instance()->showInfo(lMessage);
             return;
@@ -97,7 +98,7 @@ void GUserMap::slotItemClick() {
         int lOk = GManager::Instance()->showQuestion(lMessage);
         if(lOk == QMessageBox::Ok) {
             GManager::Instance()->deleteUser(lUsername);
-            m_listBox->removeItem(lIndex);
+            fillContent();
         }
     }
 }
