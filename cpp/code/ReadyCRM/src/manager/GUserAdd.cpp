@@ -167,8 +167,8 @@ void GUserAdd::slotItemClick() {
     }
     
     GManager::Instance()->addUser(lUsername, lPassword);
-    m_message->setText("L'utilisateur a été ajouté avec succès");
     
+    m_message->setText("L'utilisateur a été ajouté avec succès");
     m_message->setProperty("check", "ok");
     m_message->style()->unpolish(m_message);
     m_message->style()->polish(m_message);

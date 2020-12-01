@@ -64,6 +64,7 @@ GUserMap::~GUserMap() {
 // method
 //===============================================
 int GUserMap::loadPage() {
+    if(!GManager::Instance()->isLogin()) return 0;
     return 1;
 }
 //===============================================

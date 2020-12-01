@@ -94,6 +94,11 @@ GLogin::~GLogin() {
 //===============================================
 // method
 //===============================================
+int GLogin::loadPage() {
+    reset();
+    return 1;
+}
+//===============================================
 void GLogin::reset() {
     m_message->setText("");
     m_username->setContent("goto", QIcon());
@@ -122,7 +127,16 @@ void GLogin::slotItemClick() {
         m_password->setContent("goto", fa::times, "red");
         return;
     }
-    QString lLogin = lUsername + "|" + lPassword;
-    qDebug() << GManager::Instance()->getCrypto(lLogin);
+    int lCount = GManager::Instance()->countUser(lUsername);
+    if(lCount == 0) {
+        m_message->setText("Cet utilisateur n'existe pas");
+        return;
+    }
+    lCount = GManager::Instance()->countUser(lUsername, lPassword);
+    if(lCount == 0) {
+        m_message->setText("Le mot de passe est incorrect");
+        return;
+    }
+    m_message->setText("Votre connexion a réussi");
 }
 //===============================================

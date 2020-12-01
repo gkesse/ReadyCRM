@@ -195,6 +195,18 @@ int GManager::countUser(QString username) {
     return lCount;
 }
 //===============================================
+int GManager::countUser(QString username, QString password) {
+    QString lPassword = username + "|" + password;
+    lPassword = getCrypto(lPassword);
+    QString lQuery = QString("\
+    select count(*) from users \
+    where username = '%1' \
+    and password = '%2' \
+    ").arg(username).arg(lPassword);
+    int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
+    return lCount;
+}
+//===============================================
 void GManager::addUser(QString username, QString password) {
     QString lPassword = username + "|" + password;
     lPassword = getCrypto(lPassword);

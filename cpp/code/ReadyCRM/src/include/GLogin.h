@@ -13,6 +13,7 @@ public:
     ~GLogin();
     
 public:
+    int loadPage();
     void reset();
     
 public slots:

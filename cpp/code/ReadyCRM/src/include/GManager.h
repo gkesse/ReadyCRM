@@ -47,6 +47,7 @@ public:
     int countTableData(QString table);
     // users
     int countUser(QString username);
+    int countUser(QString username, QString password);
     void addUser(QString username, QString password);
     QVector<QVector<QString>> getUser();
     void deleteUser(QString username);

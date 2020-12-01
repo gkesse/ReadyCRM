@@ -122,48 +122,48 @@ GLogin QPushButton#login:pressed {
     background-color: transparent;
 }
 /*===============================================*/
-/* GUserMap */
-GUserMap * {
+/* GUserAdd */
+GUserAdd * {
     background-color: transparent;
 }
-GUserMap QFrame#content {
+GUserAdd QFrame#content {
     border: 1px solid #ffffff;
     border-radius: 10px;
     max-width: 500px;
     padding: 10px;
 }
-GUserMap QPushButton#profil {
+GUserAdd QPushButton#profil {
     background-color: #503030;
     border-radius: 100px;
     min-width: 200px;
     min-height: 200px;
     margin: 20px 0px 0px 0px;
 }
-GUserMap QLabel#message {
+GUserAdd QLabel#message {
     color: #ff0000;
 }
-GUserMap QLabel#message[check="ok"] {
+GUserAdd QLabel#message[check="ok"] {
     color: lime;
 }
-GUserMap QFrame#username,
-GUserMap QFrame#password,
-GUserMap QFrame#confirm {
+GUserAdd QFrame#username,
+GUserAdd QFrame#password,
+GUserAdd QFrame#confirm {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 5px;
 }
-GUserMap QPushButton#cancel,
-GUserMap QPushButton#login {
+GUserAdd QPushButton#cancel,
+GUserAdd QPushButton#login {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 10px;
 }
-GUserMap QPushButton#cancel:hover,
-GUserMap QPushButton#login:hover {
+GUserAdd QPushButton#cancel:hover,
+GUserAdd QPushButton#login:hover {
     background-color: #303050;
 }
-GUserMap QPushButton#cancel:pressed,
-GUserMap QPushButton#login:pressed {
+GUserAdd QPushButton#cancel:pressed,
+GUserAdd QPushButton#login:pressed {
     background-color: transparent;
 }
 /*===============================================*/
@@ -190,11 +190,11 @@ GSQLiteTables QPushButton#show {
     padding: 2px 10px;
 }
 /*===============================================*/
-/* GUserShow */
-GUserShow {
+/* GUserMap */
+GUserMap {
     border: 1px solid #ffffff;
 }
-GUserShow QPushButton#title {
+GUserMap QPushButton#title {
     text-align: left;
 }
 /*===============================================*/
