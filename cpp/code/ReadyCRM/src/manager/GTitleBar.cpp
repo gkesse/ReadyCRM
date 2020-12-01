@@ -123,6 +123,10 @@ void GTitleBar::slotItemClick() {
     else if(lWidgetId == "close") {
         lApp->win->close();
     }
+    else if(lWidgetId == "login") {
+        if(GManager::Instance()->isLogin()) return;
+        GManager::Instance()->setPage("home/login");
+    }
 }
 //===============================================
 void GTitleBar::mousePressEvent(QMouseEvent *event) {
