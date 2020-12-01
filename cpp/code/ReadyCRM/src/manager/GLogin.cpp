@@ -143,6 +143,6 @@ void GLogin::slotItemClick() {
         return;
     }
     m_message->setText("Votre connexion a réussi");
-    lApp->login_on = "off";
+    lApp->login_on = "on";
 }
 //===============================================
