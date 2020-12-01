@@ -61,8 +61,8 @@ GTitleBar::GTitleBar(QWidget* parent) : GWidget(parent) {
     lMainLayout->addWidget(lLogo);
     lMainLayout->addWidget(lAppName);
     lMainLayout->addWidget(lTitle, 1);
-    lMainLayout->addWidget(lFullscreen);
     lMainLayout->addWidget(lLogin);
+    lMainLayout->addWidget(lFullscreen);
     lMainLayout->addWidget(lMinimize);
     lMainLayout->addWidget(lMaximize);
     lMainLayout->addWidget(lClose);
