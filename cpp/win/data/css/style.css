@@ -47,6 +47,14 @@ GTitleBar QPushButton#login {
     padding: 2px 10px;
 }
 /*===============================================*/
+/* GProfil */
+GProfil QPushButton {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+    text-align: left;
+}
+/*===============================================*/
 /* GAddressBar */
 GAddressBar * {
     background-color: transparent;

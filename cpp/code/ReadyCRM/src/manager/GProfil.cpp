@@ -11,11 +11,13 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     
     QPushButton* lProfilLabel = new QPushButton;
     lProfilLabel->setObjectName("profil_label");
+    lProfilLabel->setIcon(GManager::Instance()->loadPicto(fa::user, lApp->picto_color));
     lProfilLabel->setText("Profil");
     m_widgetId[lProfilLabel] = "profil_label";
     
     QVBoxLayout* lContentLayout = new QVBoxLayout;
     lContentLayout->addWidget(lProfilLabel);
+    lContentLayout->setAlignment(Qt::AlignTop);
     lContentLayout->setMargin(0);
     lContentLayout->setSpacing(10);
 
@@ -25,7 +27,6 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
     lMainLayout->addWidget(lContent);
-    //lMainLayout->setAlignment(Qt::AlignCenter);
     lMainLayout->setMargin(0);
     lMainLayout->setSpacing(0);
 

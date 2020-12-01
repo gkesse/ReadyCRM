@@ -41,10 +41,16 @@ public:
     int showQuestion(QString text);
     int showInfo(QString text);
     // login
-    int isLogin(int isInfo = 1);
+    int isLogin();
     // table
     QVector<QString> getTables();
     int countTableData(QString table);
+    // config_data
+    void saveData(QString key, QString value);
+    QString loadData(QString key);
+    int countData(QString key);
+    void updateData(QString key, QString value);
+    void insertData(QString key, QString value);
     // users
     int countUser(QString username);
     int countUser(QString username, QString password);

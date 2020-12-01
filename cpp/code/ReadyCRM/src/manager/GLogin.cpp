@@ -95,7 +95,8 @@ GLogin::~GLogin() {
 // method
 //===============================================
 int GLogin::loadPage() {
-    if(GManager::Instance()->isLogin(0)) return 0;
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    if(lApp->login_on == "on") return 0;
     reset();
     m_username->setContent("");
     m_password->setContent("");

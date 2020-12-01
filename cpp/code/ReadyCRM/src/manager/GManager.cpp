@@ -158,10 +158,10 @@ int GManager::showInfo(QString text) {
 //===============================================
 // login
 //===============================================
-int GManager::isLogin(int isInfo) {
+int GManager::isLogin() {
     if(mgr->app->login_on == "on") return 1;
     QString lMessage = QString("Vous n'êtes pas connectés !");
-    if(isInfo == 1) showInfo(lMessage);
+    showInfo(lMessage);
     return 0;
 }
 //===============================================
@@ -182,6 +182,49 @@ int GManager::countTableData(QString table) {
     ").arg(table);
     int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
     return lCount;
+}
+//===============================================
+// config_data
+//===============================================
+void GManager::saveData(QString key, QString value) {
+    int lCount = countData(key);
+    if(lCount > 0) updateData(key, value);
+    else insertData(key, value);
+}
+//===============================================
+QString GManager::loadData(QString key) {
+    QString lQuery = QString("\
+    select config_value from config_data \
+    where config_key = '%1' \
+    ").arg(key);
+    QString lData = GSQLite::Instance()->queryValue(lQuery);
+    return lData;
+}
+//===============================================
+int GManager::countData(QString key) {
+    QString lQuery = QString("\
+    select count(*) from config_data \
+    where config_key = '%1' \
+    ").arg(key);
+    int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
+    return lCount;
+}
+//===============================================
+void GManager::updateData(QString key, QString value) {
+    QString lQuery = QString("\
+    update config_data \
+    set config_value = '%2' \
+    where config_key = '%1' \
+    ").arg(key).arg(value);
+    GSQLite::Instance()->queryWrite(lQuery);
+}
+//===============================================
+void GManager::insertData(QString key, QString value) {
+    QString lQuery = QString("\
+    insert into config_data (config_key, config_value) \
+    values ('%1', '%2') \
+    ").arg(key).arg(value);
+    GSQLite::Instance()->queryWrite(lQuery);
 }
 //===============================================
 // users
