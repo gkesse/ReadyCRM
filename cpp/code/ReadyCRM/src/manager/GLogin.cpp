@@ -121,9 +121,9 @@ void GLogin::slotItemClick() {
     }
     
     if(lWidgetId == "username") {if(lApp->widget_id == "icon") {return;}}
-    if(lWidgetId == "username") {if(lApp->widget_id == "goto") {return;}}
     if(lWidgetId == "password") {if(lApp->widget_id == "icon") {return;}}
-    if(lWidgetId == "password") {if(lApp->widget_id == "goto") {return;}}
+    if(lWidgetId == "username") {if(lApp->widget_id == "goto") {m_username->setContent("");}}
+    if(lWidgetId == "password") {if(lApp->widget_id == "goto") {m_password->setContent("");}}
 
     reset();
     QString lUsername; m_username->getData(lUsername);

@@ -25,7 +25,7 @@ public:
     //
     virtual void setContent(QString text);
     virtual void setContent(QString key, int icon, QColor color);
-    virtual void setContent(QString key, int data)
+    virtual void setContent(QString key, int data);
     //
     virtual void setOption(QString key, int data);
     virtual void setOption(int mode);
