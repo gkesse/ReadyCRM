@@ -26,7 +26,8 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     addPage("home", "Accueil", GWidget::Create("home"), 1);
     addPage("home/login", "Connexion", GWidget::Create("login"));
     addPage("home/sqlite", "Tables", GWidget::Create("sqlitetables"));
-    addPage("home/sqlite/users", "Afficher le schéma", GWidget::Create("usershow"));
+    addPage("home/sqlite/users", "Afficher le schéma", GWidget::Create("usermap"));
+    addPage("home/sqlite/users/show", "Afficher le schéma", GWidget::Create("usershow"));
     addPage("home/sqlite/users/schema", "Afficher le schéma", GWidget::Create("schema"));
     addPage("home/sqlite/users/add", "Ajouter un utilisateur", GWidget::Create("useradd"));
     addPage("home/sqlite/config_data/schema", "Afficher le schéma", GWidget::Create("schema"));

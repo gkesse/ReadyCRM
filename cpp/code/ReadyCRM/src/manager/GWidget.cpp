@@ -11,6 +11,7 @@
 #include "GLogin.h"
 #include "GUserAdd.h"
 #include "GUserShow.h"
+#include "GUserMap.h"
 #include "GSchema.h"
 // page
 #include "GWindow.h"
@@ -45,6 +46,7 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "sqlitetables") return new GSQLiteTables(parent);
     if(key == "useradd") return new GUserAdd(parent);
     if(key == "usershow") return new GUserShow(parent);
+    if(key == "usermap") return new GUserMap(parent);
     if(key == "schema") return new GSchema(parent);
     if(key == "builder") return new GBuilder(parent);
     // default

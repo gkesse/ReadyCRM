@@ -93,7 +93,6 @@ void GManager::setPage(QString address)  {
         mgr->app->address->setText(mgr->app->address_url);
         return;
     }
-        qDebug() << mgr->app->address_url;
     GWidget* lPage = qobject_cast<GWidget*>(mgr->app->page_map->widget(lPageId));
     if(lPage->loadPage() == 0) {
         mgr->app->address->setText(mgr->app->address_url);

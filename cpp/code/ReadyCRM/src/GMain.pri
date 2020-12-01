@@ -17,6 +17,7 @@ HEADERS +=\
     $$PWD/include/GLogin.h \
     $$PWD/include/GUserAdd.h \
     $$PWD/include/GUserShow.h \
+    $$PWD/include/GUserMap.h \
     $$PWD/include/GSchema.h \
     $$PWD/include/GWindow.h \
     $$PWD/include/GHome.h \
@@ -42,6 +43,7 @@ SOURCES +=\
     $$PWD/manager/GLogin.cpp \
     $$PWD/manager/GUserAdd.cpp \
     $$PWD/manager/GUserShow.cpp \
+    $$PWD/manager/GUserMap.cpp \
     $$PWD/manager/GSchema.cpp \
     $$PWD/manager/GWindow.cpp \
     $$PWD/manager/GHome.cpp \
