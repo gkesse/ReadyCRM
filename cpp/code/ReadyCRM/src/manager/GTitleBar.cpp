@@ -23,6 +23,14 @@ GTitleBar::GTitleBar(QWidget* parent) : GWidget(parent) {
     lTitle->setText("Acceuil");
     lTitle->setAlignment(Qt::AlignCenter);
     
+    QPushButton* lLogin = new QPushButton;
+    m_login = lLogin;
+    lLogin->setObjectName("login");
+    lLogin->setText("Se Connecter");
+    lLogin->setIcon(GManager::Instance()->loadPicto(fa::user, lApp->picto_color));
+    lLogin->setCursor(Qt::PointingHandCursor);
+    m_widgetId[lLogin] = "login";
+
     QPushButton* lFullscreen = new QPushButton;
     m_fullscreen = lFullscreen;
     lFullscreen->setObjectName("fullscreen");
@@ -54,6 +62,7 @@ GTitleBar::GTitleBar(QWidget* parent) : GWidget(parent) {
     lMainLayout->addWidget(lAppName);
     lMainLayout->addWidget(lTitle, 1);
     lMainLayout->addWidget(lFullscreen);
+    lMainLayout->addWidget(lLogin);
     lMainLayout->addWidget(lMinimize);
     lMainLayout->addWidget(lMaximize);
     lMainLayout->addWidget(lClose);
@@ -63,6 +72,7 @@ GTitleBar::GTitleBar(QWidget* parent) : GWidget(parent) {
     setLayout(lMainLayout);
     
     connect(lLogo, SIGNAL(clicked()), this, SLOT(slotItemClick()));
+    connect(lLogin, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lFullscreen, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lMinimize, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lMaximize, SIGNAL(clicked()), this, SLOT(slotItemClick()));

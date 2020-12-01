@@ -24,6 +24,7 @@ private:
     QMap<QWidget*, QString> m_widgetId;
     QPushButton* m_maximize;
     QPushButton* m_fullscreen;
+    QPushButton* m_login;
     QPoint m_pressPos;
     bool m_pressFlag;
 };
