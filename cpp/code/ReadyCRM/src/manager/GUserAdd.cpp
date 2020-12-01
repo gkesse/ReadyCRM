@@ -110,9 +110,9 @@ GUserAdd::~GUserAdd() {
 //===============================================
 void GUserAdd::reset() {
     m_message->setText("");
-    m_username->setContent("goto", QIcon());
-    m_password->setContent("goto", QIcon());
-    m_confirm->setContent("goto", QIcon());
+    m_username->setContent("goto", false);
+    m_password->setContent("goto", false);
+    m_confirm->setContent("goto", false);
     
     m_message->setProperty("check", "nok");
     m_message->style()->unpolish(m_message);

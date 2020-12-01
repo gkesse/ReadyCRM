@@ -44,6 +44,7 @@ GLineEdit::~GLineEdit() {
 //===============================================
 void GLineEdit::setContent(QString text) {
     m_edit->setText(text);
+    if(text == "") m_goto->setVisible(false);
 }
 //===============================================
 void GLineEdit::setContent(QString key, int icon, QColor color) {

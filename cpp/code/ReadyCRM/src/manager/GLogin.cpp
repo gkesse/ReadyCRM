@@ -115,19 +115,22 @@ void GLogin::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
+        
     if(lWidgetId == "cancel") {
         GManager::Instance()->setPage("home");
         return;
     }
-    
-    if(lWidgetId == "username") {if(lApp->widget_id == "icon") {return;}}
-    if(lWidgetId == "password") {if(lApp->widget_id == "icon") {return;}}
+
+    if(lWidgetId == "username") {if(lApp->widget_id == "icon") {m_username->setContent("");}}
+    if(lWidgetId == "password") {if(lApp->widget_id == "icon") {m_password->setContent("");}}
     if(lWidgetId == "username") {if(lApp->widget_id == "goto") {m_username->setContent("");}}
     if(lWidgetId == "password") {if(lApp->widget_id == "goto") {m_password->setContent("");}}
-
+    
     reset();
+    
     QString lUsername; m_username->getData(lUsername);
     QString lPassword; m_password->getData(lPassword);
+    
     if(lUsername == "") {
         m_message->setText("Le nom d'utilisateur est obligatoire");
         m_username->setContent("goto", fa::times, "red");
@@ -138,16 +141,21 @@ void GLogin::slotItemClick() {
         m_password->setContent("goto", fa::times, "red");
         return;
     }
+    
     int lCount = GManager::Instance()->countUser(lUsername);
     if(lCount == 0) {
         m_message->setText("Cet utilisateur n'existe pas");
+        m_username->setContent("goto", fa::times, "red");
         return;
     }
+    
     lCount = GManager::Instance()->countUser(lUsername, lPassword);
     if(lCount == 0) {
         m_message->setText("Le mot de passe est incorrect");
+        m_password->setContent("goto", fa::times, "red");
         return;
     }
+    
     m_message->setText("Votre connexion a réussi");
     lApp->login_on = "on";
     GManager::Instance()->setPage("home");
