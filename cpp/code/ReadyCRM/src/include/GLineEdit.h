@@ -15,7 +15,7 @@ public:
 public:
     void setContent(QString text);
     void setContent(QString key, int icon, QColor color);
-    void setContent(QString key, QIcon icon);
+    void setContent(QString key, int data)
     void setOption(int mode);
     void getData(QString& data);
     

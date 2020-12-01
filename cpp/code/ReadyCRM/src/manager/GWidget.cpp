@@ -69,7 +69,7 @@ void GWidget::removeItem(int index) {}
 //
 void GWidget::setContent(QString text) {}
 void GWidget::setContent(QString key, int icon, QColor color) {}
-void GWidget::setContent(QString key, QIcon icon) {}
+void GWidget::ssetContent(QString key, int data) {}
 //
 void GWidget::setOption(QString key, int data) {}
 void GWidget::setOption(int mode) {}

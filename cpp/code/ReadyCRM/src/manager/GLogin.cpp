@@ -105,8 +105,8 @@ int GLogin::loadPage() {
 //===============================================
 void GLogin::reset() {
     m_message->setText("");
-    m_username->setContent("goto", QIcon());
-    m_password->setContent("goto", QIcon());
+    m_username->setContent("goto", false);
+    m_password->setContent("goto", false);
 }
 //===============================================
 // slot
@@ -119,6 +119,12 @@ void GLogin::slotItemClick() {
         GManager::Instance()->setPage("home");
         return;
     }
+    
+    if(lWidgetId == "username") {if(lApp->widget_id == "icon") {return;}}
+    if(lWidgetId == "username") {if(lApp->widget_id == "goto") {return;}}
+    if(lWidgetId == "password") {if(lApp->widget_id == "icon") {return;}}
+    if(lWidgetId == "password") {if(lApp->widget_id == "goto") {return;}}
+
     reset();
     QString lUsername; m_username->getData(lUsername);
     QString lPassword; m_password->getData(lPassword);

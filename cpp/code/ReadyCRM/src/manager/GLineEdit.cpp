@@ -52,14 +52,15 @@ void GLineEdit::setContent(QString key, int icon, QColor color) {
     else if(key == "goto") lButton = m_goto;
     if(lButton == 0) return;
     lButton->setIcon(GManager::Instance()->loadPicto(icon, color));
+    lButton->setVisible(true);
 }
 //===============================================
-void GLineEdit::setContent(QString key, QIcon icon) {
+void GLineEdit::setContent(QString key, int data) {
     QPushButton* lButton = 0;
     if(key == "icon") lButton = m_icon;
     else if(key == "goto") lButton = m_goto;
     if(lButton == 0) return;
-    lButton->setIcon(icon);
+    lButton->setVisible(data);
 }
 //===============================================
 void GLineEdit::setOption(int mode) {
