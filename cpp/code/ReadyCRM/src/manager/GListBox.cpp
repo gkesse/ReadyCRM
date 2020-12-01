@@ -36,6 +36,7 @@ GListBox::~GListBox() {
 // method
 //===============================================
 void GListBox::addItem(QString key, QString text) {
+    sGApp* lApp = GManager::Instance()->getData()->app;
     QPushButton* lButton = new QPushButton;
     lApp->widget = lButton;
     lButton->setObjectName("item");
