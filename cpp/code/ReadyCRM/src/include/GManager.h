@@ -21,7 +21,6 @@ private:
 public:
     ~GManager();
     static GManager* Instance(QObject* parent = 0);
-    // data
     sGManager* getData();
     // style
     void loadStyle();
