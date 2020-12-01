@@ -95,8 +95,7 @@ GLogin::~GLogin() {
 // method
 //===============================================
 int GLogin::loadPage() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
-    if(lApp->login_on == "on") return 0;
+    if(GManager::Instance()->isLogin(0)) return 0;
     reset();
     m_username->setContent("");
     m_password->setContent("");
@@ -144,5 +143,6 @@ void GLogin::slotItemClick() {
     }
     m_message->setText("Votre connexion a réussi");
     lApp->login_on = "on";
+    GManager::Instance()->setPage("home");
 }
 //===============================================
