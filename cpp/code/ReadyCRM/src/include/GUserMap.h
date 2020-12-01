@@ -14,7 +14,7 @@ public:
 
 public:
     int loadPage();
-    void deleteTable(QString table, int index);
+    void fillContent();
     
 public slots:
     void slotItemClick();

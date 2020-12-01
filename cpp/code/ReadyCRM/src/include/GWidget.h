@@ -33,7 +33,11 @@ public:
     //
     virtual void getData(QString& data);
     //
-    virtual void reset();
+    virtual void resetContent();
+    //
+    virtual void clearContent();
+    //
+    virtual void fillContent();
     
 public slots:
     virtual void slotItemClick();

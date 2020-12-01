@@ -97,13 +97,13 @@ GLogin::~GLogin() {
 int GLogin::loadPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     if(lApp->login_on == "on") return 0;
-    reset();
+    resetContent();
     m_username->setContent(GManager::Instance()->loadData("username"));
     m_password->setContent(GManager::Instance()->loadData("password"));
     return 1;
 }
 //===============================================
-void GLogin::reset() {
+void GLogin::resetContent() {
     m_message->setText("");
     m_username->setContent("goto", false);
     m_password->setContent("goto", false);
@@ -126,7 +126,7 @@ void GLogin::slotItemClick() {
     if(lWidgetId == "username") {if(lApp->widget_id == "goto") {m_username->setContent("");}}
     if(lWidgetId == "password") {if(lApp->widget_id == "goto") {m_password->setContent("");}}
     
-    reset();
+    resetContent();
     
     QString lUsername; m_username->getData(lUsername);
     QString lPassword; m_password->getData(lPassword);

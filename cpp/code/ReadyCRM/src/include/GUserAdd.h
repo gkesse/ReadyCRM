@@ -13,7 +13,7 @@ public:
     ~GUserAdd();
     
 public:
-    void reset();
+    void resetContent();
     
 public slots:
     void slotItemClick();

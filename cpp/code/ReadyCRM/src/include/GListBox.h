@@ -17,6 +17,8 @@ public:
     void addItem(QString key, QString text, int icon);
     void addItem(QLayout* layout);
     void removeItem(int index);
+    void clearContent();
+    void fillContent();
     
 public slots:
     void slotItemClick();

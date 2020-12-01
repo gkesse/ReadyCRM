@@ -109,7 +109,7 @@ GUserAdd::~GUserAdd() {
 //===============================================
 // method
 //===============================================
-void GUserAdd::reset() {
+void GUserAdd::resetContent() {
     m_message->setText("");
     m_username->setContent("goto", false);
     m_password->setContent("goto", false);
@@ -139,7 +139,7 @@ void GUserAdd::slotItemClick() {
     if(lWidgetId == "password") {if(lApp->widget_id == "goto") {return;}}
     if(lWidgetId == "confirm") {if(lApp->widget_id == "goto") {m_confirm->setContent("");}}
 
-    reset();
+    resetContent();
     
     QString lUsername; m_username->getData(lUsername);
     QString lPassword; m_password->getData(lPassword);

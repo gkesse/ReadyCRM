@@ -9,12 +9,37 @@
 GUserMap::GUserMap(QWidget* parent) : GWidget(parent) {
     setObjectName("GUserMap");
     
-    sGApp* lApp = GManager::Instance()->getData()->app;
-
     GWidget* lListBox = GWidget::Create("listbox");
     m_listBox = lListBox;
     m_widgetId[lListBox] = "listbox";
-        
+    
+    fillContent();
+    
+    QVBoxLayout* lMainLatout = new QVBoxLayout;
+    lMainLatout->addWidget(lListBox);
+    lMainLatout->setAlignment(Qt::AlignTop);
+    lMainLatout->setMargin(0);
+    lMainLatout->setSpacing(0);
+    
+    setLayout(lMainLatout);
+}
+//===============================================
+GUserMap::~GUserMap() {
+    
+}
+//===============================================
+// method
+//===============================================
+int GUserMap::loadPage() {
+    if(!GManager::Instance()->isLogin()) return 0;
+    fillContent();
+    return 1;
+}
+//===============================================
+void GUserMap::fillContent() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    
+    m_listBox->clearContent();
     QVector<QVector<QString>> lDataMap = GManager::Instance()->getUser();
         
     for(int i = 0; i < lDataMap.size(); i++) {
@@ -42,30 +67,11 @@ GUserMap::GUserMap(QWidget* parent) : GWidget(parent) {
         lRowLayout->setMargin(0);
         lRowLayout->setSpacing(0);
 
-        lListBox->addItem(lRowLayout);
+        m_listBox->addItem(lRowLayout);
         
         connect(lTitle, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lDelete, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     }
-
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lListBox);
-    lMainLatout->setAlignment(Qt::AlignTop);
-    lMainLatout->setMargin(0);
-    lMainLatout->setSpacing(0);
-    
-    setLayout(lMainLatout);
-}
-//===============================================
-GUserMap::~GUserMap() {
-    
-}
-//===============================================
-// method
-//===============================================
-int GUserMap::loadPage() {
-    if(!GManager::Instance()->isLogin()) return 0;
-    return 1;
 }
 //===============================================
 // slot

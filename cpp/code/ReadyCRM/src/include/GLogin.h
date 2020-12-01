@@ -14,7 +14,7 @@ public:
     
 public:
     int loadPage();
-    void reset();
+    void resetContent();
     
 public slots:
     void slotItemClick();

@@ -77,7 +77,11 @@ void GWidget::setOption(QString key) {}
 //
 void GWidget::getData(QString& data) {}
 //
-void GWidget::reset() {}
+void GWidget::resetContent() {}
+//
+void GWidget::clearContent() {}
+//
+void GWidget::fillContent() {}
 //===============================================
 // slot
 //===============================================

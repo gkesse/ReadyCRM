@@ -82,6 +82,10 @@ void GListBox::removeItem(int index) {
     delete lWidget;
 }
 //===============================================
+void GListBox::clearContent() {
+    GManager::Instance()->clearLayout(m_scrollLayout);
+}
+//===============================================
 // slot
 //===============================================
 void GListBox::slotItemClick() {
