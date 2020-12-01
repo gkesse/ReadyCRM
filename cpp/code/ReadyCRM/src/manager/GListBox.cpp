@@ -37,6 +37,7 @@ GListBox::~GListBox() {
 //===============================================
 void GListBox::addItem(QString key, QString text) {
     QPushButton* lButton = new QPushButton;
+    lApp->widget = lButton;
     lButton->setObjectName("item");
     lButton->setText(text);
     lButton->setCursor(Qt::PointingHandCursor);
@@ -49,6 +50,7 @@ void GListBox::addItem(QString key, QString text) {
 void GListBox::addItem(QString key, QString text, int icon) {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QPushButton* lButton = new QPushButton;
+    lApp->widget = lButton;
     lButton->setObjectName("item");
     lButton->setText(text);
     lButton->setIcon(GManager::Instance()->loadPicto(icon, lApp->picto_color));

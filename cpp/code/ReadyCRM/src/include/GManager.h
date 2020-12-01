@@ -77,6 +77,7 @@ struct _sGApp {
     QStackedWidget* page_map;
     QMap<QString, int> page_id;
     // widget
+    QWidget* widget;
     QString widget_id;
     // font
     QString font_path;
@@ -98,7 +99,8 @@ struct _sGApp {
     int grip_size;
     // login
     QString login_on;
-    QPushButton* login_icon;
+    QPushButton* login_titlebar;
+    QPushButton* login_home;
     // nok
     QColor nok_color;
     // sqlite

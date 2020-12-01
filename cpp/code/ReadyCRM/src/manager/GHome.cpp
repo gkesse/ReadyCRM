@@ -7,10 +7,12 @@
 //===============================================
 GHome::GHome(QWidget* parent) : GWidget(parent) {
     setObjectName("GHome");
-        
+    
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    
     GWidget* lListBox = GWidget::Create("listbox");
     
-    lListBox->addItem("home/login", "Connexion", fa::book);
+    lListBox->addItem("home/login", "Connexion", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
     lListBox->addItem("home/sqlite", "SQLite", fa::book);
     lListBox->addItem("home/builder", "Builder", fa::book);
     
