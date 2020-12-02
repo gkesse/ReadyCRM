@@ -76,15 +76,19 @@ GAddressBar {
 GLineEdit * {
     background-color: transparent;
 }
-GLineEdit QLineEdit#edit {
+GLineEdit[mode="normal"] QLineEdit#edit {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 5px;
 }
-GLineEdit QFrame#field[mode="field"] {
+GLineEdit[mode="field"] QFrame#field {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 5px;
+}
+GLineEdit[mode="label"] QPushButton#label {
+    background-color: #503030;
+    padding: 2px 10px;
 }
 /*===============================================*/
 /* GListBox */

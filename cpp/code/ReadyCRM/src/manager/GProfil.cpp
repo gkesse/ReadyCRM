@@ -22,15 +22,23 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     m_widgetId[lProfilPhoto] = "profil_photo";
     
     GWidget* lUsername = GWidget::Create("lineedit");
-    lUsername->setObjectName("username");
     lUsername->setContent("label", "Nom d'utilisateur");
-    lUsername->setContent("icon", fa::user, lApp->picto_color);
+    lUsername->setContent("label", fa::user, lApp->picto_color);
     lUsername->setOption("readonly", true);
-    GManager::Instance()->setProperty(lUsername, "mode", "field");
+    lUsername->setProperty("mode", "label");
     m_widgetId[lUsername] = "username";
+
+    GWidget* lEmail = GWidget::Create("lineedit");
+    lEmail->setObjectName("email");
+    lEmail->setContent("label", "Email");
+    lEmail->setContent("label", fa::user, lApp->picto_color);
+    lEmail->setOption("readonly", true);
+    lEmail->setProperty("mode", "label");
+    m_widgetId[lEmail] = "email";
 
     QVBoxLayout* lInfoLayout = new QVBoxLayout;
     lInfoLayout->addWidget(lUsername);
+    lInfoLayout->addWidget(lEmail);
     lInfoLayout->setAlignment(Qt::AlignTop);
     lInfoLayout->setMargin(0);
     lInfoLayout->setSpacing(0);
@@ -60,7 +68,7 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
 
     setLayout(lMainLayout);
     
-    //connect(lProfil, SIGNAL(clicked()), this, SLOT(slotItemClick()));
+    connect(lUsername, SIGNAL(emitItemClick()), this, SLOT(slotItemClick()));
 }
 //===============================================
 GProfil::~GProfil() {
@@ -79,6 +87,5 @@ int GProfil::loadPage() {
 void GProfil::slotItemClick() {
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
-
 }
 //===============================================
