@@ -194,7 +194,7 @@ int GManager::countTable(QString table) {
     return lCount;
 }
 //===============================================
-void GSQLiteTables::deleteTable(QString table) {
+void GManager::deleteTable(QString table) {
     QString lQuery = QString("\
     drop table %1 \
     ").arg(table);
