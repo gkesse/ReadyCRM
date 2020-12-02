@@ -24,6 +24,7 @@ public slots:
 
 private:
     QMap<QWidget*, QString> m_widgetId;
+    QPushButton* m_label;
     QPushButton* m_icon;
     QPushButton* m_goto;
     QLineEdit* m_edit;

@@ -5,9 +5,16 @@
 GLineEdit::GLineEdit(QWidget* parent) : GWidget(parent) {
     setObjectName("GLineEdit");
         
+    QPushButton* lLabel = new QPushButton;
+    m_label = lLabel;
+    lLabel->setObjectName("label");
+    lLabel->setVisible(false);
+    m_widgetId[lLabel] = "label";
+    
     QPushButton* lIcon = new QPushButton;
     m_icon = lIcon;
     lIcon->setObjectName("icon");
+    lIcon->setVisible(false);
     lIcon->setCursor(Qt::PointingHandCursor);
     m_widgetId[lIcon] = "icon";
     
@@ -19,13 +26,24 @@ GLineEdit::GLineEdit(QWidget* parent) : GWidget(parent) {
     QPushButton* lGoTo = new QPushButton;
     m_goto = lGoTo;
     lGoTo->setObjectName("goto");
+    lGoTo->setVisible(false);
     lGoTo->setCursor(Qt::PointingHandCursor);
     m_widgetId[lGoTo] = "goto";
         
+    QHBoxLayout* lFieldLayout = new QHBoxLayout;
+    lFieldLayout->addWidget(lIcon);
+    lFieldLayout->addWidget(lEdit, 1);
+    lFieldLayout->addWidget(lGoTo);
+    lFieldLayout->setMargin(0);
+    lFieldLayout->setSpacing(5);
+
+    QFrame* lField = new QFrame;
+    lField->setObjectName("field");
+    lField->setLayout(lFieldLayout);
+    
     QHBoxLayout* lMainLayout = new QHBoxLayout;
-    lMainLayout->addWidget(lIcon);
-    lMainLayout->addWidget(lEdit, 1);
-    lMainLayout->addWidget(lGoTo);
+    lMainLayout->addWidget(lLabel);
+    lMainLayout->addWidget(lField);
     lMainLayout->setMargin(0);
     lMainLayout->setSpacing(5);
 
@@ -42,26 +60,20 @@ GLineEdit::~GLineEdit() {
 //===============================================
 // method
 //===============================================
-void GLineEdit::setContent(QString text) {
-    m_edit->setText(text);
-    if(text == "") m_goto->setVisible(false);
+void GLineEdit::setContent(QString key, QString text) {
+    if(key == "edit") {m_edit->setText(text); if(text == "") {m_goto->setVisible(false);}}
+    else if(key == "label") {m_label->setText(text); m_label->setVisible(true);}}
 }
 //===============================================
 void GLineEdit::setContent(QString key, int icon, QColor color) {
-    QPushButton* lButton = 0;
-    if(key == "icon") lButton = m_icon;
-    else if(key == "goto") lButton = m_goto;
-    if(lButton == 0) return;
-    lButton->setIcon(GManager::Instance()->loadPicto(icon, color));
-    lButton->setVisible(true);
+    if(key == "icon") {m_icon->setIcon(GManager::Instance()->loadPicto(icon, color)); m_icon->setVisible(true);}
+    else if(key == "goto") {m_goto->setIcon(GManager::Instance()->loadPicto(icon, color)); m_goto->setVisible(true);}
+    else if(key == "label") {m_label->setIcon(GManager::Instance()->loadPicto(icon, color)); m_label->setVisible(true);}
 }
 //===============================================
 void GLineEdit::setContent(QString key, int data) {
-    QPushButton* lButton = 0;
-    if(key == "icon") lButton = m_icon;
-    else if(key == "goto") lButton = m_goto;
-    if(lButton == 0) return;
-    lButton->setVisible(data);
+    if(key == "icon") {m_icon->setVisible(data);}
+    else if(key == "goto") {m_goto->setVisible(data);}
 }
 //===============================================
 void GLineEdit::setOption(int mode) {

@@ -18,7 +18,7 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     QPushButton* lProfilPhoto = new QPushButton;
     lProfilPhoto->setObjectName("profil_photo");
     lProfilPhoto->setIcon(GManager::Instance()->loadPicto(fa::user, lApp->picto_color));
-    lProfilPhoto->setIconSize(lApp->profil_size, lApp->profil_size);
+    lProfilPhoto->setIconSize(QSize(lApp->profil_size, lApp->profil_size));
     m_widgetId[lProfilPhoto] = "profil_photo";
     
     QHBoxLayout* lProfilLayout = new QHBoxLayout;
