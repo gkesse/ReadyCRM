@@ -55,7 +55,7 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
 
     GWidget* lSiteweb = GWidget::Create("lineedit");
     lSiteweb->setObjectName("siteweb");
-    lSiteweb->setContent("label", "lSiteweb");
+    lSiteweb->setContent("label", "Siteweb");
     lSiteweb->setContent("label", fa::globe, lApp->picto_color);
     lSiteweb->setOption("readonly", true);
     lSiteweb->setProperty("mode", "label");
@@ -67,8 +67,8 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     lInfoLayout->addWidget(lLocation);
     lInfoLayout->addWidget(lPhone);
     lInfoLayout->addWidget(lSiteweb);
-    lInfoLayout->setAlignment(Qt::AlignTop);
-    lInfoLayout->setMargin(0);
+    lInfoLayout->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    lInfoLayout->setContentsMargins(0, 20, 0, 0);
     lInfoLayout->setSpacing(10);
     
     QHBoxLayout* lProfilLayout = new QHBoxLayout;
