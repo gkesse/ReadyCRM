@@ -22,6 +22,7 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     m_widgetId[lProfilPhoto] = "profil_photo";
     
     GWidget* lUsername = GWidget::Create("lineedit");
+    lUsername->setObjectName("username");
     lUsername->setContent("label", "Nom d'utilisateur");
     lUsername->setContent("label", fa::user, lApp->picto_color);
     lUsername->setOption("readonly", true);
@@ -31,17 +32,44 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     GWidget* lEmail = GWidget::Create("lineedit");
     lEmail->setObjectName("email");
     lEmail->setContent("label", "Email");
-    lEmail->setContent("label", fa::user, lApp->picto_color);
+    lEmail->setContent("label", fa::envelopeo, lApp->picto_color);
     lEmail->setOption("readonly", true);
     lEmail->setProperty("mode", "label");
     m_widgetId[lEmail] = "email";
 
+    GWidget* lLocation = GWidget::Create("lineedit");
+    lLocation->setObjectName("location");
+    lLocation->setContent("label", "Location");
+    lLocation->setContent("label", fa::mapmarker, lApp->picto_color);
+    lLocation->setOption("readonly", true);
+    lLocation->setProperty("mode", "label");
+    m_widgetId[lLocation] = "location";
+
+    GWidget* lPhone = GWidget::Create("lineedit");
+    lPhone->setObjectName("phone");
+    lPhone->setContent("label", "Téléphone");
+    lPhone->setContent("label", fa::mobile, lApp->picto_color);
+    lPhone->setOption("readonly", true);
+    lPhone->setProperty("mode", "label");
+    m_widgetId[lPhone] = "phone";
+
+    GWidget* lSiteweb = GWidget::Create("lineedit");
+    lSiteweb->setObjectName("siteweb");
+    lSiteweb->setContent("label", "lSiteweb");
+    lSiteweb->setContent("label", fa::globe, lApp->picto_color);
+    lSiteweb->setOption("readonly", true);
+    lSiteweb->setProperty("mode", "label");
+    m_widgetId[lSiteweb] = "siteweb";
+
     QVBoxLayout* lInfoLayout = new QVBoxLayout;
     lInfoLayout->addWidget(lUsername);
     lInfoLayout->addWidget(lEmail);
+    lInfoLayout->addWidget(lLocation);
+    lInfoLayout->addWidget(lPhone);
+    lInfoLayout->addWidget(lSiteweb);
     lInfoLayout->setAlignment(Qt::AlignTop);
     lInfoLayout->setMargin(0);
-    lInfoLayout->setSpacing(0);
+    lInfoLayout->setSpacing(10);
     
     QHBoxLayout* lProfilLayout = new QHBoxLayout;
     lProfilLayout->addWidget(lProfilPhoto);
