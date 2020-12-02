@@ -13,7 +13,7 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
     m_listBox = lListBox;
     m_widgetId[lListBox] = "listbox";
     
-    fillCount();
+    fillContent();
 
     QVBoxLayout* lMainLatout = new QVBoxLayout;
     lMainLatout->addWidget(lListBox);
@@ -32,11 +32,11 @@ GSQLiteTables::~GSQLiteTables() {
 //===============================================
 int GSQLiteTables::loadPage() {
     if(!GManager::Instance()->isLogin()) return 0;
-    fillCount();
+    fillContent();
     return 1;
 }
 //===============================================
-void GSQLiteTables::fillCount() {
+void GSQLiteTables::fillContent() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     
     m_listBox->clearContent();

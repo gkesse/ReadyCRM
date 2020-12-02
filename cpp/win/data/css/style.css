@@ -48,11 +48,18 @@ GTitleBar QPushButton#login {
 }
 /*===============================================*/
 /* GProfil */
-GProfil QPushButton {
+GProfil QPushButton#profil_label {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 10px;
     text-align: left;
+}
+GProfil QPushButton#profil_photo {
+    background-color: #503030;
+    border-radius: 100px;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 20px 0px 0px 0px;
 }
 /*===============================================*/
 /* GAddressBar */

@@ -15,8 +15,21 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     lProfilLabel->setText("Profil");
     m_widgetId[lProfilLabel] = "profil_label";
     
+    QPushButton* lProfilPhoto = new QPushButton;
+    lProfilPhoto->setObjectName("profil_photo");
+    lProfilPhoto->setIcon(GManager::Instance()->loadPicto(fa::user, lApp->picto_color));
+    lProfilPhoto->setIconSize(lApp->profil_size, lApp->profil_size);
+    m_widgetId[lProfilPhoto] = "profil_photo";
+    
+    QHBoxLayout* lProfilLayout = new QHBoxLayout;
+    lProfilLayout->addWidget(lProfilPhoto);
+    lProfilLayout->setAlignment(Qt::AlignLeft);
+    lProfilLayout->setMargin(0);
+    lProfilLayout->setSpacing(0);
+    
     QVBoxLayout* lContentLayout = new QVBoxLayout;
     lContentLayout->addWidget(lProfilLabel);
+    lContentLayout->addLayout(lProfilLayout);
     lContentLayout->setAlignment(Qt::AlignTop);
     lContentLayout->setMargin(0);
     lContentLayout->setSpacing(10);
