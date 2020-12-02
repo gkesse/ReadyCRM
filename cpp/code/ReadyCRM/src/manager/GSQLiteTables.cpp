@@ -9,18 +9,43 @@
 GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
     setObjectName("GSQLiteTables");
     
-    sGApp* lApp = GManager::Instance()->getData()->app;
-
     GWidget* lListBox = GWidget::Create("listbox");
     m_listBox = lListBox;
     m_widgetId[lListBox] = "listbox";
     
+    fillCount();
+
+    QVBoxLayout* lMainLatout = new QVBoxLayout;
+    lMainLatout->addWidget(lListBox);
+    lMainLatout->setAlignment(Qt::AlignTop);
+    lMainLatout->setMargin(0);
+    lMainLatout->setSpacing(0);
+    
+    setLayout(lMainLatout);
+}
+//===============================================
+GSQLiteTables::~GSQLiteTables() {
+    
+}
+//===============================================
+// method
+//===============================================
+int GSQLiteTables::loadPage() {
+    if(!GManager::Instance()->isLogin()) return 0;
+    fillCount();
+    return 1;
+}
+//===============================================
+void GSQLiteTables::fillCount() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    
+    m_listBox->clearContent();
     QVector<QString> lTables = GManager::Instance()->getTables();
     
     for(int i = 0; i < lTables.size(); i++) {
         QString lTable = lTables[i];
 
-        int lCount = GManager::Instance()->countTableData(lTable);
+        int lCount = GManager::Instance()->countTable(lTable);
         
         QPushButton* lTitle = new QPushButton;
         lTitle->setObjectName("title");
@@ -67,7 +92,7 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
         lRowLayout->setMargin(0);
         lRowLayout->setSpacing(10);
                 
-        lListBox->addItem(lRowLayout);
+        m_listBox->addItem(lRowLayout);
         
         connect(lTitle, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lShow, SIGNAL(clicked()), this, SLOT(slotItemClick()));
@@ -75,39 +100,6 @@ GSQLiteTables::GSQLiteTables(QWidget* parent) : GWidget(parent) {
         connect(lAdd, SIGNAL(clicked()), this, SLOT(slotItemClick()));
         connect(lDelete, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     }
-
-    QVBoxLayout* lMainLatout = new QVBoxLayout;
-    lMainLatout->addWidget(lListBox);
-    lMainLatout->setAlignment(Qt::AlignTop);
-    lMainLatout->setMargin(0);
-    lMainLatout->setSpacing(0);
-    
-    setLayout(lMainLatout);
-}
-//===============================================
-GSQLiteTables::~GSQLiteTables() {
-    
-}
-//===============================================
-// method
-//===============================================
-int GSQLiteTables::loadPage() {
-    if(!GManager::Instance()->isLogin()) return 0;
-    QVector<QString> lTables = GManager::Instance()->getTables();
-    for(int i = 0; i < lTables.size(); i++) {
-        QString lTable = lTables[i];
-        int lCount = GManager::Instance()->countTableData(lTable);
-        m_showId[i]->setText(QString("%1").arg(lCount));
-    }
-    return 1;
-}
-//===============================================
-void GSQLiteTables::deleteTable(QString table, int index) {
-    m_listBox->removeItem(index);
-    QString lQuery = QString("\
-    drop table %1 \
-    ").arg(table);
-    GSQLite::Instance()->queryWrite(lQuery);
 }
 //===============================================
 // slot
@@ -119,7 +111,6 @@ void GSQLiteTables::slotItemClick() {
     QStringList lMap = lWidgetId.split("/");
     QString lKey = lMap[0];
     QString lTable = lMap[1];
-    int lIndex = lMap[2].toInt();
 
     if(lKey == "show") {
         QString lAddress = QString("home/sqlite/%1")
@@ -141,7 +132,8 @@ void GSQLiteTables::slotItemClick() {
         arg(lTable.toUpper());
         int lOk = GManager::Instance()->showQuestion(lMessage);
         if(lOk == QMessageBox::Ok) {
-            deleteTable(lTable, lIndex);
+            GManager::Instance()->deleteTable(lTable);
+            fillContent();
         }
     }
 }

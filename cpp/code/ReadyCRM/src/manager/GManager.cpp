@@ -47,6 +47,14 @@ sGManager* GManager::getData() {
     return mgr;
 }
 //===============================================
+void GManager::initData() {
+    // root
+    int lCount = countUser(mgr->app->root_user);
+    if(lCount == 0) {
+        addUser(mgr->app->root_user, mgr->app->root_pass);
+    }
+}
+//===============================================
 // style
 //===============================================
 void GManager::loadStyle() {
@@ -178,12 +186,19 @@ QVector<QString> GManager::getTables() {
     return lTables;
 }
 //===============================================
-int GManager::countTableData(QString table) {
+int GManager::countTable(QString table) {
     QString lQuery = QString("\
     select count(*) from %1 \
     ").arg(table);
     int lCount = GSQLite::Instance()->queryValue(lQuery).toInt();
     return lCount;
+}
+//===============================================
+void GSQLiteTables::deleteTable(QString table) {
+    QString lQuery = QString("\
+    drop table %1 \
+    ").arg(table);
+    GSQLite::Instance()->queryWrite(lQuery);
 }
 //===============================================
 // config_data

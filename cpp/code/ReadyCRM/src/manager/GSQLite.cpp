@@ -6,6 +6,7 @@ GSQLite* GSQLite::m_instance = 0;
 //===============================================
 GSQLite::GSQLite() {
     open();
+    createTables();
 }
 //===============================================
 GSQLite::~GSQLite() {
@@ -32,7 +33,6 @@ void GSQLite::open() {
 }
 //===============================================
 void GSQLite::createTables() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
     QString lQuery;
     // config_data
     lQuery = "\
@@ -53,12 +53,6 @@ void GSQLite::createTables() {
         date_update datetime default current_timestamp\n\
     )\n\
     ";
-    queryWrite(lQuery);
-    // root
-    lQuery = QString("\
-    insert into users (username, password) \
-    values ('%1', '%2') \
-    ").arg(lApp->root_user).arg(lApp->root_pass);
     queryWrite(lQuery);
 }
 //===============================================

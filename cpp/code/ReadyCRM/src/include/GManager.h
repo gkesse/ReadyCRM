@@ -21,7 +21,9 @@ private:
 public:
     ~GManager();
     static GManager* Instance(QObject* parent = 0);
+    // data
     sGManager* getData();
+    void initData();
     // style
     void loadStyle();
     // picto
@@ -43,7 +45,8 @@ public:
     int isLogin();
     // table
     QVector<QString> getTables();
-    int countTableData(QString table);
+    int countTable(QString table);
+    void deleteTable(QString table);
     // config_data
     void saveData(QString key, QString value);
     QString loadData(QString key);
