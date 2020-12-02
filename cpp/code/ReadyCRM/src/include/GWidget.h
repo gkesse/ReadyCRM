@@ -24,6 +24,7 @@ public:
     virtual void removeItem(int index);
     //
     virtual void setContent(QString text);
+    virtual void setContent(QString key, QString text);
     virtual void setContent(QString key, int icon, QColor color);
     virtual void setContent(QString key, int data);
     //

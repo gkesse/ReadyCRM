@@ -21,11 +21,25 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     lProfilPhoto->setIconSize(QSize(lApp->profil_size, lApp->profil_size));
     m_widgetId[lProfilPhoto] = "profil_photo";
     
+    GWidget* lUsername = GWidget::Create("lineedit");
+    lUsername->setObjectName("username");
+    lUsername->setContent("label", "Nom d'utilisateur");
+    m_widgetId[lUsername] = "username";
+    
+    
+    
+    QVBoxLayout* lInfoLayout = new QVBoxLayout;
+    lInfoLayout->addWidget(lUsername);
+    lInfoLayout->setAlignment(Qt::AlignTop);
+    lInfoLayout->setMargin(0);
+    lInfoLayout->setSpacing(0);
+    
     QHBoxLayout* lProfilLayout = new QHBoxLayout;
     lProfilLayout->addWidget(lProfilPhoto);
+    lProfilLayout->addLayout(lInfoLayout);
     lProfilLayout->setAlignment(Qt::AlignLeft);
     lProfilLayout->setMargin(0);
-    lProfilLayout->setSpacing(0);
+    lProfilLayout->setSpacing(20);
     
     QVBoxLayout* lContentLayout = new QVBoxLayout;
     lContentLayout->addWidget(lProfilLabel);

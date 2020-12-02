@@ -13,7 +13,7 @@ public:
     ~GLineEdit();
 
 public:
-    void setContent(QString text);
+    void setContent(QString key, QString text);
     void setContent(QString key, int icon, QColor color);
     void setContent(QString key, int data);
     void setOption(int mode);

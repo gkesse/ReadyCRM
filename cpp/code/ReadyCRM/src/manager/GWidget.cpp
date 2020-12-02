@@ -68,6 +68,7 @@ void GWidget::addItem(QLayout* layout) {}
 void GWidget::removeItem(int index) {}
 //
 void GWidget::setContent(QString text) {}
+void GWidget::setContent(QString key, QString text) {}
 void GWidget::setContent(QString key, int icon, QColor color) {}
 void GWidget::setContent(QString key, int data) {}
 //

@@ -123,8 +123,8 @@ void GLogin::slotItemClick() {
 
     if(lWidgetId == "username") {if(lApp->widget_id == "icon") {return;}}
     if(lWidgetId == "password") {if(lApp->widget_id == "icon") {return;}}
-    if(lWidgetId == "username") {if(lApp->widget_id == "goto") {m_username->setContent("");}}
-    if(lWidgetId == "password") {if(lApp->widget_id == "goto") {m_password->setContent("");}}
+    if(lWidgetId == "username") {if(lApp->widget_id == "goto") {m_username->setContent("edit", "");}}
+    if(lWidgetId == "password") {if(lApp->widget_id == "goto") {m_password->setContent("edit", "");}}
     
     resetContent();
     

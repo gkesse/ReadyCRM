@@ -43,9 +43,9 @@ GLineEdit::GLineEdit(QWidget* parent) : GWidget(parent) {
     
     QHBoxLayout* lMainLayout = new QHBoxLayout;
     lMainLayout->addWidget(lLabel);
-    lMainLayout->addWidget(lField);
+    lMainLayout->addWidget(lField, 1);
     lMainLayout->setMargin(0);
-    lMainLayout->setSpacing(5);
+    lMainLayout->setSpacing(10);
 
     setLayout(lMainLayout);
     
@@ -62,7 +62,7 @@ GLineEdit::~GLineEdit() {
 //===============================================
 void GLineEdit::setContent(QString key, QString text) {
     if(key == "edit") {m_edit->setText(text); if(text == "") {m_goto->setVisible(false);}}
-    else if(key == "label") {m_label->setText(text); m_label->setVisible(true);}}
+    else if(key == "label") {m_label->setText(text); m_label->setVisible(true);}
 }
 //===============================================
 void GLineEdit::setContent(QString key, int icon, QColor color) {
