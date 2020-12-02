@@ -64,6 +64,14 @@ void GManager::loadStyle() {
     qApp->setStyleSheet(lStyleSheet);
 }
 //===============================================
+// property
+//===============================================
+void GManager::setProperty(QWidget* widget, QString key, QVariant data) {
+    widget->setProperty(key.toStdString().c_str(), data);
+    widget->style()->unpolish(widget); 
+    widget->style()->polish(widget); 
+}
+//===============================================
 // picto
 //===============================================
 QIcon GManager::loadPicto(int picto, QColor color) {

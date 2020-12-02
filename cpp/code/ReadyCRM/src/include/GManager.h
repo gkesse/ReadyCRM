@@ -26,6 +26,8 @@ public:
     void initData();
     // style
     void loadStyle();
+    // property
+    void setProperty(QWidget* widget, QString key, QVariant data);
     // picto
     QIcon loadPicto(int picto, QColor color);
     // font

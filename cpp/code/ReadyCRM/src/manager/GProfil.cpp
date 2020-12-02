@@ -24,10 +24,11 @@ GProfil::GProfil(QWidget* parent) : GWidget(parent) {
     GWidget* lUsername = GWidget::Create("lineedit");
     lUsername->setObjectName("username");
     lUsername->setContent("label", "Nom d'utilisateur");
+    lUsername->setContent("icon", fa::user, lApp->picto_color);
+    lUsername->setOption("readonly", true);
+    GManager::Instance()->setProperty(lUsername, "mode", "field");
     m_widgetId[lUsername] = "username";
-    
-    
-    
+
     QVBoxLayout* lInfoLayout = new QVBoxLayout;
     lInfoLayout->addWidget(lUsername);
     lInfoLayout->setAlignment(Qt::AlignTop);

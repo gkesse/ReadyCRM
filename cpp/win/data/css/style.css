@@ -81,6 +81,11 @@ GLineEdit QLineEdit#edit {
     border-radius: 5px;
     padding: 2px 5px;
 }
+GLineEdit QFrame#field[mode="field"] {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 5px;
+}
 /*===============================================*/
 /* GListBox */
 GListBox * {

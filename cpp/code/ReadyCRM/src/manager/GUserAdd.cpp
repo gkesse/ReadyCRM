@@ -35,7 +35,7 @@ GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
     m_password = lPassword;
     lPassword->setObjectName("password");
     lPassword->setContent("icon", fa::key, lApp->picto_color);
-    lPassword->setOption(QLineEdit::Password);
+    lPassword->setOption("echomode", QLineEdit::Password);
     lPassword->setToolTip("Mot de passe");
     m_widgetId[lPassword] = "password";
         
@@ -43,7 +43,7 @@ GUserAdd::GUserAdd(QWidget* parent) : GWidget(parent) {
     m_confirm = lConfirm;
     lConfirm->setObjectName("confirm");
     lConfirm->setContent("icon", fa::key, lApp->picto_color);
-    lConfirm->setOption(QLineEdit::Password);
+    lConfirm->setOption("echomode", QLineEdit::Password);
     lConfirm->setToolTip("Confirmer le mot de passe");
     m_widgetId[lConfirm] = "confirm";
         
@@ -141,9 +141,9 @@ void GUserAdd::slotItemClick() {
 
     resetContent();
     
-    QString lUsername; m_username->getData(lUsername);
-    QString lPassword; m_password->getData(lPassword);
-    QString lConfirm; m_confirm->getData(lConfirm);
+    QString lUsername; m_username->getData("edit", lUsername);
+    QString lPassword; m_password->getData("edit", lPassword);
+    QString lConfirm; m_confirm->getData("edit", lConfirm);
     
     if(lUsername == "") {
         m_message->setText("Le nom d'utilisateur est obligatoire");
