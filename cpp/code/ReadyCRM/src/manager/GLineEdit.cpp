@@ -77,7 +77,7 @@ void GLineEdit::setContent(QString key, int data) {
 }
 //===============================================
 void GLineEdit::setOption(QString key, int mode) {
-    if(key == "echo") {m_edit->setEchoMode((QLineEdit::EchoMode)mode);}
+    if(key == "echomode") {m_edit->setEchoMode((QLineEdit::EchoMode)mode);}
     else if(key == "readonly") {m_edit->setReadOnly((bool)mode);}
 }
 //===============================================

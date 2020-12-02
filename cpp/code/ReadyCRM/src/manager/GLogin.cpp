@@ -31,7 +31,7 @@ GLogin::GLogin(QWidget* parent) : GWidget(parent) {
     m_password = lPassword;
     lPassword->setObjectName("password");
     lPassword->setContent("icon", fa::key, lApp->picto_color);
-    lPassword->setOption(QLineEdit::Password);
+    lPassword->setOption("echomode", QLineEdit::Password);
     m_widgetId[lPassword] = "password";
         
     QPushButton* lCancel = new QPushButton;
@@ -128,8 +128,8 @@ void GLogin::slotItemClick() {
     
     resetContent();
     
-    QString lUsername; m_username->getData(lUsername);
-    QString lPassword; m_password->getData(lPassword);
+    QString lUsername; m_username->getData("edit", lUsername);
+    QString lPassword; m_password->getData("edit", lPassword);
     
     if(lUsername == "") {
         m_message->setText("Le nom d'utilisateur est obligatoire");
