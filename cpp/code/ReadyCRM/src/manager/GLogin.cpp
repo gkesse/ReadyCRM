@@ -98,8 +98,8 @@ int GLogin::loadPage() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     if(lApp->login_on == "on") return 0;
     resetContent();
-    m_username->setContent(GManager::Instance()->loadData("username"));
-    m_password->setContent(GManager::Instance()->loadData("password"));
+    m_username->setContent("edit", GManager::Instance()->loadData("username"));
+    m_password->setContent("edit", GManager::Instance()->loadData("password"));
     return 1;
 }
 //===============================================

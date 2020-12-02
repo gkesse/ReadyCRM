@@ -29,10 +29,9 @@ public:
     virtual void setContent(QString key, int data);
     //
     virtual void setOption(QString key, int data);
-    virtual void setOption(int mode);
-    virtual void setOption(QString key);
+    virtual void setOption(QString key, QString data);
     //
-    virtual void getData(QString& data);
+    virtual void getData(QString key, QString& data);
     //
     virtual void resetContent();
     //

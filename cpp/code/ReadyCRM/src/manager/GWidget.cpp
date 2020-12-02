@@ -73,10 +73,9 @@ void GWidget::setContent(QString key, int icon, QColor color) {}
 void GWidget::setContent(QString key, int data) {}
 //
 void GWidget::setOption(QString key, int data) {}
-void GWidget::setOption(int mode) {}
-void GWidget::setOption(QString key) {}
+void GWidget::setOption(QString key, QString data) {}
 //
-void GWidget::getData(QString& data) {}
+void GWidget::getData(QString key, QString& data) {}
 //
 void GWidget::resetContent() {}
 //

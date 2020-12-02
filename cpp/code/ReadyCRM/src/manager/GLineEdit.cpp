@@ -76,12 +76,13 @@ void GLineEdit::setContent(QString key, int data) {
     else if(key == "goto") {m_goto->setVisible(data);}
 }
 //===============================================
-void GLineEdit::setOption(int mode) {
-    m_edit->setEchoMode((QLineEdit::EchoMode)mode);
+void GLineEdit::setOption(QString key, int mode) {
+    if(key == "echo") {m_edit->setEchoMode((QLineEdit::EchoMode)mode);}
+    else if(key == "readonly") {m_edit->setReadOnly((bool)mode);}
 }
 //===============================================
-void GLineEdit::getData(QString& data) {
-    data = m_edit->text();
+void GLineEdit::getData(QString key, QString& data) {
+    if(key == "edit") {data = m_edit->text();}
 }
 //===============================================
 // slot

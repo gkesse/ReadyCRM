@@ -16,8 +16,8 @@ public:
     void setContent(QString key, QString text);
     void setContent(QString key, int icon, QColor color);
     void setContent(QString key, int data);
-    void setOption(int mode);
-    void getData(QString& data);
+    void setOption(QString key, int mode);
+    void getData(QString key, QString& data);
     
 public slots:
     void slotItemClick();
