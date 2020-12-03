@@ -8,11 +8,11 @@ all: clean qmake compile run
 qmake:
 	@qmake
 compile: $(GOBJS)
-	@mingw32-make
+	@make
 clean:
-	@if not exist $(GBIN) @mkdir $(GBIN)
-	@if not exist $(GBUILD) @mkdir $(GBUILD)
-	@del /q $(GBIN)\*
+	@if ! [ -d $(GBIN) ] ; then @mkdir $(GBIN) ; fi
+	@if ! [ -d $(GBUILD) ] ; then @mkdir $(GBUILD) ; fi
+	@rm -f $(GBIN)\*
 run:
 	@$(GTARGET) $(argv)
 git_push:

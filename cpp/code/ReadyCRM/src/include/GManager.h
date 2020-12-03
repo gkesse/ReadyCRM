@@ -24,6 +24,8 @@ public:
     // data
     sGManager* getData();
     void initData();
+    // env
+    QString getEnv(QString key);
     // style
     void loadStyle();
     // property

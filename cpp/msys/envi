@@ -1,0 +1,14 @@
+#!/bin/bash
+#================================================
+export "PATH=.:$PATH"
+#================================================
+export "GPROJECT_ROOT=/c/Users/Admin/Downloads/Programs"
+export "GPROJECT_PATH=$GPROJECT_ROOT/ReadyCRM"
+export "GDATA_PATH=$GPROJECT_PATH/cpp/win/data"
+export "GSQLITE_DB_PATH=$GDATA_PATH/sqlite/config.dat"
+export "GSTYLE_PATH=$GDATA_PATH/css/style.css"
+export "GFONT_PATH=$GDATA_PATH/font"
+export "GIMG_PATH=$GDATA_PATH/img"
+#================================================
+export "GPACMAN_SEARCH=sqlite"
+#================================================

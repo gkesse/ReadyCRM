@@ -13,17 +13,17 @@ GManager::GManager(QObject* parent) {
     // app
     mgr->app = new sGApp;
     mgr->app->app_name = "ReadyApp";
-    mgr->app->style_path = "data/css/style.css";
+    mgr->app->style_path = getEnv("GSTYLE_PATH");
     mgr->app->win_width = 640;
     mgr->app->win_height = 480;
-    mgr->app->font_path = "data/font";
-    mgr->app->img_path = "data/img";
+    mgr->app->font_path = getEnv("GFONT_PATH");
+    mgr->app->img_path = getEnv("GIMG_PATH");
     mgr->app->picto_color = "white";
     mgr->app->address_url = "";   
     mgr->app->profil_size = 150;
     mgr->app->grip_size = 16;
     mgr->app->login_on = "off";
-    mgr->app->sqlite_db_path = "data/sqlite/config.dat";
+    mgr->app->sqlite_db_path = getEnv("GSQLITE_DB_PATH");
     mgr->app->root_user = "root";
     mgr->app->root_pass = "super";
     // picto
@@ -53,6 +53,13 @@ void GManager::initData() {
     if(lCount == 0) {
         addUser(mgr->app->root_user, mgr->app->root_pass);
     }
+}
+//===============================================
+// env
+//===============================================
+QString GManager::getEnv(QString key) {
+    QString lValue = qgetenv(key.toStdString().c_str());
+    return lValue;
 }
 //===============================================
 // style

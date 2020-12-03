@@ -23,6 +23,7 @@ GQt* GQt::Instance() {
 //===============================================
 void GQt::run(int argc, char** argv) {
     QApplication lApp(argc, argv);
+    GSQLite::Instance();
     GManager::Instance()->initData();
     GManager::Instance()->loadFont();
     GManager::Instance()->loadImg();
