@@ -1,4 +1,4 @@
 @echo off
 ::===============================================
-mingw32-make -f Makefile.qmake %*
+mingw32-make -f Makefile.qmake.mak %*
 ::===============================================
