@@ -1,6 +1,7 @@
 #!/bin/bash
 #================================================
 export "PATH=.:$PATH"
+export "PATH=/c/dolibarr/bin/mariadb/mariadb10.4.10/bin:$PATH"
 #================================================
 export "GPROJECT_ROOT=/c/Users/Admin/Downloads/Programs"
 export "GPROJECT_PATH=$GPROJECT_ROOT/ReadyCRM"
@@ -14,4 +15,10 @@ export "GPACMAN_SEARCH=sqlite"
 #================================================
 export "GGIT_URL=https://github.com/gkesse/ReadyCRM.git"
 export "GGIT_NAME=ReadyCRM"
+#================================================
+export "GMYSQL_HOST=localhost"
+export "GMYSQL_PORT=9180"
+export "GMYSQL_USER=root"
+export "GMYSQL_PASS=admin"
+export "GMYSQL_DATABASE=dolibarr"
 #================================================
