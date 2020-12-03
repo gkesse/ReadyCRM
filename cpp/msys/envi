@@ -12,3 +12,6 @@ export "GIMG_PATH=$GDATA_PATH/img"
 #================================================
 export "GPACMAN_SEARCH=sqlite"
 #================================================
+export "GGIT_URL=https://github.com/gkesse/ReadyCRM.git"
+export "GGIT_NAME=ReadyCRM"
+#================================================
