@@ -1,4 +1,4 @@
 @echo off
 ::===============================================
-mingw32-make -f Makefile.mysql %*
+mingw32-make -f Makefile.mysql.mak %*
 ::===============================================
