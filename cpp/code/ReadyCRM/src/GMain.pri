@@ -23,7 +23,9 @@ HEADERS +=\
     $$PWD/include/GWindow.h \
     $$PWD/include/GHome.h \
     $$PWD/include/GSQLiteTables.h \
-    $$PWD/include/GHtmlUi.h \
+    $$PWD/include/GHtmlEdit.h \
+    $$PWD/include/GHtmlView.h \
+    $$PWD/include/GPdfUi.h \
     $$PWD/include/GBuilder.h \
     
 SOURCES +=\
@@ -52,7 +54,9 @@ SOURCES +=\
     $$PWD/manager/GWindow.cpp \
     $$PWD/manager/GHome.cpp \
     $$PWD/manager/GSQLiteTables.cpp \
-    $$PWD/manager/GHtmlUi.cpp \
+    $$PWD/manager/GHtmlEdit.cpp \
+    $$PWD/manager/GHtmlView.cpp \
+    $$PWD/manager/GPdfUi.cpp \
     $$PWD/manager/GBuilder.cpp \
 
 CONFIG += console release gnu++11

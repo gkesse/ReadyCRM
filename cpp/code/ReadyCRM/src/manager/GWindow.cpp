@@ -23,15 +23,21 @@ GWindow::GWindow(QWidget* parent) : GWidget(parent) {
     QStackedWidget* lWorkspace = new QStackedWidget;
     lApp->page_map = lWorkspace;
     
+    // home
     addPage("home", "Accueil", GWidget::Create("home"), 1);
+    // login
     addPage("home/login", "Connexion", GWidget::Create("login"));
     addPage("home/profil", "Profil", GWidget::Create("profil"));
+    // sqlite
     addPage("home/sqlite", "Tables", GWidget::Create("sqlitetables"));
     addPage("home/sqlite/users", "Afficher le schéma", GWidget::Create("usermap"));
     addPage("home/sqlite/users/show", "Afficher le schéma", GWidget::Create("usershow"));
     addPage("home/sqlite/users/schema", "Afficher le schéma", GWidget::Create("schema"));
     addPage("home/sqlite/users/add", "Ajouter un utilisateur", GWidget::Create("useradd"));
     addPage("home/sqlite/config_data/schema", "Afficher le schéma", GWidget::Create("schema"));
+    // pdf
+    addPage("home/pdf", "Pdf", GWidget::Create("pdfui"));
+    // builder
     addPage("home/builder", "Builder", GWidget::Create("builder"));
         
     QVBoxLayout* lMainLayout = new QVBoxLayout;

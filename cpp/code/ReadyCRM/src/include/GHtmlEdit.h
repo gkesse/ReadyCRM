@@ -1,16 +1,16 @@
 //===============================================
-#ifndef _GHtmlUi_
-#define _GHtmlUi_
+#ifndef _GHtmlEdit_
+#define _GHtmlEdit_
 //===============================================
 #include "GInclude.h"
 #include "GWidget.h"
 //===============================================
-class GHtmlUi : public GWidget {    
+class GHtmlEdit : public GWidget {    
     Q_OBJECT
 
 public:
-    GHtmlUi(QWidget* parent = 0);
-    ~GHtmlUi();
+    GHtmlEdit(QWidget* parent = 0);
+    ~GHtmlEdit();
 };
 //===============================================
 #endif

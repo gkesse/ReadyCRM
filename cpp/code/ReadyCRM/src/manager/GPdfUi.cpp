@@ -1,15 +1,17 @@
 //===============================================
-#include "GHtmlUi.h"
+#include "GPdfUi.h"
 #include "GWidget.h"
 #include "GManager.h"
 //===============================================
 // constructor
 //===============================================
-GHtmlUi::GHtmlUi(QWidget* parent) : GWidget(parent) {
-    setObjectName("GHtmlUi");
-        
+GPdfUi::GPdfUi(QWidget* parent) : GWidget(parent) {
+    setObjectName("GPdfUi");
+    
+    QTextEdit* lTextEdit = new QTextEdit;
+    
     QVBoxLayout* lMainLatout = new QVBoxLayout;
-    //lMainLatout->addWidget(lWidget);
+    lMainLatout->addWidget(lTextEdit);
     lMainLatout->setAlignment(Qt::AlignTop);
     lMainLatout->setMargin(0);
     lMainLatout->setSpacing(0);
@@ -17,7 +19,7 @@ GHtmlUi::GHtmlUi(QWidget* parent) : GWidget(parent) {
     setLayout(lMainLatout);
 }
 //===============================================
-GHtmlUi::~GHtmlUi() {
+GPdfUi::~GPdfUi() {
     
 }
 //===============================================

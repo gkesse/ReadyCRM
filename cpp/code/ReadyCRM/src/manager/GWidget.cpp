@@ -5,19 +5,26 @@
 #include "GListBox.h"
 #include "GListWidget.h"
 #include "GTableWidget.h"
+// window
+#include "GWindow.h"
 #include "GTitleBar.h"
 #include "GAddressBar.h"
 #include "GAddressKey.h"
+#include "GHome.h"
+// login
 #include "GLogin.h"
 #include "GProfil.h"
 #include "GUserAdd.h"
 #include "GUserShow.h"
 #include "GUserMap.h"
-#include "GSchema.h"
-// page
-#include "GWindow.h"
-#include "GHome.h"
+// table
 #include "GSQLiteTables.h"
+#include "GSchema.h"
+// html
+#include "GPdfUi.h"
+#include "GHtmlEdit.h"
+#include "GHtmlView.h"
+// builder
 #include "GBuilder.h"
 //===============================================
 // constructor
@@ -37,21 +44,28 @@ GWidget* GWidget::Create(QString key, QWidget* parent) {
     if(key == "listbox") return new GListBox(parent);
     if(key == "listwidget") return new GListWidget(parent);
     if(key == "tablewidget") return new GTableWidget(parent);
+    // window
+    if(key == "window") return new GWindow(parent);
     if(key == "titlebar") return new GTitleBar(parent);
     if(key == "addressbar") return new GAddressBar(parent);
     if(key == "addresskey") return new GAddressKey(parent);
-    // page
-    if(key == "window") return new GWindow(parent);
     if(key == "home") return new GHome(parent);
+    // login
     if(key == "login") return new GLogin(parent);
     if(key == "profil") return new GProfil(parent);
-    if(key == "sqlitetables") return new GSQLiteTables(parent);
     if(key == "useradd") return new GUserAdd(parent);
     if(key == "usershow") return new GUserShow(parent);
     if(key == "usermap") return new GUserMap(parent);
+    // table
+    if(key == "sqlitetables") return new GSQLiteTables(parent);
     if(key == "schema") return new GSchema(parent);
+    // pdf
+    if(key == "pdfui") return new GPdfUi(parent);
+    if(key == "htmledit") return new GHtmlEdit(parent);
+    if(key == "htmlview") return new GHtmlView(parent);
+    // builder
     if(key == "builder") return new GBuilder(parent);
-    // default
+    // widget
     return new GWidget(parent);
 }
 //===============================================

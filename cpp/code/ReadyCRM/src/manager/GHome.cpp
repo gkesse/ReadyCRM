@@ -15,6 +15,7 @@ GHome::GHome(QWidget* parent) : GWidget(parent) {
     lListBox->addItem("home/login", "Connexion", fa::book); lApp->login_home = qobject_cast<QPushButton*>(lApp->widget);
     lListBox->addItem("home/profil", "Profil", fa::book);
     lListBox->addItem("home/sqlite", "SQLite", fa::book);
+    lListBox->addItem("home/pdf", "Pdf", fa::book);
     lListBox->addItem("home/builder", "Builder", fa::book);
     
     QVBoxLayout* lMainLayout = new QVBoxLayout;
