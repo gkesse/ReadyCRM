@@ -11,6 +11,9 @@ class GPdfUi : public GWidget {
 public:
     GPdfUi(QWidget* parent = 0);
     ~GPdfUi();
+    
+private:
+    QMap<QWidget*, QString> m_widgetId;
 };
 //===============================================
 #endif

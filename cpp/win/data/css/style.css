@@ -226,6 +226,28 @@ GUserMap QPushButton#title {
     text-align: left;
 }
 /*===============================================*/
+/* GPdfUi */
+GPdfUi {
+    border: 1px solid #ffffff;
+    padding: 10px;
+}
+GPdfUi QPushButton {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+GPdfUi QPushButton:hover {
+    background-color: #303050;
+}
+GPdfUi QPushButton:pressed {
+    background-color: transparent;
+}
+GPdfUi QTextEdit {
+    background-color: #503030;
+    border-radius: 5px;
+    padding: 10px;
+}
+/*===============================================*/
 /* property */
 /*===============================================*/
 /* border */
