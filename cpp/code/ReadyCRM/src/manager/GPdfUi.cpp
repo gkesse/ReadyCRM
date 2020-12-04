@@ -33,10 +33,10 @@ GPdfUi::GPdfUi(QWidget* parent) : GWidget(parent) {
     lActionLatout->setSpacing(10);
 
     QTextEdit* lTextEdit = new QTextEdit;
-    lm_textEdit = lTextEdit;
+    m_textEdit = lTextEdit;
     
     QTextBrowser* lTextBrowser = new QTextBrowser;
-    m_textBrowser =lTextBrowser;
+    m_textBrowser = lTextBrowser;
     lTextBrowser->setOpenExternalLinks(true);
 
     QStackedWidget* lPageMap = new QStackedWidget;
