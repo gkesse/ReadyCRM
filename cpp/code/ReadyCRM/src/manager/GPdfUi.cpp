@@ -86,7 +86,7 @@ void GPdfUi::slotItemClick() {
     m_title->setText(lTitle);
     
     if(lWidgetId == "preview") {
-        m_textBrowser->setHtml(m_textEdit->toPlainText()());
+        m_textBrowser->setHtml(m_textEdit->toPlainText());
     }
 }
 //===============================================
