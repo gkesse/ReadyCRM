@@ -4,6 +4,7 @@
 //===============================================
 #include <QtWidgets>
 #include <QtSql>
+#include <QPrinter>
 #include <QtAwesome.h>
 //===============================================
 #endif

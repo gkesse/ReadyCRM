@@ -26,6 +26,7 @@ GManager::GManager(QObject* parent) {
     mgr->app->sqlite_db_path = getEnv("GSQLITE_DB_PATH");
     mgr->app->root_user = "root";
     mgr->app->root_pass = "super";
+    mgr->app->pdf_path = getEnv("GPDF_PATH");
     // picto
     m_QtAwesome = new QtAwesome(qApp);
 }

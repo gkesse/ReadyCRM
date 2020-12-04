@@ -23,6 +23,7 @@ HEADERS +=\
     $$PWD/include/GWindow.h \
     $$PWD/include/GHome.h \
     $$PWD/include/GSQLiteTables.h \
+    $$PWD/include/GHtmlUi.h \
     $$PWD/include/GBuilder.h \
     
 SOURCES +=\
@@ -31,6 +32,7 @@ SOURCES +=\
     $$PWD/manager/GTest.cpp \
     $$PWD/manager/GManager.cpp \
     $$PWD/manager/GSQLite.cpp \
+    $$PWD/manager/GPdf.cpp \
     $$PWD/manager/GQt.cpp \
     $$PWD/manager/GMessageBox.cpp \
     $$PWD/manager/GWidget.cpp \
@@ -50,5 +52,12 @@ SOURCES +=\
     $$PWD/manager/GWindow.cpp \
     $$PWD/manager/GHome.cpp \
     $$PWD/manager/GSQLiteTables.cpp \
+    $$PWD/manager/GHtmlUi.cpp \
     $$PWD/manager/GBuilder.cpp \
-    
+
+CONFIG += console release gnu++11
+QT += widgets sql printsupport
+
+QMAKE_CXXFLAGS +=\
+    -Wno-unused-parameter \
+    -Wno-deprecated-declarations \

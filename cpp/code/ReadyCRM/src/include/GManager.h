@@ -119,6 +119,8 @@ struct _sGApp {
     // root
     QString root_user;
     QString root_pass;
+    // pdf
+    QString pdf_path;
 };
 //===============================================
 #endif

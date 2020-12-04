@@ -10,6 +10,7 @@ export "GSQLITE_DB_PATH=$GDATA_PATH/sqlite/config.dat"
 export "GSTYLE_PATH=$GDATA_PATH/css/style.css"
 export "GFONT_PATH=$GDATA_PATH/font"
 export "GIMG_PATH=$GDATA_PATH/img"
+export "GPDF_PATH=$GDATA_PATH/pdf/config.pdf"
 #================================================
 export "GPACMAN_SEARCH=sqlite"
 #================================================
