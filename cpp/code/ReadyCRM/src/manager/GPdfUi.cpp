@@ -54,6 +54,8 @@ GPdfUi::GPdfUi(QWidget* parent) : GWidget(parent) {
     
     setLayout(lMainLatout);
     
+    lTextEdit->setPlainText(GManager::Instance()->loadData("pdf_text"));
+    
     connect(lEdit, SIGNAL(clicked()), this, SLOT(slotItemClick()));
     connect(lPreview, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
@@ -86,7 +88,11 @@ void GPdfUi::slotItemClick() {
     m_title->setText(lTitle);
     
     if(lWidgetId == "preview") {
-        m_textBrowser->setHtml(m_textEdit->toPlainText());
+        QString lText = m_textEdit->toPlainText();
+        if(lText != "") {
+            m_textBrowser->setHtml(lText);
+            GManager::Instance()->saveData("pdf_text", lText);
+        }
     }
 }
 //===============================================
