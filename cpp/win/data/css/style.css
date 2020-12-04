@@ -246,6 +246,7 @@ GPdfUi QTextEdit {
     background-color: #503030;
     border-radius: 5px;
     padding: 10px;
+    font-family: "Courier New";
 }
 /*===============================================*/
 /* property */

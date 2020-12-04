@@ -1,6 +1,5 @@
 //===============================================
 #include "GPdfUi.h"
-#include "GWidget.h"
 #include "GManager.h"
 //===============================================
 // constructor
@@ -20,26 +19,67 @@ GPdfUi::GPdfUi(QWidget* parent) : GWidget(parent) {
     lPreview->setCursor(Qt::PointingHandCursor);
     m_widgetId[lPreview] = "preview";
     
+    QPushButton* lTitle = new QPushButton;
+    m_title = lTitle;
+    lTitle->setObjectName("title");
+    m_widgetId[lPreview] = "title";
+    
     QHBoxLayout* lActionLatout = new QHBoxLayout;
     lActionLatout->addWidget(lEdit);
     lActionLatout->addWidget(lPreview);
+    lActionLatout->addWidget(lTitle, 1);
     lActionLatout->setAlignment(Qt::AlignLeft);
     lActionLatout->setMargin(0);
     lActionLatout->setSpacing(10);
 
     QTextEdit* lTextEdit = new QTextEdit;
-        
+    QTextBrowser* lTextBrowser = new QTextBrowser;
+    
+    QStackedWidget* lPageMap = new QStackedWidget;
+    m_pageMap = lPageMap;
+    
+    addPage("edit", "Editeur", lTextEdit, 1);
+    addPage("preview", "Aperçu", lTextBrowser);
+    
     QVBoxLayout* lMainLatout = new QVBoxLayout;
     lMainLatout->addLayout(lActionLatout);
-    lMainLatout->addWidget(lTextEdit, 1);
+    lMainLatout->addWidget(lPageMap, 1);
     lMainLatout->setAlignment(Qt::AlignTop);
     lMainLatout->setMargin(0);
     lMainLatout->setSpacing(10);
     
     setLayout(lMainLatout);
+    
+    connect(lEdit, SIGNAL(clicked()), this, SLOT(slotItemClick()));
+    connect(lPreview, SIGNAL(clicked()), this, SLOT(slotItemClick()));
 }
 //===============================================
 GPdfUi::~GPdfUi() {
     
+}
+//===============================================
+// methods
+//===============================================
+void GPdfUi::addPage(QString key, QString title, QWidget* widget, bool isDefault) {
+    int lWidgetId = m_pageMap->count();
+    m_pageId[key] = lWidgetId;
+    m_titleMap[key] = title;
+    m_pageMap->addWidget(widget);
+    if(isDefault == 1) {
+        m_pageMap->setCurrentIndex(lWidgetId);
+        m_title->setText(title);
+    }
+}
+//===============================================
+// slot
+//===============================================
+void GTitleBar::slotItemClick() {
+    sGApp* lApp = GManager::Instance()->getData()->app;
+    QWidget* lWidget = qobject_cast<QWidget*>(sender());
+    QString lWidgetId = m_widgetId[lWidget];
+    int lPageId = m_pageId[lWidgetId];
+    QString lTitle = m_titleMap[lWidgetId];
+    m_pageMap->setCurrentIndex(lPageId);
+    m_title->setText(lTitle);
 }
 //===============================================
