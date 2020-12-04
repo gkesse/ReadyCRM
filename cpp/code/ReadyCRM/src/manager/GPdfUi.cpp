@@ -73,7 +73,7 @@ void GPdfUi::addPage(QString key, QString title, QWidget* widget, bool isDefault
 //===============================================
 // slot
 //===============================================
-void GTitleBar::slotItemClick() {
+void GPdfUi::slotItemClick() {
     sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
