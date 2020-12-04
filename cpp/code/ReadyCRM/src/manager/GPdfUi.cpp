@@ -33,8 +33,12 @@ GPdfUi::GPdfUi(QWidget* parent) : GWidget(parent) {
     lActionLatout->setSpacing(10);
 
     QTextEdit* lTextEdit = new QTextEdit;
-    QTextBrowser* lTextBrowser = new QTextBrowser;
+    lm_textEdit = lTextEdit;
     
+    QTextBrowser* lTextBrowser = new QTextBrowser;
+    m_textBrowser =lTextBrowser;
+    lTextBrowser->setOpenExternalLinks(true);
+
     QStackedWidget* lPageMap = new QStackedWidget;
     m_pageMap = lPageMap;
     
@@ -80,5 +84,9 @@ void GPdfUi::slotItemClick() {
     QString lTitle = m_titleMap[lWidgetId];
     m_pageMap->setCurrentIndex(lPageId);
     m_title->setText(lTitle);
+    
+    if(lWidgetId == "preview") {
+        m_textBrowser->setHtml(m_textEdit->toPlainText()());
+    }
 }
 //===============================================

@@ -24,6 +24,8 @@ private:
     QMap<QString, QString> m_titleMap;
     QPushButton* m_title;
     QStackedWidget* m_pageMap;
+    QTextEdit* m_textEdit;
+    QTextBrowser* m_textBrowser;
 };
 //===============================================
 #endif
