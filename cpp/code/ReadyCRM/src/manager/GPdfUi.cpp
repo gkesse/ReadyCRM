@@ -22,7 +22,7 @@ GPdfUi::GPdfUi(QWidget* parent) : GWidget(parent) {
     QPushButton* lTitle = new QPushButton;
     m_title = lTitle;
     lTitle->setObjectName("title");
-    m_widgetId[lPreview] = "title";
+    m_widgetId[lTitle] = "title";
     
     QHBoxLayout* lActionLatout = new QHBoxLayout;
     lActionLatout->addWidget(lEdit);
@@ -74,7 +74,6 @@ void GPdfUi::addPage(QString key, QString title, QWidget* widget, bool isDefault
 // slot
 //===============================================
 void GPdfUi::slotItemClick() {
-    sGApp* lApp = GManager::Instance()->getData()->app;
     QWidget* lWidget = qobject_cast<QWidget*>(sender());
     QString lWidgetId = m_widgetId[lWidget];
     int lPageId = m_pageId[lWidgetId];

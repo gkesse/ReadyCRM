@@ -231,15 +231,18 @@ GPdfUi {
     border: 1px solid #ffffff;
     padding: 10px;
 }
-GPdfUi QPushButton {
+GPdfUi QPushButton#edit,
+GPdfUi QPushButton#preview {
     background-color: #503030;
     border-radius: 5px;
     padding: 2px 10px;
 }
-GPdfUi QPushButton:hover {
+GPdfUi QPushButton#edit:hover,
+GPdfUi QPushButton#preview:hover {
     background-color: #303050;
 }
-GPdfUi QPushButton:pressed {
+GPdfUi QPushButton#edit:pressed,
+GPdfUi QPushButton#preview:pressed {
     background-color: transparent;
 }
 GPdfUi QTextEdit {
